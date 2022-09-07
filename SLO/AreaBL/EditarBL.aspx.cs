@@ -10,6 +10,9 @@ namespace SLO.AreaBL
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            PN_Success.Visible = false;
+            PN_Error.Visible = false;
+
             if (Request.QueryString["ID"] != null)
             {
                 BL bl = BLController.GetByID(int.Parse(Request.QueryString["ID"].ToString()));

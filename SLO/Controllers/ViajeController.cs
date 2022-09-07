@@ -54,11 +54,10 @@ namespace SLO.Controllers
                 foreach (string bl in bls)
                 {
                     List<DataRow> containers = table.Where(r => r.Field<string>(0) == bl).ToList();
-                    result = BLController.Add(containers, new_viaje.ID);
-
-                    if (result == 0)
-                        break;
+                    BLController.Add(containers, new_viaje.ID);
                 }
+
+                result = 1;
             }
             catch (Exception ex)
             {
@@ -87,6 +86,26 @@ namespace SLO.Controllers
             catch (Exception ex)
             {
                 IncidentController.CreateIncident(string.Format("ERROR MODIFICANDO VIAJE N° {0}", viaje.num_viaj), ex);
+            }
+
+            return result;
+        }
+
+        public static int Delete(int ID)
+        {
+            int result = 0;
+            Viaje viaje = GetByID(ID);
+
+            try
+            {
+                db.Viaje.Remove(viaje);
+                db.SaveChanges();
+
+                result = 1;
+            }
+            catch (Exception ex)
+            {
+                IncidentController.CreateIncident(string.Format("ERROR ELIMINANDO VIAJE N° {0}", viaje.num_viaj), ex);
             }
 
             return result;

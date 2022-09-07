@@ -19,9 +19,8 @@ namespace SLO.Controllers
             return db.Contenedor.Where(c => c.id_bl == id_bl).ToList();
         }
 
-        public static int Add(DataRow row, int id_bl)
+        public static void Add(DataRow row, int id_bl)
         {
-            int result = 0;
             Contenedor cont = new Contenedor();
 
             try
@@ -46,16 +45,12 @@ namespace SLO.Controllers
 
                 Contenedor new_cont = db.Contenedor.Add(cont);
                 db.SaveChanges();
-
-                result = 1;
             }
             catch (Exception ex)
             {
                 IncidentController.CreateIncident(string.Format("ERROR INSERTANDO CONTENEDOR N° {0}", cont.num_cont), ex);
                 throw ex;
             }
-
-            return result;
         }
 
         public static int Edit(Contenedor cont)

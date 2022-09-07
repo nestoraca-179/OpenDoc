@@ -11,26 +11,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="/Content/bootstrap-5.2.css" rel="stylesheet" />
     <link href="/Content/Site.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="/Scripts/bootstrap-5.2.js"></script>
 </head>
 <body>
     <header>
         <div class="container">
-            <h3 style="margin: 0;">SDO</h3>
+            <h3 style="margin: 0;">OpenDoc</h3>
             <a href="/Login.aspx?logout=1" class="btn-logout">Cerrar Sesión</a>
         </div>
     </header>
-    <section class="container-fluid">
-        <div class="container">
+    <section class="container-fluid row">
+        <div class="col-2">
+            <ul class="menu">
+                <li><a href="Documentacion.aspx"><i class="fas fa-file"></i>Documentación</a></li>
+                <li><a href="#"><i class="fas fa-folder"></i>Registros</a></li>
+                <li><a href="#"><i class="fas fa-user"></i>Usuarios</a></li>
+            </ul>
+        </div>
+        <div class="container col-10">
             <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
         </div>
     </section>
     <footer>
         <div class="container">
-            <p style="margin: 0;">&copy; 2022 - <a href="http://gtsconsultingca.com/" target="_blank" style="margin: 0 0 0 5px; text-decoration: none;">Global Technology and Systems Consulting C.A.</a></p>
-            <p style="margin: 0;">INTERSHIPPING C.A.</p>
+            <p style="margin: 0;">OpenDoc Ver. 1.0 &copy; 2022 - <a href="http://gtsconsultingca.com/" target="_blank" style="margin: 0 0 0 5px; text-decoration: none;">Global Technology and Systems Consulting C.A.</a></p>
+            <p style="margin: 0;">Esta licencia pertenece a: <b>INTERSHIPPING C.A.</b></p>
         </div>
     </footer>
-    <script src="/Scripts/jquery-3.6.0.min.js"></script>
     <script>
         function preventBack() { window.history.forward(); }
         setTimeout("preventBack()", 0);

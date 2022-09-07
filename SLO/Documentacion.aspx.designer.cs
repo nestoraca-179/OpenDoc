@@ -11,53 +11,44 @@ namespace SLO
 {
 
 
-    public partial class Login
+    public partial class Documentacion
     {
 
         /// <summary>
-        /// Control form1.
+        /// Control Form1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
 
         /// <summary>
-        /// Control TB_Username.
+        /// Control PN_Success.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TB_Username;
+        protected global::System.Web.UI.WebControls.Panel PN_Success;
 
         /// <summary>
-        /// Control TB_Password.
+        /// Control LBL_Success.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TB_Password;
+        protected global::DevExpress.Web.ASPxLabel LBL_Success;
 
         /// <summary>
-        /// Control CK_Recordar.
+        /// Control PN_Error.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxCheckBox CK_Recordar;
-
-        /// <summary>
-        /// Control BTN_Login.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BTN_Login;
+        protected global::System.Web.UI.WebControls.Panel PN_Error;
 
         /// <summary>
         /// Control LBL_Error.
@@ -66,6 +57,42 @@ namespace SLO
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LBL_Error;
+        protected global::DevExpress.Web.ASPxLabel LBL_Error;
+
+        /// <summary>
+        /// Control FU_UploadFile.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FU_UploadFile;
+
+        /// <summary>
+        /// Control BTN_UploadFileExcel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton BTN_UploadFileExcel;
+
+        /// <summary>
+        /// Control GV_GridResultsV.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView GV_GridResultsV;
+
+        /// <summary>
+        /// Control DS_Viaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource DS_Viaje;
     }
 }

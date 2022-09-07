@@ -19,9 +19,8 @@ namespace SLO.Controllers
             return db.BL.Where(b => b.id_viaje == id_viaje).ToList();
         }
 
-        public static int Add(List<DataRow> rows, int id_viaje)
+        public static void Add(List<DataRow> rows, int id_viaje)
         {
-            int result = 0;
             BL bl = new BL();
 
             try
@@ -63,10 +62,7 @@ namespace SLO.Controllers
                 foreach (string container in containers)
                 {
                     DataRow row_container = rows.Single(r => r.Field<string>(16) == container);
-                    result = ContenedorController.Add(row_container, new_bl.ID);
-
-                    if (result == 0)
-                        break;
+                    ContenedorController.Add(row_container, new_bl.ID);
                 }
             }
             catch (Exception ex)
@@ -74,8 +70,6 @@ namespace SLO.Controllers
                 IncidentController.CreateIncident(string.Format("ERROR INSERTANDO BL N° {0}", bl.num_bl), ex);
                 throw ex;
             }
-
-            return result;
         }
 
         public static int Edit(BL bl)

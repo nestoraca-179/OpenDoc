@@ -158,6 +158,7 @@
                 </div>
             </div>
         </div>
+        <hr />
         <div class="form-body">
             <div class="form-grid"></div>
         </div>

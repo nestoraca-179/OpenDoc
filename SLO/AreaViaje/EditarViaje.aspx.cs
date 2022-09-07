@@ -11,6 +11,9 @@ namespace SLO.AreaViaje
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            PN_Success.Visible = false;
+            PN_Error.Visible = false;
+
             if (Request.QueryString["ID"] != null)
             {
                 Viaje viaje = ViajeController.GetByID(int.Parse(Request.QueryString["ID"].ToString()));
@@ -79,7 +82,7 @@ namespace SLO.AreaViaje
 
         protected void BTN_Volver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Dashboard.aspx");
+            Response.Redirect("~/Documentacion.aspx");
         }
 
         private void CargarViaje(Viaje viaje)

@@ -207,7 +207,9 @@
           <Property Name="uploaded_by" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <Association Name="FK_BL_Viaje">
-          <End Role="Viaje" Type="Self.Viaje" Multiplicity="1" />
+          <End Role="Viaje" Type="Self.Viaje" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="BL" Type="Self.BL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Viaje">
@@ -219,7 +221,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Contenedor_BL">
-          <End Role="BL" Type="Self.BL" Multiplicity="1" />
+          <End Role="BL" Type="Self.BL" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Contenedor" Type="Self.Contenedor" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="BL">

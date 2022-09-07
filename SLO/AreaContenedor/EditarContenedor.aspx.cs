@@ -11,6 +11,9 @@ namespace SLO.AreaContenedor
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            PN_Success.Visible = false;
+            PN_Error.Visible = false;
+
             if (Request.QueryString["ID"] != null)
             {
                 Contenedor cont = ContenedorController.GetByID(int.Parse(Request.QueryString["ID"].ToString()));
