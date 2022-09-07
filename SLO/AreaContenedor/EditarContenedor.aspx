@@ -54,7 +54,6 @@
                 <div class="col">
                     <div class="controls">
                         <label>Estado Vacío / Lleno</label>
-                        <%--<dx:ASPxTextBox ID="TB_Estado" runat="server" Theme="Material" Width="100%"></dx:ASPxTextBox>--%>
                         <dx:ASPxComboBox ID="DDL_Estado" runat="server" Theme="Material" Width="100%" DataSourceID="DS_Estado" ValueField="ID" TextField="nom_estado" ValueType="System.Int32"></dx:ASPxComboBox>
                         <asp:SqlDataSource runat="server" ID="DS_Estado" ConnectionString='<%$ ConnectionStrings:SLOConnectionString %>' SelectCommand="SELECT [ID], [nom_estado] FROM [EstadoContenedor]"></asp:SqlDataSource>
                     </div>

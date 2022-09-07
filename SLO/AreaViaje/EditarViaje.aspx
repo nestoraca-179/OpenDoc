@@ -76,7 +76,6 @@
                 <div class="col">
                     <div class="controls">
                         <label>Uso</label>
-                        <%--<dx:ASPxTextBox ID="TB_Uso" runat="server" Theme="Material" Width="100%"></dx:ASPxTextBox>--%>
                         <dx:ASPxComboBox ID="DDL_Uso" runat="server" Theme="Material" Width="100%" ValueType="System.Int32">
                             <Items>
                                 <dx:ListEditItem Text="IMPORTACI&#211;N" Value="1"></dx:ListEditItem>
