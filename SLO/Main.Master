@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>SLO</title>
@@ -15,34 +15,62 @@
     <script src="/Scripts/bootstrap-5.2.js"></script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h3 style="margin: 0;">OpenDoc</h3>
-            <a href="/Login.aspx?logout=1" class="btn-logout">Cerrar Sesión</a>
+<header class="row">
+    <div class="col-2">
+        <i class="fas fa-bars"></i>
+        <a href="Dashboard.aspx" style="margin: 0; font-size: 25px; text-decoration: none; color: #424242;">OpenDoc</a>
+    </div>
+    <div class="col-10 container">
+        <div class="info-user" id="info-user">
+            <i class="fas fa-user"></i>
+            <asp:Label ID="LBL_User" runat="server" />
+            <div class="menu-login shadow-tm" id="menu-login">
+                <a href="/Login.aspx?logout=1" class="btn-logout w-100">Cerrar Sesión</a>
+            </div>
         </div>
-    </header>
-    <section class="container-fluid row">
-        <div class="col-2">
-            <ul class="menu">
-                <li><a href="Documentacion.aspx"><i class="fas fa-file"></i>Documentación</a></li>
-                <li><a href="#"><i class="fas fa-folder"></i>Registros</a></li>
-                <li><a href="#"><i class="fas fa-user"></i>Usuarios</a></li>
-            </ul>
-        </div>
-        <div class="container col-10">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
-        </div>
-    </section>
-    <footer>
-        <div class="container">
-            <p style="margin: 0;">OpenDoc Ver. 1.0 &copy; 2022 - <a href="http://gtsconsultingca.com/" target="_blank" style="margin: 0 0 0 5px; text-decoration: none;">Global Technology and Systems Consulting C.A.</a></p>
-            <p style="margin: 0;">Esta licencia pertenece a: <b>INTERSHIPPING C.A.</b></p>
-        </div>
-    </footer>
-    <script>
-        function preventBack() { window.history.forward(); }
-        setTimeout("preventBack()", 0);
-        window.onunload = function () { null };
-    </script>
+    </div>
+</header>
+<section class="container-fluid row">
+    <div class="col-2" id="menu">
+        <ul class="menu">
+            <li><a href="Documentacion.aspx"><i class="fas fa-file"></i>Documentación</a></li>
+            <li><a href="#"><i class="fas fa-folder"></i>Registros</a></li>
+            <li><a href="#"><i class="fas fa-user"></i>Usuarios</a></li>
+        </ul>
+    </div>
+    <div class="col-10 container">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+    </div>
+</section>
+<footer>
+    <div class="container">
+        <p style="margin: 0;">OpenDoc Ver. 1.0 &copy; 2022 - <a href="http://gtsconsultingca.com/" target="_blank" style="margin: 0 0 0 5px; text-decoration: none;">Global Technology and Systems Consulting C.A.</a></p>
+        <p style="margin: 0;">Esta licencia pertenece a: <b>INTERSHIPPING C.A.</b></p>
+    </div>
+</footer>
+<script>
+
+    function preventBack() {
+        window.history.forward();
+    }
+
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+
+    $("#info-user").click(function () {
+        $("#menu-login").slideToggle();
+    });
+
+    $(".fas.fa-bars").click(function () {
+
+        if ($('#menu .menu').is(":visible"))
+            $('#menu .menu').hide();
+        else
+            $('#menu .menu').show();
+
+        $('#menu').animate({ width: 'toggle' });
+    });
+
+</script>
 </body>
 </html>

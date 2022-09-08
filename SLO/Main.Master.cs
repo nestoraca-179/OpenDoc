@@ -1,4 +1,5 @@
 ﻿using System;
+using SLO.Models;
 
 namespace SLO
 {
@@ -6,7 +7,10 @@ namespace SLO
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["USER"] != null)
+                LBL_User.Text = (Session["USER"] as Usuario).descrip;
+            else
+                Response.Redirect("Login.aspx");
         }
     }
 }

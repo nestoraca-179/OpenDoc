@@ -223,6 +223,7 @@
     <Content Include="DynamicData\PageTemplates\List.aspx" />
     <Content Include="DynamicData\PageTemplates\ListDetails.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Images\logo.png" />
     <Content Include="Login.aspx" />
   </ItemGroup>
   <ItemGroup>
