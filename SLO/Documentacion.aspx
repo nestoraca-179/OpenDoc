@@ -74,7 +74,7 @@
                         </dx:GridViewDataColumn>
                         <dx:GridViewDataColumn Width="60px" VisibleIndex="14" Caption="Eliminar">
                             <DataItemTemplate>
-                                <dx:ASPxButton ID="BTN_EliminarViaje" runat="server" CssClass="btn btn-primary" Text="Eliminar" CommandName="Eliminar"></dx:ASPxButton>
+                                <dx:ASPxButton ID="BTN_EliminarViaje" runat="server" CssClass="btn btn-danger" Text="Eliminar" CommandName="Eliminar"></dx:ASPxButton>
                             </DataItemTemplate>
                         </dx:GridViewDataColumn>
                     </Columns>
