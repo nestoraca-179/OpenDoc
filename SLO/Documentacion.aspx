@@ -9,7 +9,7 @@
         font-size: 14px;
     }
     .btn.btn-success {
-        height: auto;
+        /*height: auto;*/
     }
     i {
         margin-right: 5px;
@@ -17,8 +17,11 @@
 </style>
 <script>
     function openModal() {
-        console.log("paso");
         $("#modal-waiting").modal("show");
+    }
+
+    function openModalDelete() {
+        setTimeout(function () { $("#modal-delete").modal("show"); }, 1);
     }
 </script>
 <form id="Form1" runat="server">
@@ -72,9 +75,9 @@
                                 <dx:ASPxButton ID="BTN_EditarViaje" runat="server" CssClass="btn btn-primary" Text="Editar" CommandName="Editar"></dx:ASPxButton>
                             </DataItemTemplate>
                         </dx:GridViewDataColumn>
-                        <dx:GridViewDataColumn Width="60px" VisibleIndex="14" Caption="Eliminar">
+                        <dx:GridViewDataColumn Width="60px" VisibleIndex="14" Caption="Eliminar" >
                             <DataItemTemplate>
-                                <dx:ASPxButton ID="BTN_EliminarViaje" runat="server" CssClass="btn btn-danger" Text="Eliminar" CommandName="Eliminar"></dx:ASPxButton>
+                                <dx:ASPxButton ID="BTN_ConfirmarEliminarViaje" runat="server" CssClass="btn btn-danger" Text="Eliminar" CommandName="Eliminar"></dx:ASPxButton>
                             </DataItemTemplate>
                         </dx:GridViewDataColumn>
                     </Columns>
@@ -83,16 +86,31 @@
             </div>
         </div>
     </div>
-</form>
-<%-- MODAL --%>
-<div class="modal fade" id="modal-waiting" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <i class="fas fa-spinner fa-spin"></i>
-                <h2>Procesando archivo...</h2>
+    <%-- MODAL WAITING --%>
+    <div class="modal fade" id="modal-waiting" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <h2>Procesando archivo...</h2>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <%-- MODAL DELETE --%>
+    <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <i class="fas fa-warning"></i>
+                    <h2>¿Desea eliminar el registro?</h2>
+                </div>
+                <div class="modal-footer buttons">
+                    <button class="btn btn-danger" data-dismiss="modal">No</button>
+                    <dx:ASPxButton ID="BTN_EliminarViaje" runat="server" Text="Sí" CssClass="btn btn-success" OnClick="BTN_EliminarViaje_Click"></dx:ASPxButton>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 </asp:Content>

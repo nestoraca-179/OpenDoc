@@ -70,13 +70,26 @@ body header > .container, body footer > .container {
     font-size: 30px;
     margin-right: 10px;
 }
-#modal-waiting .modal-body {
+.modal .modal-footer.buttons {
+    border-top: 0;
+    display: flex;
+    justify-content: center;
+}
+.modal .modal-footer.buttons .btn {
+    width: 100px;
+}
+#modal-waiting .modal-body, #modal-delete .modal-body {
     text-align: center;
 }
 #modal-waiting i {
     font-size: 7em;
     margin: 30px auto;
     color: #1064ae;
+}
+#modal-delete i {
+    font-size: 7em;
+    margin: 30px auto;
+    color: #e89c12;
 }
 
 /* MENU */
@@ -116,7 +129,7 @@ ul.menu li a i {
 .btn-success {
     background: #198754 !important;
 }
-.btn-info {
+.btn-info, .btn-info:hover {
     background: #f95e13 !important;
     color: #FFF;
     border: 0;

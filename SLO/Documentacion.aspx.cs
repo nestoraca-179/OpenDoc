@@ -2,6 +2,7 @@
 using System.Data;
 using System.IO;
 using System.Web;
+using System.Web.UI;
 using DevExpress.Web;
 using SLO.Controllers;
 using SLO.Models;
@@ -10,6 +11,8 @@ namespace SLO
 {
     public partial class Documentacion : System.Web.UI.Page
     {
+        private static int IDEliminar;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             PN_Success.Visible = false;
@@ -200,18 +203,25 @@ namespace SLO
             }
             else if (e.CommandArgs.CommandName == "Eliminar")
             {
-                int result = ViajeController.Delete(int.Parse(e.KeyValue.ToString()));
+                IDEliminar = int.Parse(e.KeyValue.ToString());
+                ScriptManager.RegisterStartupScript(this, GetType(), "modal", "openModalDelete()", true);
+            }
+        }
 
-                if (result == 1)
-                {
-                    PN_Success.Visible = true;
-                    LBL_Success.Text = "Viaje eliminado con éxito";
-                }
-                else
-                {
-                    PN_Error.Visible = true;
-                    LBL_Error.Text = "Ha ocurrido un error. Ver tabla de Incidente";
-                }
+        protected void BTN_EliminarViaje_Click(object sender, EventArgs e)
+        {
+            int result = ViajeController.Delete(IDEliminar);
+
+            if (result == 1)
+            {
+                PN_Success.Visible = true;
+                LBL_Success.Text = "Viaje eliminado con éxito";
+                GV_GridResultsV.DataBind();
+            }
+            else
+            {
+                PN_Error.Visible = true;
+                LBL_Error.Text = "Ha ocurrido un error. Ver tabla de Incidente";
             }
         }
 
