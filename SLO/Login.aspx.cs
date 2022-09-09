@@ -30,7 +30,7 @@ namespace SLO
                     message = "Usuario Inactivo";
                     break;
                 case 3:
-                    message = "Se ha producido una excepción. Ver table de Incidente";
+                    message = "Se ha producido una excepción. Ver table de Incidentes";
                     break;
             }
 

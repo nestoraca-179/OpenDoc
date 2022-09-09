@@ -238,6 +238,7 @@
       <LastGenOutput>SLOModel.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
+    <Content Include="Scripts\bootstrap-5.2.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
     <Content Include="Scripts\jquery-3.6.0.slim.js" />
@@ -560,9 +561,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SLOModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>SLOModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TipoBL.cs">
       <DependentUpon>SLOModel.tt</DependentUpon>

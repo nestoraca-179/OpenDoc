@@ -2,10 +2,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 <style>
-.col-10.container {
+.col-9.container {
     position: relative;
 }
 img {
+    width: 600px;
     margin: 0 auto;
     display: block;
     position: absolute;

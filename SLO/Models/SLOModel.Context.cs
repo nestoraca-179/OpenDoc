@@ -28,17 +28,16 @@ namespace SLO.Models
         public virtual DbSet<Aduana> Aduana { get; set; }
         public virtual DbSet<BL> BL { get; set; }
         public virtual DbSet<Contenedor> Contenedor { get; set; }
+        public virtual DbSet<EstadoContenedor> EstadoContenedor { get; set; }
         public virtual DbSet<Incidente> Incidente { get; set; }
-        public virtual DbSet<Viaje> Viaje { get; set; }
         public virtual DbSet<ModoTransporte> ModoTransporte { get; set; }
         public virtual DbSet<Pais> Pais { get; set; }
         public virtual DbSet<Sealing> Sealing { get; set; }
         public virtual DbSet<TipoBL> TipoBL { get; set; }
+        public virtual DbSet<TipoContenedor> TipoContenedor { get; set; }
         public virtual DbSet<TipoMercancia> TipoMercancia { get; set; }
         public virtual DbSet<TipoPaquete> TipoPaquete { get; set; }
-        public virtual DbSet<EstadoContenedor> EstadoContenedor { get; set; }
-        public virtual DbSet<TipoContenedor> TipoContenedor { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Viaje> Viaje { get; set; }
     }
 }

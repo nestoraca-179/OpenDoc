@@ -44,7 +44,7 @@ namespace SLO.Models
         public string cod_buq { get; set; }
         public string nom_buq { get; set; }
         public string file_path { get; set; }
-        public System.DateTime date_uploaded { get; set; }
+        public Nullable<System.DateTime> date_uploaded { get; set; }
         public string uploaded_by { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

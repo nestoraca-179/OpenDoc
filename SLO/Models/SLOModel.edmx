@@ -20,7 +20,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_viaje" Type="int" Nullable="false" />
-          <Property Name="num_bl" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="num_bl" Type="varchar" MaxLength="30" />
           <Property Name="num_naturaleza" Type="int" />
           <Property Name="tipo" Type="varchar" MaxLength="10" />
           <Property Name="pto_carga" Type="varchar" MaxLength="10" />
@@ -55,7 +55,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_bl" Type="int" Nullable="false" />
-          <Property Name="num_cont" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="num_cont" Type="varchar" MaxLength="20" />
           <Property Name="num_paq" Type="int" />
           <Property Name="tip_cont" Type="varchar" MaxLength="10" />
           <Property Name="estado" Type="int" />
@@ -116,16 +116,6 @@
           <Property Name="nom_sealing" Type="nvarchar" MaxLength="255" />
           <Property Name="fec_crea" Type="smalldatetime" Nullable="false" />
           <Property Name="usu_crea" Type="varchar" MaxLength="10" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="TipoBL">
           <Key>
@@ -202,9 +192,9 @@
           <Property Name="alm_dest" Type="varchar" MaxLength="20" />
           <Property Name="cod_buq" Type="varchar" MaxLength="20" />
           <Property Name="nom_buq" Type="varchar" MaxLength="50" />
-          <Property Name="file_path" Type="varchar(max)" Nullable="false" />
-          <Property Name="date_uploaded" Type="smalldatetime" Nullable="false" />
-          <Property Name="uploaded_by" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="file_path" Type="varchar(max)" />
+          <Property Name="date_uploaded" Type="smalldatetime" />
+          <Property Name="uploaded_by" Type="varchar" MaxLength="20" />
         </EntityType>
         <Association Name="FK_BL_Viaje">
           <End Role="Viaje" Type="Self.Viaje" Multiplicity="1">
@@ -243,7 +233,6 @@
           <EntitySet Name="ModoTransporte" EntityType="Self.ModoTransporte" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sealing" EntityType="Self.Sealing" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoBL" EntityType="Self.TipoBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoContenedor" EntityType="Self.TipoContenedor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoMercancia" EntityType="Self.TipoMercancia" Schema="dbo" store:Type="Tables" />
@@ -267,7 +256,16 @@
           <EntitySet Name="Aduana" EntityType="SLOModel.Aduana" />
           <EntitySet Name="BL" EntityType="SLOModel.BL" />
           <EntitySet Name="Contenedor" EntityType="SLOModel.Contenedor" />
+          <EntitySet Name="EstadoContenedor" EntityType="SLOModel.EstadoContenedor" />
           <EntitySet Name="Incidente" EntityType="SLOModel.Incidente" />
+          <EntitySet Name="ModoTransporte" EntityType="SLOModel.ModoTransporte" />
+          <EntitySet Name="Pais" EntityType="SLOModel.Pais" />
+          <EntitySet Name="Sealing" EntityType="SLOModel.Sealing" />
+          <EntitySet Name="TipoBL" EntityType="SLOModel.TipoBL" />
+          <EntitySet Name="TipoContenedor" EntityType="SLOModel.TipoContenedor" />
+          <EntitySet Name="TipoMercancia" EntityType="SLOModel.TipoMercancia" />
+          <EntitySet Name="TipoPaquete" EntityType="SLOModel.TipoPaquete" />
+          <EntitySet Name="Usuario" EntityType="SLOModel.Usuario" />
           <EntitySet Name="Viaje" EntityType="SLOModel.Viaje" />
           <AssociationSet Name="FK_BL_Viaje" Association="SLOModel.FK_BL_Viaje">
             <End Role="Viaje" EntitySet="Viaje" />
@@ -277,17 +275,7 @@
             <End Role="BL" EntitySet="BL" />
             <End Role="Contenedor" EntitySet="Contenedor" />
           </AssociationSet>
-          <EntitySet Name="ModoTransporte" EntityType="SLOModel.ModoTransporte" />
-          <EntitySet Name="Pais" EntityType="SLOModel.Pais" />
-          <EntitySet Name="Sealing" EntityType="SLOModel.Sealing" />
-          <EntitySet Name="TipoBL" EntityType="SLOModel.TipoBL" />
-          <EntitySet Name="TipoMercancia" EntityType="SLOModel.TipoMercancia" />
-          <EntitySet Name="TipoPaquete" EntityType="SLOModel.TipoPaquete" />
-          <EntitySet Name="EstadoContenedor" EntityType="SLOModel.EstadoContenedor" />
-          <EntitySet Name="TipoContenedor" EntityType="SLOModel.TipoContenedor" />
-          <EntitySet Name="Usuario" EntityType="SLOModel.Usuario" />
-          <EntitySet Name="sysdiagrams" EntityType="SLOModel.sysdiagrams" />
-          </EntityContainer>
+        </EntityContainer>
         <EntityType Name="Aduana">
           <Key>
             <PropertyRef Name="ID" />
@@ -303,7 +291,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_viaje" Type="Int32" Nullable="false" />
-          <Property Name="num_bl" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="num_bl" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="num_naturaleza" Type="Int32" />
           <Property Name="tipo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="pto_carga" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
@@ -340,7 +328,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_bl" Type="Int32" Nullable="false" />
-          <Property Name="num_cont" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="num_cont" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="num_paq" Type="Int32" />
           <Property Name="tip_cont" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="estado" Type="Int32" />
@@ -358,6 +346,15 @@
           <Property Name="descrip_mer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="BL" Relationship="SLOModel.FK_Contenedor_BL" FromRole="Contenedor" ToRole="BL" />
         </EntityType>
+        <EntityType Name="EstadoContenedor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fec_crea" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="usu_crea" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="Incidente">
           <Key>
             <PropertyRef Name="ID" />
@@ -367,62 +364,6 @@
           <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Fecha" Type="DateTime" Precision="0" />
         </EntityType>
-        <EntityType Name="Viaje">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cod_adua" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="num_viaj" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="fec_sal" Type="DateTime" Precision="0" />
-          <Property Name="fec_arr" Type="DateTime" Precision="0" />
-          <Property Name="loc_cod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="uso" Type="Int32" />
-          <Property Name="total_bls" Type="Int32" />
-          <Property Name="total_paq" Type="Int32" />
-          <Property Name="total_cont" Type="Int32" />
-          <Property Name="total_gm" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="cod_carr" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="nom_carr" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="dir_carr" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="cod_mod_trans" Type="Int32" />
-          <Property Name="id_trans" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="cod_nac_trans" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="cod_pto_sal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="cod_pto_des" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="cod_lin" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="alm_dest" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="cod_buq" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="nom_buq" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="BL" Relationship="SLOModel.FK_BL_Viaje" FromRole="Viaje" ToRole="BL" />
-          <Property Name="file_path" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="date_uploaded" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="uploaded_by" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <Association Name="FK_BL_Viaje">
-          <End Type="SLOModel.Viaje" Role="Viaje" Multiplicity="1" />
-          <End Type="SLOModel.BL" Role="BL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Viaje">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="BL">
-              <PropertyRef Name="id_viaje" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Contenedor_BL">
-          <End Type="SLOModel.BL" Role="BL" Multiplicity="1" />
-          <End Type="SLOModel.Contenedor" Role="Contenedor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BL">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Contenedor">
-              <PropertyRef Name="id_bl" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="ModoTransporte">
           <Key>
             <PropertyRef Name="ID" />
@@ -459,6 +400,15 @@
           <Property Name="fec_crea" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="usu_crea" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="TipoContenedor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="nom_tipo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="fec_crea" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="usu_crea" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="TipoMercancia">
           <Key>
             <PropertyRef Name="ID" />
@@ -477,24 +427,6 @@
           <Property Name="fec_crea" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="usu_crea" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="EstadoContenedor">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nom_estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="fec_crea" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="usu_crea" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="TipoContenedor">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="nom_tipo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="fec_crea" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="usu_crea" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="ID" />
@@ -507,16 +439,66 @@
           <Property Name="fec_crea" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="tip_usuario" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
+        <EntityType Name="Viaje">
           <Key>
-            <PropertyRef Name="diagram_id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cod_adua" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="num_viaj" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fec_sal" Type="DateTime" Precision="0" />
+          <Property Name="fec_arr" Type="DateTime" Precision="0" />
+          <Property Name="loc_cod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="uso" Type="Int32" />
+          <Property Name="total_bls" Type="Int32" />
+          <Property Name="total_paq" Type="Int32" />
+          <Property Name="total_cont" Type="Int32" />
+          <Property Name="total_gm" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="cod_carr" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="nom_carr" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="dir_carr" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cod_mod_trans" Type="Int32" />
+          <Property Name="id_trans" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cod_nac_trans" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="cod_pto_sal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cod_pto_des" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cod_lin" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="alm_dest" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cod_buq" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="nom_buq" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="file_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="date_uploaded" Type="DateTime" Precision="0" />
+          <Property Name="uploaded_by" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BL" Relationship="SLOModel.FK_BL_Viaje" FromRole="Viaje" ToRole="BL" />
         </EntityType>
+        <Association Name="FK_BL_Viaje">
+          <End Type="SLOModel.Viaje" Role="Viaje" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SLOModel.BL" Role="BL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Viaje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BL">
+              <PropertyRef Name="id_viaje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contenedor_BL">
+          <End Type="SLOModel.BL" Role="BL" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SLOModel.Contenedor" Role="Contenedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BL">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contenedor">
+              <PropertyRef Name="id_bl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -593,44 +575,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="EstadoContenedor">
+            <EntityTypeMapping TypeName="SLOModel.EstadoContenedor">
+              <MappingFragment StoreEntitySet="EstadoContenedor">
+                <ScalarProperty Name="usu_crea" ColumnName="usu_crea" />
+                <ScalarProperty Name="fec_crea" ColumnName="fec_crea" />
+                <ScalarProperty Name="nom_estado" ColumnName="nom_estado" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Incidente">
             <EntityTypeMapping TypeName="SLOModel.Incidente">
               <MappingFragment StoreEntitySet="Incidente">
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Viaje">
-            <EntityTypeMapping TypeName="SLOModel.Viaje">
-              <MappingFragment StoreEntitySet="Viaje">
-                <ScalarProperty Name="uploaded_by" ColumnName="uploaded_by" />
-                <ScalarProperty Name="date_uploaded" ColumnName="date_uploaded" />
-                <ScalarProperty Name="file_path" ColumnName="file_path" />
-                <ScalarProperty Name="nom_buq" ColumnName="nom_buq" />
-                <ScalarProperty Name="cod_buq" ColumnName="cod_buq" />
-                <ScalarProperty Name="alm_dest" ColumnName="alm_dest" />
-                <ScalarProperty Name="cod_lin" ColumnName="cod_lin" />
-                <ScalarProperty Name="cod_pto_des" ColumnName="cod_pto_des" />
-                <ScalarProperty Name="cod_pto_sal" ColumnName="cod_pto_sal" />
-                <ScalarProperty Name="cod_nac_trans" ColumnName="cod_nac_trans" />
-                <ScalarProperty Name="id_trans" ColumnName="id_trans" />
-                <ScalarProperty Name="cod_mod_trans" ColumnName="cod_mod_trans" />
-                <ScalarProperty Name="dir_carr" ColumnName="dir_carr" />
-                <ScalarProperty Name="nom_carr" ColumnName="nom_carr" />
-                <ScalarProperty Name="cod_carr" ColumnName="cod_carr" />
-                <ScalarProperty Name="total_gm" ColumnName="total_gm" />
-                <ScalarProperty Name="total_cont" ColumnName="total_cont" />
-                <ScalarProperty Name="total_paq" ColumnName="total_paq" />
-                <ScalarProperty Name="total_bls" ColumnName="total_bls" />
-                <ScalarProperty Name="uso" ColumnName="uso" />
-                <ScalarProperty Name="loc_cod" ColumnName="loc_cod" />
-                <ScalarProperty Name="fec_arr" ColumnName="fec_arr" />
-                <ScalarProperty Name="fec_sal" ColumnName="fec_sal" />
-                <ScalarProperty Name="num_viaj" ColumnName="num_viaj" />
-                <ScalarProperty Name="cod_adua" ColumnName="cod_adua" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -675,6 +635,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TipoContenedor">
+            <EntityTypeMapping TypeName="SLOModel.TipoContenedor">
+              <MappingFragment StoreEntitySet="TipoContenedor">
+                <ScalarProperty Name="usu_crea" ColumnName="usu_crea" />
+                <ScalarProperty Name="fec_crea" ColumnName="fec_crea" />
+                <ScalarProperty Name="nom_tipo" ColumnName="nom_tipo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TipoMercancia">
             <EntityTypeMapping TypeName="SLOModel.TipoMercancia">
               <MappingFragment StoreEntitySet="TipoMercancia">
@@ -695,26 +665,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="EstadoContenedor">
-            <EntityTypeMapping TypeName="SLOModel.EstadoContenedor">
-              <MappingFragment StoreEntitySet="EstadoContenedor">
-                <ScalarProperty Name="usu_crea" ColumnName="usu_crea" />
-                <ScalarProperty Name="fec_crea" ColumnName="fec_crea" />
-                <ScalarProperty Name="nom_estado" ColumnName="nom_estado" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TipoContenedor">
-            <EntityTypeMapping TypeName="SLOModel.TipoContenedor">
-              <MappingFragment StoreEntitySet="TipoContenedor">
-                <ScalarProperty Name="usu_crea" ColumnName="usu_crea" />
-                <ScalarProperty Name="fec_crea" ColumnName="fec_crea" />
-                <ScalarProperty Name="nom_tipo" ColumnName="nom_tipo" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Usuario">
             <EntityTypeMapping TypeName="SLOModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
@@ -728,14 +678,35 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="SLOModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
+          <EntitySetMapping Name="Viaje">
+            <EntityTypeMapping TypeName="SLOModel.Viaje">
+              <MappingFragment StoreEntitySet="Viaje">
+                <ScalarProperty Name="uploaded_by" ColumnName="uploaded_by" />
+                <ScalarProperty Name="date_uploaded" ColumnName="date_uploaded" />
+                <ScalarProperty Name="file_path" ColumnName="file_path" />
+                <ScalarProperty Name="nom_buq" ColumnName="nom_buq" />
+                <ScalarProperty Name="cod_buq" ColumnName="cod_buq" />
+                <ScalarProperty Name="alm_dest" ColumnName="alm_dest" />
+                <ScalarProperty Name="cod_lin" ColumnName="cod_lin" />
+                <ScalarProperty Name="cod_pto_des" ColumnName="cod_pto_des" />
+                <ScalarProperty Name="cod_pto_sal" ColumnName="cod_pto_sal" />
+                <ScalarProperty Name="cod_nac_trans" ColumnName="cod_nac_trans" />
+                <ScalarProperty Name="id_trans" ColumnName="id_trans" />
+                <ScalarProperty Name="cod_mod_trans" ColumnName="cod_mod_trans" />
+                <ScalarProperty Name="dir_carr" ColumnName="dir_carr" />
+                <ScalarProperty Name="nom_carr" ColumnName="nom_carr" />
+                <ScalarProperty Name="cod_carr" ColumnName="cod_carr" />
+                <ScalarProperty Name="total_gm" ColumnName="total_gm" />
+                <ScalarProperty Name="total_cont" ColumnName="total_cont" />
+                <ScalarProperty Name="total_paq" ColumnName="total_paq" />
+                <ScalarProperty Name="total_bls" ColumnName="total_bls" />
+                <ScalarProperty Name="uso" ColumnName="uso" />
+                <ScalarProperty Name="loc_cod" ColumnName="loc_cod" />
+                <ScalarProperty Name="fec_arr" ColumnName="fec_arr" />
+                <ScalarProperty Name="fec_sal" ColumnName="fec_sal" />
+                <ScalarProperty Name="num_viaj" ColumnName="num_viaj" />
+                <ScalarProperty Name="cod_adua" ColumnName="cod_adua" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

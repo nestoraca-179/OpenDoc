@@ -8,9 +8,6 @@
     span.m-0 {
         font-size: 14px;
     }
-    .btn.btn-success {
-        /*height: auto;*/
-    }
     i {
         margin-right: 5px;
     }
@@ -23,22 +20,26 @@
     function openModalDelete() {
         setTimeout(function () { $("#modal-delete").modal("show"); }, 1);
     }
+
+    function openModalWarning() {
+        setTimeout(function () { $("#modal-warning").modal("show"); }, 1);
+    }
 </script>
 <form id="Form1" runat="server">
     <div class="container-form">
-        <asp:Panel ID="PN_Success" runat="server" Width="100%" Visible="false">
+        <asp:Panel ID="PN_Success" runat="server" Width="100%" CssClass="mb-2" Visible="false">
             <div class="alert alert-success m-0">
                 <dx:ASPxLabel ID="LBL_Success" runat="server" CssClass="m-0"></dx:ASPxLabel>
             </div>
         </asp:Panel>
-        <asp:Panel ID="PN_Error" runat="server" Width="100%" Visible="false">
+        <asp:Panel ID="PN_Error" runat="server" Width="100%" CssClass="mb-2" Visible="false">
             <div class="alert alert-danger m-0">
                 <dx:ASPxLabel ID="LBL_Error" runat="server" CssClass="m-0"></dx:ASPxLabel>
             </div>
         </asp:Panel>
         <div class="form-header">
             <asp:FileUpload ID="FU_UploadFile" runat="server" />
-            <asp:LinkButton ID="BTN_UploadFileExcel" runat="server" CssClass="btn btn-success" OnClick="BTN_UploadFileExcel_Click" OnClientClick="openModal()">
+            <asp:LinkButton ID="BTN_UploadFileExcel" runat="server" CssClass="btn btn-success disabled" OnClick="BTN_UploadFileExcel_Click" OnClientClick="openModal()">
             <i class="fas fa-file-excel"></i> Subir Archivo Excel
             </asp:LinkButton>
         </div>
@@ -67,7 +68,7 @@
                         <dx:GridViewDataTextColumn FieldName="date_uploaded" VisibleIndex="11" Caption="Fec. Subido" Visible="false"></dx:GridViewDataTextColumn>
                         <dx:GridViewDataColumn Width="60px" VisibleIndex="12" Caption="XML">
                             <DataItemTemplate>
-                                <dx:ASPxButton ID="BTN_GenerarXML" runat="server" CssClass="btn btn-info" Text="Generar" CommandName="Generar"></dx:ASPxButton>
+                                <dx:ASPxButton ID="BTN_GenerarXML" runat="server" CssClass="btn btn-success" Text="Generar" CommandName="Generar"></dx:ASPxButton>
                             </DataItemTemplate>
                         </dx:GridViewDataColumn>
                         <dx:GridViewDataColumn Width="60px" VisibleIndex="13" Caption="Editar">
@@ -112,5 +113,30 @@
             </div>
         </div>
     </div>
+    <%-- MODAL WARNING --%>
+    <div class="modal fade" id="modal-warning" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <i class="fas fa-warning"></i>
+                    <h4>Este archivo ya fue cargado ¿Desea cargarlo de todos modos?</h4>
+                </div>
+                <div class="modal-footer buttons">
+                    <button class="btn btn-danger" data-dismiss="modal">No</button>
+                    <dx:ASPxButton ID="BTN_CargarViaje" runat="server" Text="Sí" CssClass="btn btn-success" OnClick="BTN_CargarViaje_Click"></dx:ASPxButton>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#menu").toggleClass("active");
+            $('#menu li a p').animate({ width: 'toggle' });
+        });
+
+        $("#MainContent_FU_UploadFile").change(function () {
+            $("#MainContent_BTN_UploadFileExcel").removeClass("disabled");
+        });
+    </script>
 </form>
 </asp:Content>

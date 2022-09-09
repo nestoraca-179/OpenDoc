@@ -14,6 +14,11 @@ namespace SLO.Controllers
             return db.Viaje.Single(v => v.ID == id);
         }
 
+        public static Viaje GetByFile(string file)
+        {
+            return db.Viaje.Single(v => v.file_path == file);
+        }
+
         public static int Add(EnumerableRowCollection<DataRow> table, string path, string user)
         {
             int result = 0;

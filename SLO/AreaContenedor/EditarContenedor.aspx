@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="Editar Contenedor" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="EditarContenedor.aspx.cs" Inherits="SLO.AreaContenedor.EditarContenedor" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<style>
+    body > section.container-fluid {
+        background: #b7b7b9;
+    }
+</style>
 <form id="Form1" runat="server">
     <asp:Panel ID="PN_Success" runat="server" Width="100%" Visible="false">
         <div class="alert alert-success m-0">
@@ -165,6 +170,11 @@
     </asp:Panel>
 </form>
 <script>
+    $(document).ready(function () {
+        $("#menu").toggleClass("active");
+        $('#menu li a p').animate({ width: 'toggle' });
+    });
+
     function onlyNumbers(_, e) {
         var event = e.htmlEvent || window.event;
         var key = event.keyCode || event.which;

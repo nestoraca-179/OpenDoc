@@ -23,7 +23,7 @@ body header {
     color: #424242;
     border-bottom: solid 1px #b9b3b3;
 }
-body header > .col-2 {
+body header > .col-3 {
     padding: 0;
     text-align: center;
     display: flex;
@@ -31,7 +31,7 @@ body header > .col-2 {
     align-items: center;
     position: relative;
 }
-body header > .col-2 i.fas.fa-bars {
+body header > .col-3 i.fas.fa-bars {
     padding: 10px;
     border-radius: 50%;
     font-size: 20px;
@@ -39,10 +39,10 @@ body header > .col-2 i.fas.fa-bars {
     left: 20px;
     cursor: pointer;
 }
-body header > .col-2 i.fas.fa-bars:hover {
+body header > .col-3 i.fas.fa-bars:hover {
     background: #f0f0f0;
 }
-body header > .col-10 {
+body header > .col-9 {
     padding: 0;
     justify-content: end !important;
 }
@@ -54,14 +54,15 @@ body > section.container-fluid {
     padding: 0;
     overflow-y: auto;
 }
-body > section.container-fluid > .col-2 {
+body > section.container-fluid > .col-3 {
     background: #333;
     padding: 0;
 }
-body > section.container-fluid > .col-2.active {
-    background: red;
+body > section.container-fluid > .col-3.active {
+    flex: 0;
 }
-body > section.container-fluid > .col-10 {
+body > section.container-fluid > .col-9 {
+    flex: auto;
     overflow-y: auto;
 }
 body > section.container-fluid > div.container {
@@ -103,7 +104,8 @@ body header .menu-login {
     top: 100%;
 }
 .shadow-tm {
-    box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);
+    box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 
+        0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);
 }
 
 /* MODALES */
@@ -123,6 +125,9 @@ body header .menu-login {
     font-size: 30px;
     margin-right: 10px;
 }
+.modal .modal-body {
+    text-align: center;
+}
 .modal .modal-footer.buttons {
     border-top: 0;
     display: flex;
@@ -131,15 +136,12 @@ body header .menu-login {
 .modal .modal-footer.buttons .btn {
     width: 100px;
 }
-#modal-waiting .modal-body, #modal-delete .modal-body {
-    text-align: center;
-}
 #modal-waiting i {
     font-size: 7em;
     margin: 30px auto;
     color: #1064ae;
 }
-#modal-delete i {
+#modal-delete i, #modal-warning i {
     font-size: 7em;
     margin: 30px auto;
     color: #e89c12;
@@ -161,13 +163,20 @@ ul.menu li a {
     padding: 20px;
     cursor: pointer;
     text-decoration: none;
+    display: flex;
+    align-items: center;
 }
 ul.menu li a:hover {
     background: #666;
 }
 ul.menu li a i {
     width: 16px;
-    margin-right: 15px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+}
+ul.menu li a p {
+    margin-left: 10px !important;
 }
 
 /* BOTONES */
@@ -221,9 +230,10 @@ form > div:not(.aspNetHidden) {
 .form-header {
     flex: 1;
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    align-items: baseline;
+    justify-content: space-between;
     flex-wrap: wrap;
+    flex-direction: column;
 }
 .form-header .title-screen {
     font-size: 25px;
@@ -268,6 +278,13 @@ form > div:not(.aspNetHidden) {
 }
 .form-grid .dxgvSearchPanel_Material {
     padding: 10px;
+}
+.form-grid .dxgvTable_Material tbody tr:first-child td{
+    background: #333;
+    color: #FFF;
+}
+.form-grid .dxgvTable_Material tbody tr:nth-of-type(odd) {
+    background: #cac6c6;
 }
 .form-grid table.dxgvControl_Material {
     margin: 0 0 20px 0;

@@ -12,6 +12,10 @@ namespace SLO
     public partial class Documentacion : System.Web.UI.Page
     {
         private static int IDEliminar;
+        private static string Folder;
+        private static string FullPath;
+        private static string FileName;
+        private static string UserName;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -116,6 +120,9 @@ namespace SLO
             bool is_error = false;
             string error = "", folder = Server.MapPath("~") + "Documents\\", user = ((Usuario)Session["USER"]).username;
 
+            if (!Directory.Exists(folder))
+                Directory.CreateDirectory(folder);
+
             if (FU_UploadFile.HasFile)
             {
                 HttpPostedFile file = FU_UploadFile.PostedFile;
@@ -128,22 +135,36 @@ namespace SLO
                         string filename = file.FileName;
                         string path = folder + filename;
 
-                        if (File.Exists(path))
-                            File.Delete(path);
-
-                        file.SaveAs(path);
-
-                        var results = ec.ProcessExcel(path).AsEnumerable();
-                        result = ViajeController.Add(results, filename, user);
-
-                        if (result == 1)
+                        if (!File.Exists(path))
                         {
-                            GV_GridResultsV.DataBind();
+                            file.SaveAs(path);
+
+                            var results = ec.ProcessExcel(path).AsEnumerable();
+                            result = ViajeController.Add(results, filename, user);
+
+                            if (result == 1)
+                            {
+                                GV_GridResultsV.DataBind();
+                            }
+                            else
+                            {
+                                is_error = true;
+                                error = "Error procesando el Excel. Ver tabla de Incidentes";
+                            }
                         }
                         else
                         {
+                            Folder = folder;
+                            FullPath = path;
+                            FileName = filename;
+                            UserName = user;
+
+                            Directory.CreateDirectory(folder + "Temp\\");
+                            file.SaveAs(folder + "Temp\\" + filename);
+
                             is_error = true;
-                            error = "Error procesando el Excel. Ver tabla de Incidentes";
+                            error = "El archivo ya está cargado";
+                            ScriptManager.RegisterStartupScript(this, GetType(), "modal", "openModalWarning()", true);
                         }
                     }
                     catch (Exception ex)
@@ -221,7 +242,51 @@ namespace SLO
             else
             {
                 PN_Error.Visible = true;
-                LBL_Error.Text = "Ha ocurrido un error. Ver tabla de Incidente";
+                LBL_Error.Text = "Ha ocurrido un error. Ver tabla de Incidentes";
+            }
+        }
+
+        protected void BTN_CargarViaje_Click(object sender, EventArgs e)
+        {
+            ExcelController ec = new ExcelController();
+
+            try
+            {
+                Viaje d_viaje = ViajeController.GetByFile(FileName);
+                int result = ViajeController.Delete(d_viaje.ID);
+
+                if (result == 1)
+                {
+                    File.Copy(Folder + "Temp\\" + FileName, FullPath, true);
+                    Directory.Delete(Folder + "Temp\\", true);
+
+                    var results = ec.ProcessExcel(FullPath).AsEnumerable();
+                    result = ViajeController.Add(results, FileName, UserName);
+
+                    if (result == 1)
+                    {
+                        GV_GridResultsV.DataBind();
+                        PN_Success.Visible = true;
+                        LBL_Success.Text = "Archivo Excel subido con éxito";
+                    }
+                    else
+                    {
+                        PN_Error.Visible = true;
+                        LBL_Error.Text = "Error procesando el Excel. Ver tabla de Incidentes";
+                    }
+                }
+                else
+                {
+                    PN_Error.Visible = true;
+                    LBL_Error.Text = "Ha ocurrido un error al eliminar el Viaje. Ver tabla de Incidentes";
+                }
+            }
+            catch (Exception ex)
+            {
+                IncidentController.CreateIncident("ERROR ELIMINADO EL VIAJE", ex);
+
+                PN_Error.Visible = true;
+                LBL_Error.Text = "Ha ocurrido un error. Ver tabla de Incidentes";
             }
         }
 

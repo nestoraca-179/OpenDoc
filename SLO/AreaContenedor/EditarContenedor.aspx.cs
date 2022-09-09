@@ -62,7 +62,7 @@ namespace SLO.AreaContenedor
             else
             {
                 PN_Error.Visible = true;
-                LBL_Error.Text = "Ha ocurrido un error al modificar el Contenedor. Ver tabla de Incidente";
+                LBL_Error.Text = "Ha ocurrido un error al modificar el Contenedor. Ver tabla de Incidentes";
             }
         }
 

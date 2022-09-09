@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="Editar BL" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="EditarBL.aspx.cs" Inherits="SLO.AreaBL.EditarBL" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<style>
+    body > section.container-fluid {
+        background: #b7b7b9;
+    }
+</style>
 <form id="Form1" runat="server">
     <asp:Panel ID="PN_Success" runat="server" Width="100%" Visible="false">
         <div class="alert alert-success m-0">
@@ -245,7 +250,7 @@
             <div class="form-grid">
                 <dx:ASPxGridView ID="GV_GridResultsC" runat="server" Width="100%" Theme="Material" AutoGenerateColumns="False" KeyFieldName="ID" DataSourceID="DS_Contenedor" 
                     OnRowCommand="GV_GridResultsC_RowCommand">
-                    <SettingsPager PageSize="10"></SettingsPager>
+                    <SettingsPager PageSize="5"></SettingsPager>
                     <SettingsDataSecurity AllowDelete="False" AllowInsert="False" AllowEdit="False"></SettingsDataSecurity>
                     <SettingsSearchPanel Visible="True"></SettingsSearchPanel>
                     <Columns>
@@ -276,6 +281,11 @@
     </asp:Panel>
 </form>
 <script>
+    $(document).ready(function () {
+        $("#menu").toggleClass("active");
+        $('#menu li a p').animate({ width: 'toggle' });
+    });
+
     function onlyNumbers(_, e) {
         var event = e.htmlEvent || window.event;
         var key = event.keyCode || event.which;

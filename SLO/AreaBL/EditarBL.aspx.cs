@@ -80,7 +80,7 @@ namespace SLO.AreaBL
             else
             {
                 PN_Error.Visible = true;
-                LBL_Error.Text = "Ha ocurrido un error al modificar el BL. Ver tabla de Incidente";
+                LBL_Error.Text = "Ha ocurrido un error al modificar el BL. Ver tabla de Incidentes";
             }
         }
 
