@@ -16,6 +16,14 @@ namespace SLO {
     
         void Session_Start(object sender, EventArgs e) {
             // Code that runs when a new session is started
+            if (Session["USER"] == null)
+            {
+                Response.Redirect("/Login.aspx");
+            }
+            else
+            {
+                Response.Redirect("/Dashboard.aspx");
+            }
         }
     
         void Session_End(object sender, EventArgs e) {

@@ -196,6 +196,7 @@
     <Content Include="Content\bootstrap-5.2.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Dashboard.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="Documentacion.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Images\logo.png" />
@@ -297,6 +298,12 @@
     </Compile>
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Documentacion.aspx.cs">
       <DependentUpon>Documentacion.aspx</DependentUpon>
