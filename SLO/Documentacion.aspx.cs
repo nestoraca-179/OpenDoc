@@ -216,10 +216,15 @@ namespace SLO
             else if (e.CommandArgs.CommandName == "Generar")
             {
                 string folder = Server.MapPath("~") + "Documents\\";
-                int result = XMLController.GenerarXML(folder, int.Parse(e.KeyValue.ToString()));
+                string filename = XMLController.GenerarXML(folder, int.Parse(e.KeyValue.ToString()));
 
-                if (result == 1)
+                if (filename != "")
                 {
+                    Response.ContentType = "application/xml";
+                    Response.AppendHeader("Content-Disposition", "attachment; filename=" + filename);
+                    Response.TransmitFile(folder + filename);
+                    Response.End();
+
                     PN_Success.Visible = true;
                     LBL_Success.Text = "Archivo XML generado con éxito";
                 }

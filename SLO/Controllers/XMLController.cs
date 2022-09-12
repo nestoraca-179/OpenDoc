@@ -9,9 +9,9 @@ namespace SLO.Controllers
 {
     public class XMLController
     {
-        public static int GenerarXML(string folder, int id_viaje)
+        public static string GenerarXML(string folder, int id_viaje)
         {
-            int result = 0;
+            string result = "";
 
             Viaje viaje = ViajeController.GetByID(id_viaje);
             List<BL> bls = BLController.GetAllBlsByViaje(id_viaje);
@@ -168,7 +168,7 @@ namespace SLO.Controllers
                 doc.AppendChild(mainNode);
                 doc.Save(file);
 
-                result = 1;
+                result = viaje.num_viaj + ".xml";
             }
             catch (Exception ex)
             {
