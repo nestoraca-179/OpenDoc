@@ -11,7 +11,7 @@ namespace SLO.AreaContenedor
 {
 
 
-    public partial class EditarContenedor
+    public partial class AgregarContenedor
     {
 
         /// <summary>
@@ -22,15 +22,6 @@ namespace SLO.AreaContenedor
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
-
-        /// <summary>
-        /// Control PN_Success.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PN_Success;
 
         /// <summary>
         /// Control PN_Error.
@@ -75,7 +66,7 @@ namespace SLO.AreaContenedor
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton BTN_Guardar;
+        protected global::DevExpress.Web.ASPxButton BTN_Guardar;
 
         /// <summary>
         /// Control LBL_IDContenedor.
@@ -85,6 +76,15 @@ namespace SLO.AreaContenedor
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxLabel LBL_IDContenedor;
+
+        /// <summary>
+        /// Control TB_NumCont.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox TB_NumCont;
 
         /// <summary>
         /// Control TB_NumPaq.

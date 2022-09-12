@@ -27,32 +27,41 @@
 </script>
 <form id="Form1" runat="server">
     <div class="container-form">
-        <asp:Panel ID="PN_Success" runat="server" Width="100%" CssClass="mb-2" Visible="false">
+        <asp:Panel ID="PN_Success" runat="server" Width="100%" CssClass="mt-2" Visible="false">
             <div class="alert alert-success m-0">
-                <dx:ASPxLabel ID="LBL_Success" runat="server" CssClass="m-0"></dx:ASPxLabel>
+                <dx:ASPxLabel ID="LBL_Success" runat="server" Width="100%" Font-Size="14px" CssClass="m-0"></dx:ASPxLabel>
             </div>
         </asp:Panel>
-        <asp:Panel ID="PN_Error" runat="server" Width="100%" CssClass="mb-2" Visible="false">
+        <asp:Panel ID="PN_Error" runat="server" Width="100%" CssClass="mt-2" Visible="false">
             <div class="alert alert-danger m-0">
-                <dx:ASPxLabel ID="LBL_Error" runat="server" CssClass="m-0"></dx:ASPxLabel>
+                <dx:ASPxLabel ID="LBL_Error" runat="server" Width="100%" Font-Size="14px" CssClass="m-0"></dx:ASPxLabel>
             </div>
         </asp:Panel>
-        <div class="form-header">
+        <div class="form-header mt-2">
             <asp:FileUpload ID="FU_UploadFile" runat="server" />
-            <asp:LinkButton ID="BTN_UploadFileExcel" runat="server" CssClass="btn btn-success disabled" OnClick="BTN_UploadFileExcel_Click" OnClientClick="openModal()">
-            <i class="fas fa-file-excel"></i> Subir Archivo Excel
-            </asp:LinkButton>
+            <div class="w-100 d-flex">
+                <asp:LinkButton ID="BTN_UploadFileExcel" runat="server" CssClass="btn btn-success disabled" OnClick="BTN_UploadFileExcel_Click" OnClientClick="openModal()">
+                    <i class="fas fa-file-excel"></i> Subir Archivo Excel
+                </asp:LinkButton>
+                <asp:LinkButton ID="BTN_AgregarViaje" runat="server" Text="Nuevo" CssClass="btn btn-info mx-2" OnClick="BTN_AgregarViaje_Click">
+                    <i class="fas fa-plus"></i> Agregar Nuevo Viaje
+                </asp:LinkButton>
+            </div>
         </div>
         <hr />
         <div class="form-body">
-            <h3 class="text-center mb-3">Lista de Viajes</h3>
+            <div class="row mb-3">
+                <div class="col">
+                    <h3 class="text-center">Lista de Viajes</h3>
+                </div>
+            </div>
             <div class="form-grid">
                 <dx:ASPxGridView ID="GV_GridResultsV" runat="server" Width="100%" Theme="Material" AutoGenerateColumns="False" DataSourceID="DS_Viaje" KeyFieldName="ID"
                     OnRowCommand="GV_GridResultsV_RowCommand">
                     <SettingsDataSecurity AllowDelete="False" AllowInsert="False" AllowEdit="False"></SettingsDataSecurity>
                     <SettingsSearchPanel Visible="True"></SettingsSearchPanel>
                     <Columns>
-                        <dx:GridViewDataTextColumn FieldName="ID" ReadOnly="True" VisibleIndex="0" Visible="false">
+                        <dx:GridViewDataTextColumn FieldName="ID" ReadOnly="True" VisibleIndex="0">
                             <EditFormSettings Visible="False"></EditFormSettings>
                         </dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn FieldName="file_path" VisibleIndex="1" Caption="Archivo"></dx:GridViewDataTextColumn>
@@ -68,17 +77,23 @@
                         <dx:GridViewDataTextColumn FieldName="date_uploaded" VisibleIndex="11" Caption="Fec. Subido" Visible="false"></dx:GridViewDataTextColumn>
                         <dx:GridViewDataColumn Width="60px" VisibleIndex="12" Caption="XML">
                             <DataItemTemplate>
-                                <dx:ASPxButton ID="BTN_GenerarXML" runat="server" CssClass="btn btn-success" Text="Generar" CommandName="Generar"></dx:ASPxButton>
+                                <asp:LinkButton ID="BTN_GenerarXML" runat="server" CssClass="btn btn-success" CommandName="Generar">
+                                    <i class="fas fa-code"></i> Generar
+                                </asp:LinkButton>
                             </DataItemTemplate>
                         </dx:GridViewDataColumn>
                         <dx:GridViewDataColumn Width="60px" VisibleIndex="13" Caption="Editar">
                             <DataItemTemplate>
-                                <dx:ASPxButton ID="BTN_EditarViaje" runat="server" CssClass="btn btn-primary" Text="Editar" CommandName="Editar"></dx:ASPxButton>
+                                <asp:LinkButton ID="BTN_EditarViaje" runat="server" CssClass="btn btn-primary" CommandName="Editar">
+                                    <i class="fas fa-edit"></i> Editar
+                                </asp:LinkButton>
                             </DataItemTemplate>
                         </dx:GridViewDataColumn>
                         <dx:GridViewDataColumn Width="60px" VisibleIndex="14" Caption="Eliminar" >
                             <DataItemTemplate>
-                                <dx:ASPxButton ID="BTN_ConfirmarEliminarViaje" runat="server" CssClass="btn btn-danger" Text="Eliminar" CommandName="Eliminar"></dx:ASPxButton>
+                                <asp:LinkButton ID="BTN_ConfirmarEliminarViaje" runat="server" CssClass="btn btn-danger" CommandName="Eliminar">
+                                    <i class="fas fa-times"></i> Eliminar
+                                </asp:LinkButton>
                             </DataItemTemplate>
                         </dx:GridViewDataColumn>
                     </Columns>

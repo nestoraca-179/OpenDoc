@@ -22,6 +22,7 @@
         width: 100%;
         height: 400px;
         max-width: 450px;
+        min-height: auto;
         /*background: #FFF;*/
         padding: 15px;
         display: flex;

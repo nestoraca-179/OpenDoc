@@ -33,6 +33,15 @@ namespace SLO.AreaViaje
         protected global::System.Web.UI.WebControls.Panel PN_Success;
 
         /// <summary>
+        /// Control LBL_Success.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel LBL_Success;
+
+        /// <summary>
         /// Control PN_Error.
         /// </summary>
         /// <remarks>
@@ -69,15 +78,6 @@ namespace SLO.AreaViaje
         protected global::System.Web.UI.WebControls.LinkButton BTN_Volver;
 
         /// <summary>
-        /// Control LBL_IDViaje.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxLabel LBL_IDViaje;
-
-        /// <summary>
         /// Control BTN_Guardar.
         /// </summary>
         /// <remarks>
@@ -85,6 +85,15 @@ namespace SLO.AreaViaje
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton BTN_Guardar;
+
+        /// <summary>
+        /// Control LBL_IDViaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel LBL_IDViaje;
 
         /// <summary>
         /// Control DDL_CodAduana.
@@ -312,6 +321,15 @@ namespace SLO.AreaViaje
         protected global::DevExpress.Web.ASPxTextBox TB_NomBuq;
 
         /// <summary>
+        /// Control BTN_AgregarBL.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton BTN_AgregarBL;
+
+        /// <summary>
         /// Control GV_GridResultsB.
         /// </summary>
         /// <remarks>
@@ -328,5 +346,14 @@ namespace SLO.AreaViaje
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource DS_BL;
+
+        /// <summary>
+        /// Control BTN_EliminarBL.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton BTN_EliminarBL;
     }
 }

@@ -53,6 +53,25 @@ namespace SLO.Controllers
             }
         }
 
+        public static int Add(Contenedor cont)
+        {
+            int result = 0;
+
+            try
+            {
+                db.Contenedor.Add(cont);
+                db.SaveChanges();
+
+                result = 1;
+            }
+            catch (Exception ex)
+            {
+                IncidentController.CreateIncident(string.Format("ERROR AGREGANDO CONTENEDOR N° {0}", cont.num_cont), ex);
+            }
+
+            return result;
+        }
+
         public static int Edit(Contenedor cont)
         {
             int result = 0;
@@ -75,7 +94,27 @@ namespace SLO.Controllers
 
             return result;
         }
-    
+
+        public static int Delete(int ID)
+        {
+            int result = 0;
+            Contenedor cont = GetByID(ID);
+
+            try
+            {
+                db.Contenedor.Remove(cont);
+                db.SaveChanges();
+
+                result = 1;
+            }
+            catch (Exception ex)
+            {
+                IncidentController.CreateIncident(string.Format("ERROR ELIMINANDO CONTENEDOR N° {0}", cont.num_cont), ex);
+            }
+
+            return result;
+        }
+
         private static string GetContType(string type)
         {
             string new_type = "";

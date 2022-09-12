@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.UI;
 using DevExpress.Web;
 using SLO.Controllers;
 using SLO.Models;
@@ -7,6 +8,7 @@ namespace SLO.AreaViaje
 {
     public partial class EditarViaje : System.Web.UI.Page
     {
+        private static int IDEliminar;
         private static string IDViaje;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -23,6 +25,12 @@ namespace SLO.AreaViaje
 
                 IDViaje = Request.QueryString["ID"].ToString();
                 LBL_IDViaje.Text = "Editar Viaje N° " + viaje.num_viaj;
+
+                if (Request.QueryString["new"] != null)
+                {
+                    PN_Success.Visible = true;
+                    LBL_Success.Text = "El BL ha sido agregado con éxito";
+                }
             }
             else
             {
@@ -36,53 +44,92 @@ namespace SLO.AreaViaje
         protected void GV_GridResultsB_RowCommand(object sender, DevExpress.Web.ASPxGridViewRowCommandEventArgs e)
         {
             if (e.CommandArgs.CommandName == "Editar")
+            {
                 Response.Redirect("~/AreaBL/EditarBL.aspx?ID=" + e.KeyValue.ToString(), false);
+            }
+            else if (e.CommandArgs.CommandName == "Eliminar")
+            {
+                IDEliminar = int.Parse(e.KeyValue.ToString());
+                ScriptManager.RegisterStartupScript(this, GetType(), "modal", "openModalDelete()", true);
+            }
+        }
+
+        protected void BTN_EliminarBL_Click(object sender, EventArgs e)
+        {
+            int result = BLController.Delete(IDEliminar);
+
+            if (result == 1)
+            {
+                PN_Success.Visible = true;
+                LBL_Success.Text = "BL eliminado con éxito";
+                GV_GridResultsB.DataBind();
+            }
+            else
+            {
+                PN_Error.Visible = true;
+                LBL_Error.Text = "Ha ocurrido un error. Ver tabla de Incidentes";
+            }
         }
 
         protected void BTN_Guardar_Click(object sender, EventArgs e)
         {
             Viaje viaje = new Viaje();
 
-            viaje.ID = int.Parse(IDViaje);
-            viaje.cod_adua = DDL_CodAduana.Value.ToString();
-            viaje.num_viaj = TB_NumViaje.Text;
-            viaje.fec_sal = DateTime.Parse(DE_FecSalida.Value.ToString());
-            viaje.fec_arr = DateTime.Parse(DE_FecArribo.Value.ToString());
-            viaje.loc_cod = TB_LocCode.Text;
-            viaje.uso = int.Parse(DDL_Uso.Value.ToString());
-            viaje.total_bls = int.Parse(TB_TotBls.Text);
-            viaje.total_paq = int.Parse(TB_TotPaq.Text);
-            viaje.total_cont = int.Parse(TB_TotConts.Text);
-            viaje.total_gm = decimal.Parse(TB_TotGM.Text);
-            viaje.cod_carr = TB_CodCarr.Text;
-            viaje.nom_carr = TB_NomCarr.Text;
-            viaje.dir_carr = TB_DirCarr.Text;
-            viaje.cod_mod_trans = int.Parse(DDL_CodModTrans.Value.ToString());
-            viaje.id_trans = TB_IDTrans.Text;
-            viaje.cod_nac_trans = DDL_CodNacTrans.Value.ToString();
-            viaje.cod_pto_sal = TB_PtoSalida.Text;
-            viaje.cod_pto_des = TB_PtoDestino.Text;
-            viaje.cod_lin = TB_CodLinea.Text;
-            viaje.alm_dest = TB_AlmDest.Text;
-            viaje.cod_buq = TB_CodBuq.Text;
-            viaje.nom_buq = TB_NomBuq.Text;
-
-            int result = ViajeController.Edit(viaje);
-
-            if (result == 1)
+            try
             {
-                PN_Success.Visible = true;
+                viaje.ID = int.Parse(IDViaje);
+                viaje.cod_adua = DDL_CodAduana.Value.ToString();
+                viaje.num_viaj = TB_NumViaje.Text;
+                viaje.fec_sal = DateTime.Parse(DE_FecSalida.Value.ToString());
+                viaje.fec_arr = DateTime.Parse(DE_FecArribo.Value.ToString());
+                viaje.loc_cod = TB_LocCode.Text;
+                viaje.uso = int.Parse(DDL_Uso.Value.ToString());
+                viaje.total_bls = int.Parse(TB_TotBls.Text);
+                viaje.total_paq = int.Parse(TB_TotPaq.Text);
+                viaje.total_cont = int.Parse(TB_TotConts.Text);
+                viaje.total_gm = decimal.Parse(TB_TotGM.Text);
+                viaje.cod_carr = TB_CodCarr.Text;
+                viaje.nom_carr = TB_NomCarr.Text;
+                viaje.dir_carr = TB_DirCarr.Text;
+                viaje.cod_mod_trans = int.Parse(DDL_CodModTrans.Value.ToString());
+                viaje.id_trans = TB_IDTrans.Text;
+                viaje.cod_nac_trans = DDL_CodNacTrans.Value.ToString();
+                viaje.cod_pto_sal = TB_PtoSalida.Text;
+                viaje.cod_pto_des = TB_PtoDestino.Text;
+                viaje.cod_lin = TB_CodLinea.Text;
+                viaje.alm_dest = TB_AlmDest.Text;
+                viaje.cod_buq = TB_CodBuq.Text;
+                viaje.nom_buq = TB_NomBuq.Text;
+
+                int result = ViajeController.Edit(viaje);
+
+                if (result == 1)
+                {
+                    PN_Success.Visible = true;
+                    LBL_Success.Text = "El viaje ha sido modificado con éxito";
+                }
+                else
+                {
+                    PN_Error.Visible = true;
+                    LBL_Error.Text = "Ha ocurrido un error al modificar el Viaje. Ver tabla de Incidentes";
+                }
             }
-            else
+            catch (Exception ex)
             {
                 PN_Error.Visible = true;
-                LBL_Error.Text = "Ha ocurrido un error al modificar el Viaje. Ver tabla de Incidentes";
+                LBL_Error.Text = "Ha ocurrido un error. Ver tabla de Incidentes";
+                IncidentController.CreateIncident(string.Format("ERROR PROCESANDO DATOS DEL VIAJE {0}", viaje.num_viaj), ex);
             }
         }
 
         protected void BTN_Volver_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Documentacion.aspx");
+        }
+
+        protected void BTN_AgregarBL_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AreaBL/AgregarBL.aspx?id_viaje=" + IDViaje);
         }
 
         private void CargarViaje(Viaje viaje)

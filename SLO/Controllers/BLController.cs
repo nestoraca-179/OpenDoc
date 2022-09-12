@@ -72,6 +72,25 @@ namespace SLO.Controllers
             }
         }
 
+        public static int Add(BL bl)
+        {
+            int result = 0;
+
+            try
+            {
+                db.BL.Add(bl);
+                db.SaveChanges();
+
+                result = 1;
+            }
+            catch (Exception ex)
+            {
+                IncidentController.CreateIncident(string.Format("ERROR AGREGANDO BL N° {0}", bl.num_bl), ex);
+            }
+
+            return result;
+        }
+
         public static int Edit(BL bl)
         {
             int result = 0;
@@ -90,6 +109,26 @@ namespace SLO.Controllers
             catch (Exception ex)
             {
                 IncidentController.CreateIncident(string.Format("ERROR MODIFICANDO VIAJE N° {0}", bl.num_bl), ex);
+            }
+
+            return result;
+        }
+
+        public static int Delete(int ID)
+        {
+            int result = 0;
+            BL bl = GetByID(ID);
+
+            try
+            {
+                db.BL.Remove(bl);
+                db.SaveChanges();
+
+                result = 1;
+            }
+            catch (Exception ex)
+            {
+                IncidentController.CreateIncident(string.Format("ERROR ELIMINANDO VIAJE N° {0}", bl.num_bl), ex);
             }
 
             return result;

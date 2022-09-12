@@ -11,7 +11,7 @@ namespace SLO.AreaBL
 {
 
 
-    public partial class EditarBL
+    public partial class AgregarBL
     {
 
         /// <summary>
@@ -22,24 +22,6 @@ namespace SLO.AreaBL
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
-
-        /// <summary>
-        /// Control PN_Success.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PN_Success;
-
-        /// <summary>
-        /// Control LBL_Success.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxLabel LBL_Success;
 
         /// <summary>
         /// Control PN_Error.
@@ -84,7 +66,7 @@ namespace SLO.AreaBL
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton BTN_Guardar;
+        protected global::DevExpress.Web.ASPxButton BTN_Guardar;
 
         /// <summary>
         /// Control LBL_IDBL.
@@ -94,6 +76,15 @@ namespace SLO.AreaBL
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxLabel LBL_IDBL;
+
+        /// <summary>
+        /// Control TB_NumBL.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox TB_NumBL;
 
         /// <summary>
         /// Control TB_Naturaleza.
@@ -364,41 +355,5 @@ namespace SLO.AreaBL
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxTextBox TB_MonFletes;
-
-        /// <summary>
-        /// Control BTN_AgregarContenedor.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton BTN_AgregarContenedor;
-
-        /// <summary>
-        /// Control GV_GridResultsC.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView GV_GridResultsC;
-
-        /// <summary>
-        /// Control DS_Contenedor.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource DS_Contenedor;
-
-        /// <summary>
-        /// Control BTN_EliminarContenedor.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton BTN_EliminarContenedor;
     }
 }

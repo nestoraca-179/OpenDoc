@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.UI;
 using SLO.Controllers;
 using SLO.Models;
 
@@ -6,6 +7,7 @@ namespace SLO.AreaBL
 {
     public partial class EditarBL : System.Web.UI.Page
     {
+        private static int IDEliminar;
         private static string IDBL;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -22,6 +24,12 @@ namespace SLO.AreaBL
 
                 IDBL = Request.QueryString["ID"].ToString();
                 LBL_IDBL.Text = "Editar BL N° " + bl.num_bl.ToString();
+
+                if (Request.QueryString["new"] != null)
+                {
+                    PN_Success.Visible = true;
+                    LBL_Success.Text = "El Contenedor ha sido agregado con éxito";
+                }
             }
             else
             {
@@ -35,52 +43,86 @@ namespace SLO.AreaBL
         protected void GV_GridResultsC_RowCommand(object sender, DevExpress.Web.ASPxGridViewRowCommandEventArgs e)
         {
             if (e.CommandArgs.CommandName == "Editar")
+            {
                 Response.Redirect("~/AreaContenedor/EditarContenedor.aspx?ID=" + e.KeyValue.ToString(), false);
+            }
+            else if (e.CommandArgs.CommandName == "Eliminar")
+            {
+                IDEliminar = int.Parse(e.KeyValue.ToString());
+                ScriptManager.RegisterStartupScript(this, GetType(), "modal", "openModalDelete()", true);
+            }
+        }
+
+        protected void BTN_EliminarContenedor_Click(object sender, EventArgs e)
+        {
+            int result = ContenedorController.Delete(IDEliminar);
+
+            if (result == 1)
+            {
+                PN_Success.Visible = true;
+                LBL_Success.Text = "Contenedor eliminado con éxito";
+                GV_GridResultsC.DataBind();
+            }
+            else
+            {
+                PN_Error.Visible = true;
+                LBL_Error.Text = "Ha ocurrido un error. Ver tabla de Incidentes";
+            }
         }
 
         protected void BTN_Guardar_Click(object sender, EventArgs e)
         {
             BL bl = new BL();
 
-            bl.ID = int.Parse(IDBL);
-            bl.num_naturaleza = int.Parse(TB_Naturaleza.Text);
-            bl.tipo = DDL_Tipo.Value.ToString();
-            bl.pto_carga = TB_PtoCarga.Text;
-            bl.pto_descarga = TB_PtoDescarga.Text;
-            bl.destino = TB_Destino.Text;
-            bl.booking = TB_Booking.Text;
-            bl.condicion = TB_Cond.Text;
-            bl.tipo_mercancia = int.Parse(DDL_TipMercancia.Value.ToString());
-            bl.nom_consign = TB_NomConsignee.Text;
-            bl.dir_consign = TB_DirConsignee.Text;
-            bl.nom_notify = TB_NomNotify.Text;
-            bl.dir_notify = TB_DirNotify.Text;
-            bl.nom_export = TB_NomExport.Text;
-            bl.dir_export = TB_DirExport.Text;
-            bl.gross_mass = decimal.Parse(TB_GrossMass.Text);
-            bl.shipping_marks = TB_ShipMarks.Text;
-            bl.num_conts = int.Parse(TB_CantCont.Text);
-            bl.volumen = decimal.Parse(TB_CantCont.Text);
-            bl.descripcion = TB_Descrip.Text;
-            bl.tipo_paq = DDL_TipPaq.Value.ToString();
-            bl.cant_paq = int.Parse(TB_CantPaq.Text);
-            bl.precinto_bl = TB_PrecBL.Text;
-            bl.observaciones = TB_Observa.Text;
-            bl.gobierno = CK_Gobierno.Checked;
-            bl.sobre_dimens = TB_SobreDim.Text;
-            bl.fletes = int.Parse(TB_Fletes.Text);
-            bl.mone_flet = TB_MonFletes.Text;
-
-            int result = BLController.Edit(bl);
-
-            if (result == 1)
+            try
             {
-                PN_Success.Visible = true;
+                bl.ID = int.Parse(IDBL);
+                bl.num_naturaleza = int.Parse(TB_Naturaleza.Text);
+                bl.tipo = DDL_Tipo.Value.ToString();
+                bl.pto_carga = TB_PtoCarga.Text;
+                bl.pto_descarga = TB_PtoDescarga.Text;
+                bl.destino = TB_Destino.Text;
+                bl.booking = TB_Booking.Text;
+                bl.condicion = TB_Cond.Text;
+                bl.tipo_mercancia = int.Parse(DDL_TipMercancia.Value.ToString());
+                bl.nom_consign = TB_NomConsignee.Text;
+                bl.dir_consign = TB_DirConsignee.Text;
+                bl.nom_notify = TB_NomNotify.Text;
+                bl.dir_notify = TB_DirNotify.Text;
+                bl.nom_export = TB_NomExport.Text;
+                bl.dir_export = TB_DirExport.Text;
+                bl.gross_mass = decimal.Parse(TB_GrossMass.Text);
+                bl.shipping_marks = TB_ShipMarks.Text;
+                bl.num_conts = int.Parse(TB_CantCont.Text);
+                bl.volumen = decimal.Parse(TB_CantCont.Text);
+                bl.descripcion = TB_Descrip.Text;
+                bl.tipo_paq = DDL_TipPaq.Value.ToString();
+                bl.cant_paq = int.Parse(TB_CantPaq.Text);
+                bl.precinto_bl = TB_PrecBL.Text;
+                bl.observaciones = TB_Observa.Text;
+                bl.gobierno = CK_Gobierno.Checked;
+                bl.sobre_dimens = TB_SobreDim.Text;
+                bl.fletes = int.Parse(TB_Fletes.Text);
+                bl.mone_flet = TB_MonFletes.Text;
+
+                int result = BLController.Edit(bl);
+
+                if (result == 1)
+                {
+                    PN_Success.Visible = true;
+                    LBL_Success.Text = "El BL ha sido modificado con éxito";
+                }
+                else
+                {
+                    PN_Error.Visible = true;
+                    LBL_Error.Text = "Ha ocurrido un error al modificar el BL. Ver tabla de Incidentes";
+                }
             }
-            else
+            catch (Exception ex)
             {
                 PN_Error.Visible = true;
-                LBL_Error.Text = "Ha ocurrido un error al modificar el BL. Ver tabla de Incidentes";
+                LBL_Error.Text = "Ha ocurrido un error. Ver tabla de Incidentes";
+                IncidentController.CreateIncident(string.Format("ERROR PROCESANDO DATOS DEL BL {0}", bl.num_bl), ex);
             }
         }
 
@@ -88,6 +130,11 @@ namespace SLO.AreaBL
         {
             BL bl = BLController.GetByID(int.Parse(IDBL));
             Response.Redirect("~/AreaViaje/EditarViaje.aspx?ID=" + bl.id_viaje.ToString());
+        }
+
+        protected void BTN_AgregarContenedor_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AreaContenedor/AgregarContenedor.aspx?id_bl=" + IDBL);
         }
 
         private void CargarBL(BL bl)

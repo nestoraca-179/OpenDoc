@@ -21,6 +21,12 @@ namespace SLO
         {
             PN_Success.Visible = false;
             PN_Error.Visible = false;
+
+            if (Request.QueryString["new"] != null)
+            {
+                PN_Success.Visible = true;
+                LBL_Success.Text = "Viaje agregado con éxito";
+            }
         }
 
         protected void BTN_UploadFilePDF_Click(object sender, EventArgs e)
@@ -150,6 +156,7 @@ namespace SLO
                             {
                                 is_error = true;
                                 error = "Error procesando el Excel. Ver tabla de Incidentes";
+                                File.Delete(path);
                             }
                         }
                         else
@@ -204,7 +211,7 @@ namespace SLO
         {
             if (e.CommandArgs.CommandName == "Editar")
             {
-                Response.Redirect("~/AreaViaje/EditarViaje.aspx?ID=" + e.KeyValue.ToString(), false);
+                Response.Redirect("~/AreaViaje/EditarViaje.aspx?ID=" + e.KeyValue.ToString(), true);
             }
             else if (e.CommandArgs.CommandName == "Generar")
             {
@@ -231,10 +238,14 @@ namespace SLO
 
         protected void BTN_EliminarViaje_Click(object sender, EventArgs e)
         {
+            string file = ViajeController.GetByID(IDEliminar).file_path;
             int result = ViajeController.Delete(IDEliminar);
 
             if (result == 1)
             {
+                if (file != "SIN ARCHIVO")
+                    File.Delete(Server.MapPath("~") + "Documents\\" + file);
+
                 PN_Success.Visible = true;
                 LBL_Success.Text = "Viaje eliminado con éxito";
                 GV_GridResultsV.DataBind();
@@ -258,7 +269,6 @@ namespace SLO
                 if (result == 1)
                 {
                     File.Copy(Folder + "Temp\\" + FileName, FullPath, true);
-                    Directory.Delete(Folder + "Temp\\", true);
 
                     var results = ec.ProcessExcel(FullPath).AsEnumerable();
                     result = ViajeController.Add(results, FileName, UserName);
@@ -288,15 +298,15 @@ namespace SLO
                 PN_Error.Visible = true;
                 LBL_Error.Text = "Ha ocurrido un error. Ver tabla de Incidentes";
             }
+            finally
+            {
+                Directory.Delete(Folder + "Temp\\", true);
+            }
         }
 
-        /*private void DeleteAllFiles(string folder)
+        protected void BTN_AgregarViaje_Click(object sender, EventArgs e)
         {
-            DirectoryInfo directory = new DirectoryInfo(folder);
-            foreach (FileInfo file in directory.GetFiles())
-            {
-                file.Delete();
-            }
-        }*/
+            Response.Redirect("~/AreaViaje/AgregarViaje.aspx", true);
+        }
     }
 }

@@ -72,6 +72,25 @@ namespace SLO.Controllers
             return result;
         }
 
+        public static int Add(Viaje viaje)
+        {
+            int result = 0;
+
+            try
+            {
+                db.Viaje.Add(viaje);
+                db.SaveChanges();
+
+                result = 1;
+            }
+            catch (Exception ex)
+            {
+                IncidentController.CreateIncident(string.Format("ERROR AGREGANDO VIAJE N° {0}", viaje.num_viaj), ex);
+            }
+
+            return result;
+        }
+        
         public static int Edit(Viaje viaje)
         {
             int result = 0;

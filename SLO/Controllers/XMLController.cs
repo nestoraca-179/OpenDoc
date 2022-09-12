@@ -160,6 +160,7 @@ namespace SLO.Controllers
 
                     location.AppendChild(CreateNode(doc, "Location_code", viaje.loc_cod));
 
+                    // INCREMENTO DEL NUMERO
                     number++;
                 }
                 #endregion

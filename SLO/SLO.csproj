@@ -187,8 +187,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AreaBL\AgregarBL.aspx" />
     <Content Include="AreaBL\EditarBL.aspx" />
+    <Content Include="AreaContenedor\AgregarContenedor.aspx" />
     <Content Include="AreaContenedor\EditarContenedor.aspx" />
+    <Content Include="AreaViaje\AgregarViaje.aspx" />
     <Content Include="AreaViaje\EditarViaje.aspx" />
     <Content Include="Content\bootstrap-5.2.css" />
     <Content Include="Content\Site.css" />
@@ -264,6 +267,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AreaBL\AgregarBL.aspx.cs">
+      <DependentUpon>AgregarBL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AreaBL\AgregarBL.aspx.designer.cs">
+      <DependentUpon>AgregarBL.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AreaBL\EditarBL.aspx.cs">
       <DependentUpon>EditarBL.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -271,12 +281,26 @@
     <Compile Include="AreaBL\EditarBL.aspx.designer.cs">
       <DependentUpon>EditarBL.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AreaContenedor\AgregarContenedor.aspx.cs">
+      <DependentUpon>AgregarContenedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AreaContenedor\AgregarContenedor.aspx.designer.cs">
+      <DependentUpon>AgregarContenedor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AreaContenedor\EditarContenedor.aspx.cs">
       <DependentUpon>EditarContenedor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AreaContenedor\EditarContenedor.aspx.designer.cs">
       <DependentUpon>EditarContenedor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AreaViaje\AgregarViaje.aspx.cs">
+      <DependentUpon>AgregarViaje.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AreaViaje\AgregarViaje.aspx.designer.cs">
+      <DependentUpon>AgregarViaje.aspx</DependentUpon>
     </Compile>
     <Compile Include="AreaViaje\EditarViaje.aspx.cs">
       <DependentUpon>EditarViaje.aspx</DependentUpon>

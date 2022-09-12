@@ -36,33 +36,42 @@ namespace SLO.AreaContenedor
         {
             Contenedor cont = new Contenedor();
 
-            cont.ID = int.Parse(IDContenedor);
-            cont.num_paq = int.Parse(TB_NumPaq.Text);
-            cont.tip_cont = DDL_TipoCont.Value.ToString();
-            cont.estado = int.Parse(DDL_Estado.Value.ToString());
-            cont.eq_inter_rec1 = TB_Prec1.Text;
-            cont.eq_inter_rec2 = TB_Prec2.Text;
-            cont.eq_inter_rec3 = TB_Prec3.Text;
-            cont.seal_party = DDL_SealPart.Value.ToString();
-            cont.peso_neto = decimal.Parse(TB_PesoNeto.Text);
-            cont.peso_bruto = decimal.Parse(TB_PesoBruto.Text);
-            cont.tamanio = int.Parse(TB_Tamano.Text);
-            cont.temper = decimal.Parse(TB_Temp.Text);
-            cont.imo = TB_IMO.Text;
-            cont.num_un = TB_UNNum.Text;
-            cont.ventilac = TB_Ventila.Text;
-            cont.descrip_mer = TB_DescripMer.Text;
-
-            int result = ContenedorController.Edit(cont);
-
-            if (result == 1)
+            try
             {
-                PN_Success.Visible = true;
+                cont.ID = int.Parse(IDContenedor);
+                cont.num_paq = int.Parse(TB_NumPaq.Text);
+                cont.tip_cont = DDL_TipoCont.Value.ToString();
+                cont.estado = int.Parse(DDL_Estado.Value.ToString());
+                cont.eq_inter_rec1 = TB_Prec1.Text;
+                cont.eq_inter_rec2 = TB_Prec2.Text;
+                cont.eq_inter_rec3 = TB_Prec3.Text;
+                cont.seal_party = DDL_SealPart.Value.ToString();
+                cont.peso_neto = decimal.Parse(TB_PesoNeto.Text);
+                cont.peso_bruto = decimal.Parse(TB_PesoBruto.Text);
+                cont.tamanio = int.Parse(TB_Tamano.Text);
+                cont.temper = decimal.Parse(TB_Temp.Text);
+                cont.imo = TB_IMO.Text;
+                cont.num_un = TB_UNNum.Text;
+                cont.ventilac = TB_Ventila.Text;
+                cont.descrip_mer = TB_DescripMer.Text;
+
+                int result = ContenedorController.Edit(cont);
+
+                if (result == 1)
+                {
+                    PN_Success.Visible = true;
+                }
+                else
+                {
+                    PN_Error.Visible = true;
+                    LBL_Error.Text = "Ha ocurrido un error al modificar el Contenedor. Ver tabla de Incidentes";
+                }
             }
-            else
+            catch (Exception ex)
             {
                 PN_Error.Visible = true;
-                LBL_Error.Text = "Ha ocurrido un error al modificar el Contenedor. Ver tabla de Incidentes";
+                LBL_Error.Text = "Ha ocurrido un error. Ver tabla de Incidentes";
+                IncidentController.CreateIncident(string.Format("ERROR PROCESANDO DATOS DEL CONTENEDOR {0}", cont.num_cont), ex);
             }
         }
 
