@@ -280,7 +280,9 @@
                         <dx:GridViewDataTextColumn FieldName="eq_inter_rec3" VisibleIndex="7" Caption="Precinto 3"></dx:GridViewDataTextColumn>
                         <dx:GridViewDataColumn Width="60px" VisibleIndex="8" Caption="Editar">
                             <DataItemTemplate>
-                                <dx:ASPxButton ID="BTN_EditarBL" runat="server" CssClass="btn btn-primary" Text="Editar" CommandName="Editar"></dx:ASPxButton>
+                                <asp:LinkButton ID="BTN_EditarContenedor" runat="server" CssClass="btn btn-primary" CommandName="Editar">
+                                    <i class="fas fa-edit"></i> Editar
+                                </asp:LinkButton>
                             </DataItemTemplate>
                         </dx:GridViewDataColumn>
                         <dx:GridViewDataColumn Width="60px" VisibleIndex="9" Caption="Eliminar" >

@@ -252,7 +252,9 @@
                         <dx:GridViewDataTextColumn FieldName="descripcion" VisibleIndex="8" Caption="Descripción"></dx:GridViewDataTextColumn>
                         <dx:GridViewDataColumn Width="60px" VisibleIndex="9" Caption="Editar">
                             <DataItemTemplate>
-                                <dx:ASPxButton ID="BTN_EditarBL" runat="server" CssClass="btn btn-primary" Text="Editar" CommandName="Editar"></dx:ASPxButton>
+                                <asp:LinkButton ID="BTN_EditarBL" runat="server" CssClass="btn btn-primary" CommandName="Editar">
+                                    <i class="fas fa-edit"></i> Editar
+                                </asp:LinkButton>
                             </DataItemTemplate>
                         </dx:GridViewDataColumn>
                         <dx:GridViewDataColumn Width="60px" VisibleIndex="10" Caption="Eliminar" >
