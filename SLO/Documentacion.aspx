@@ -24,6 +24,14 @@
     function openModalWarning() {
         setTimeout(function () { $("#modal-warning").modal("show"); }, 1);
     }
+
+    function openModalXML() {
+        setTimeout(function () { $("#modal-xml").modal("show"); }, 1);
+    }
+
+    function reloadPage() {
+        setTimeout(function () { location.href = location.href + "?xml=1" }, 1500);
+    }
 </script>
 <form id="Form1" runat="server">
     <div class="container-form">
@@ -77,7 +85,7 @@
                         <dx:GridViewDataTextColumn FieldName="date_uploaded" VisibleIndex="11" Caption="Fec. Subido" Visible="false"></dx:GridViewDataTextColumn>
                         <dx:GridViewDataColumn Width="60px" VisibleIndex="12" Caption="XML">
                             <DataItemTemplate>
-                                <asp:LinkButton ID="BTN_GenerarXML" runat="server" CssClass="btn btn-success" CommandName="Generar">
+                                <asp:LinkButton ID="BTN_ConfirmarGenerarXML" runat="server" CssClass="btn btn-success" CommandName="Generar">
                                     <i class="fas fa-code"></i> Generar
                                 </asp:LinkButton>
                             </DataItemTemplate>
@@ -119,7 +127,7 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <i class="fas fa-warning"></i>
-                    <h2>¿Desea eliminar el registro?</h2>
+                    <dx:ASPxLabel ID="LBL_Delete" runat="server" Font-Size="25px" Width="100%"></dx:ASPxLabel>
                 </div>
                 <div class="modal-footer buttons">
                     <button class="btn btn-danger" data-dismiss="modal">No</button>
@@ -139,6 +147,23 @@
                 <div class="modal-footer buttons">
                     <button class="btn btn-danger" data-dismiss="modal">No</button>
                     <dx:ASPxButton ID="BTN_CargarViaje" runat="server" Text="Sí" CssClass="btn btn-success" OnClick="BTN_CargarViaje_Click"></dx:ASPxButton>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%-- MODAL XML --%>
+    <div class="modal fade" id="modal-xml" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <i class="fas fa-warning"></i>
+                    <h4>¿Desea generar el archivo XML?</h4>
+                </div>
+                <div class="modal-footer buttons">
+                    <button class="btn btn-danger" data-dismiss="modal">No</button>
+                    <dx:ASPxButton ID="BTN_GenerarXML" runat="server" Text="Sí" CssClass="btn btn-success" OnClick="BTN_GenerarXML_Click">
+                        <ClientSideEvents Click="reloadPage" />
+                    </dx:ASPxButton>
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@ namespace SLO
 {
     public partial class Documentacion : System.Web.UI.Page
     {
-        private static int IDEliminar;
+        private static int IDSelected;
         private static string Folder;
         private static string FullPath;
         private static string FileName;
@@ -26,6 +26,15 @@ namespace SLO
             {
                 PN_Success.Visible = true;
                 LBL_Success.Text = "Viaje agregado con éxito";
+            }
+
+            if (Request.QueryString["xml"] != null)
+            {
+                string path = Environment.GetEnvironmentVariable("USERPROFILE");
+                path = Path.Combine(path, "Downloads");
+
+                PN_Success.Visible = true;
+                LBL_Success.Text = string.Format("Archivo {0} generado con éxito en {1}", FileName, path);
             }
         }
 
@@ -209,42 +218,29 @@ namespace SLO
 
         protected void GV_GridResultsV_RowCommand(object sender, ASPxGridViewRowCommandEventArgs e)
         {
+            IDSelected = int.Parse(e.KeyValue.ToString());
+
             if (e.CommandArgs.CommandName == "Editar")
             {
-                Response.Redirect("~/AreaViaje/EditarViaje.aspx?ID=" + e.KeyValue.ToString(), true);
+                Response.Redirect("~/AreaViaje/EditarViaje.aspx?ID=" + IDSelected, true);
             }
             else if (e.CommandArgs.CommandName == "Generar")
             {
-                string folder = Server.MapPath("~") + "Documents\\";
-                string filename = XMLController.GenerarXML(folder, int.Parse(e.KeyValue.ToString()));
-
-                if (filename != "")
-                {
-                    Response.ContentType = "application/xml";
-                    Response.AppendHeader("Content-Disposition", "attachment; filename=" + filename);
-                    Response.TransmitFile(folder + filename);
-                    Response.End();
-
-                    PN_Success.Visible = true;
-                    LBL_Success.Text = "Archivo XML generado con éxito";
-                }
-                else
-                {
-                    PN_Error.Visible = true;
-                    LBL_Error.Text = "Error generando el archivo XML";
-                }
+                ScriptManager.RegisterStartupScript(this, GetType(), "modal", "openModalXML()", true);
             }
             else if (e.CommandArgs.CommandName == "Eliminar")
             {
-                IDEliminar = int.Parse(e.KeyValue.ToString());
+                string num_viaje = (GV_GridResultsV.GetRow(e.VisibleIndex) as DataRowView).Row.ItemArray[2].ToString();
+                LBL_Delete.Text = string.Format("¿Desea eliminar el Viaje N° {0}?", num_viaje);
+
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", "openModalDelete()", true);
             }
         }
 
         protected void BTN_EliminarViaje_Click(object sender, EventArgs e)
         {
-            string file = ViajeController.GetByID(IDEliminar).file_path;
-            int result = ViajeController.Delete(IDEliminar);
+            string file = ViajeController.GetByID(IDSelected).file_path;
+            int result = ViajeController.Delete(IDSelected);
 
             if (result == 1)
             {
@@ -312,6 +308,26 @@ namespace SLO
         protected void BTN_AgregarViaje_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/AreaViaje/AgregarViaje.aspx", true);
+        }
+
+        protected void BTN_GenerarXML_Click(object sender, EventArgs e)
+        {
+            string folder = Server.MapPath("~") + "Documents\\";
+            string filename = XMLController.GenerarXML(folder, IDSelected);
+
+            if (filename != "")
+            {
+                FileName = filename;
+                Response.ContentType = "application/xml";
+                Response.AppendHeader("Content-Disposition", "attachment; filename=" + filename);
+                Response.TransmitFile(folder + filename);
+                Response.End();
+            }
+            else
+            {
+                PN_Error.Visible = true;
+                LBL_Error.Text = "Error generando el archivo XML";
+            }
         }
     }
 }

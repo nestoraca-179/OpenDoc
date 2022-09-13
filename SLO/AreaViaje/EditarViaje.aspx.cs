@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Web.UI;
 using DevExpress.Web;
 using SLO.Controllers;
@@ -8,7 +9,7 @@ namespace SLO.AreaViaje
 {
     public partial class EditarViaje : System.Web.UI.Page
     {
-        private static int IDEliminar;
+        private static int IDSelected;
         private static string IDViaje;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -43,20 +44,24 @@ namespace SLO.AreaViaje
 
         protected void GV_GridResultsB_RowCommand(object sender, DevExpress.Web.ASPxGridViewRowCommandEventArgs e)
         {
+            IDSelected = int.Parse(e.KeyValue.ToString());
+
             if (e.CommandArgs.CommandName == "Editar")
             {
-                Response.Redirect("~/AreaBL/EditarBL.aspx?ID=" + e.KeyValue.ToString(), false);
+                Response.Redirect("~/AreaBL/EditarBL.aspx?ID=" + IDSelected, false);
             }
             else if (e.CommandArgs.CommandName == "Eliminar")
             {
-                IDEliminar = int.Parse(e.KeyValue.ToString());
+                string num_bl = (GV_GridResultsB.GetRow(e.VisibleIndex) as DataRowView).Row.ItemArray[1].ToString();
+                LBL_Delete.Text = string.Format("¿Desea eliminar el BL N° {0}?", num_bl);
+
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", "openModalDelete()", true);
             }
         }
 
         protected void BTN_EliminarBL_Click(object sender, EventArgs e)
         {
-            int result = BLController.Delete(IDEliminar);
+            int result = BLController.Delete(IDSelected);
 
             if (result == 1)
             {

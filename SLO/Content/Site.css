@@ -141,7 +141,7 @@ body header .menu-login {
     margin: 30px auto;
     color: #1064ae;
 }
-#modal-delete i, #modal-warning i {
+#modal-delete i, #modal-warning i, #modal-xml i {
     font-size: 7em;
     margin: 30px auto;
     color: #e89c12;

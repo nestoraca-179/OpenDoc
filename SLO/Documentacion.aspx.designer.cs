@@ -105,6 +105,15 @@ namespace SLO
         protected global::System.Web.UI.WebControls.SqlDataSource DS_Viaje;
 
         /// <summary>
+        /// Control LBL_Delete.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel LBL_Delete;
+
+        /// <summary>
         /// Control BTN_EliminarViaje.
         /// </summary>
         /// <remarks>
@@ -121,5 +130,14 @@ namespace SLO
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxButton BTN_CargarViaje;
+
+        /// <summary>
+        /// Control BTN_GenerarXML.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton BTN_GenerarXML;
     }
 }

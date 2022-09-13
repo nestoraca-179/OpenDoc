@@ -308,7 +308,7 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <i class="fas fa-warning"></i>
-                    <h2>¿Desea eliminar el registro?</h2>
+                    <dx:ASPxLabel ID="LBL_Delete" runat="server" Font-Size="25px" Width="100%"></dx:ASPxLabel>
                 </div>
                 <div class="modal-footer buttons">
                     <button class="btn btn-danger" data-dismiss="modal">No</button>

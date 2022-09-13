@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Web.UI;
 using SLO.Controllers;
 using SLO.Models;
@@ -7,7 +8,7 @@ namespace SLO.AreaBL
 {
     public partial class EditarBL : System.Web.UI.Page
     {
-        private static int IDEliminar;
+        private static int IDSelected;
         private static string IDBL;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -42,20 +43,24 @@ namespace SLO.AreaBL
 
         protected void GV_GridResultsC_RowCommand(object sender, DevExpress.Web.ASPxGridViewRowCommandEventArgs e)
         {
+            IDSelected = int.Parse(e.KeyValue.ToString());
+
             if (e.CommandArgs.CommandName == "Editar")
             {
-                Response.Redirect("~/AreaContenedor/EditarContenedor.aspx?ID=" + e.KeyValue.ToString(), false);
+                Response.Redirect("~/AreaContenedor/EditarContenedor.aspx?ID=" + IDSelected, false);
             }
             else if (e.CommandArgs.CommandName == "Eliminar")
             {
-                IDEliminar = int.Parse(e.KeyValue.ToString());
+                string num_cont = (GV_GridResultsC.GetRow(e.VisibleIndex) as DataRowView).Row.ItemArray[1].ToString();
+                LBL_Delete.Text = string.Format("¿Desea eliminar el Contenedor N° {0}?", num_cont);
+
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", "openModalDelete()", true);
             }
         }
 
         protected void BTN_EliminarContenedor_Click(object sender, EventArgs e)
         {
-            int result = ContenedorController.Delete(IDEliminar);
+            int result = ContenedorController.Delete(IDSelected);
 
             if (result == 1)
             {
