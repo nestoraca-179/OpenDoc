@@ -109,6 +109,8 @@ namespace SLO.AreaBL
                 bl.sobre_dimens = TB_SobreDim.Text;
                 bl.fletes = int.Parse(TB_Fletes.Text);
                 bl.mone_flet = TB_MonFletes.Text;
+                bl.co_us_mo = (Session["USER"] as Usuario).username;
+                bl.fe_us_mo = DateTime.Now;
 
                 int result = BLController.Edit(bl);
 

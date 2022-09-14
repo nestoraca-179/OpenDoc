@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using SLO.Models;
+using System.Reflection;
 
 namespace SLO.Controllers
 {
@@ -22,7 +23,9 @@ namespace SLO.Controllers
         public static int Add(EnumerableRowCollection<DataRow> table, string path, string user)
         {
             int result = 0;
-            Viaje viaje = new Viaje();
+            bool added = false;
+
+            Viaje viaje = new Viaje(), new_viaje = new Viaje();
 
             try
             {
@@ -49,23 +52,31 @@ namespace SLO.Controllers
                 viaje.cod_buq = null;
                 viaje.nom_buq = table.Select(r => r.Field<string>(2)).First();
                 viaje.file_path = path;
-                viaje.date_uploaded = DateTime.Now;
-                viaje.uploaded_by = user;
+                viaje.co_us_in = user;
+                viaje.fe_us_in = DateTime.Now;
+                viaje.co_us_mo = user;
+                viaje.fe_us_mo = DateTime.Now;
 
-                Viaje new_viaje = db.Viaje.Add(viaje);
+                new_viaje = db.Viaje.Add(viaje);
                 db.SaveChanges();
+
+                added = true;
 
                 var bls = table.GroupBy(r => r.Field<string>(0)).Select(g => g.First()).Select(r => r.Field<string>(0)).ToList();
                 foreach (string bl in bls)
                 {
                     List<DataRow> containers = table.Where(r => r.Field<string>(0) == bl).ToList();
-                    BLController.Add(containers, new_viaje.ID);
+                    BLController.Add(containers, new_viaje.ID, user);
                 }
 
+                LogController.CreateLog(user, "VIAJE", new_viaje.ID, "I", null);
                 result = 1;
             }
             catch (Exception ex)
             {
+                if (added)
+                    Delete(new_viaje.ID);
+
                 IncidentController.CreateIncident(string.Format("ERROR INSERTANDO VIAJE N° {0}", viaje.num_viaj), ex);
             }
 
@@ -78,9 +89,10 @@ namespace SLO.Controllers
 
             try
             {
-                db.Viaje.Add(viaje);
+                Viaje v = db.Viaje.Add(viaje);
                 db.SaveChanges();
 
+                LogController.CreateLog(v.co_us_in, "VIAJE", v.ID, "I", null);
                 result = 1;
             }
             catch (Exception ex)
@@ -98,13 +110,16 @@ namespace SLO.Controllers
             try
             {
                 Viaje existing = GetByID(viaje.ID);
-                viaje.date_uploaded = existing.date_uploaded;
-                viaje.uploaded_by = existing.uploaded_by;
+                viaje.co_us_in = existing.co_us_in;
+                viaje.fe_us_in = existing.fe_us_in;
                 viaje.file_path = existing.file_path;
+
+                string campos = GetChanges(existing, viaje);
 
                 db.Entry(existing).CurrentValues.SetValues(viaje);
                 db.SaveChanges();
 
+                LogController.CreateLog(viaje.co_us_mo, "VIAJE", viaje.ID, "M", campos);
                 result = 1;
             }
             catch (Exception ex)
@@ -122,9 +137,10 @@ namespace SLO.Controllers
 
             try
             {
-                db.Viaje.Remove(viaje);
+                Viaje v = db.Viaje.Remove(viaje);
                 db.SaveChanges();
 
+                LogController.CreateLog(v.co_us_in, "VIAJE", v.ID, "E", null);
                 result = 1;
             }
             catch (Exception ex)
@@ -133,6 +149,28 @@ namespace SLO.Controllers
             }
 
             return result;
+        }
+
+        private static string GetChanges(Viaje old_v, Viaje new_v)
+        {
+            string campos = "";
+            Type type = new Viaje().GetType();
+
+            foreach (PropertyInfo prop in type.GetProperties())
+            {
+                if (prop.Name != "fe_us_in" && prop.Name != "fe_us_mo")
+                {
+                    string valor1 = prop.GetValue(old_v) == null ? "" : prop.GetValue(old_v).ToString();
+                    string valor2 = prop.GetValue(new_v) == null ? "" : prop.GetValue(new_v).ToString();
+
+                    if (valor1 != valor2)
+                    {
+                        campos += string.Format("{0}: {1} -> {2}; ", prop.Name, valor1, valor2);
+                    }
+                }
+            }
+
+            return campos;
         }
     }
 }

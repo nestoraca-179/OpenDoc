@@ -40,8 +40,10 @@ namespace SLO.AreaViaje
                 viaje.cod_buq = TB_CodBuq.Text;
                 viaje.nom_buq = TB_NomBuq.Text;
                 viaje.file_path = "SIN ARCHIVO";
-                viaje.date_uploaded = DateTime.Now;
-                viaje.uploaded_by = (Session["USER"] as Usuario).username;
+                viaje.co_us_in = (Session["USER"] as Usuario).username;
+                viaje.fe_us_in = DateTime.Now;
+                viaje.co_us_mo = (Session["USER"] as Usuario).username;
+                viaje.fe_us_mo = DateTime.Now;
 
                 int result = ViajeController.Add(viaje);
 

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0904d698fe5a4694b50ae6e9776dd229" Name="Diagram1" ZoomLevel="92">
+      <Diagram DiagramId="0904d698fe5a4694b50ae6e9776dd229" Name="Diagram1" ZoomLevel="78">
         <EntityTypeShape EntityType="SLOModel.Aduana" Width="1.5" PointX="7.75" PointY="0.75" />
         <EntityTypeShape EntityType="SLOModel.BL" Width="1.5" PointX="3" PointY="1.125" />
         <EntityTypeShape EntityType="SLOModel.Contenedor" Width="1.5" PointX="5.25" PointY="2.375" />
@@ -17,10 +17,11 @@
         <EntityTypeShape EntityType="SLOModel.TipoContenedor" Width="1.5" PointX="4.75" PointY="9.75" />
         <EntityTypeShape EntityType="SLOModel.TipoMercancia" Width="1.5" PointX="9.75" PointY="6.75" />
         <EntityTypeShape EntityType="SLOModel.TipoPaquete" Width="1.5" PointX="6.75" PointY="9.75" />
-        <EntityTypeShape EntityType="SLOModel.Usuario" Width="1.5" PointX="8.75" PointY="9.75" />
         <EntityTypeShape EntityType="SLOModel.Viaje" Width="1.5" PointX="0.75" PointY="1.625" />
         <AssociationConnector Association="SLOModel.FK_BL_Viaje" />
         <AssociationConnector Association="SLOModel.FK_Contenedor_BL" />
+        <EntityTypeShape EntityType="SLOModel.Log" Width="1.5" PointX="11.375" PointY="9.75" />
+        <EntityTypeShape EntityType="SLOModel.Usuario" Width="1.5" PointX="9.125" PointY="9.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

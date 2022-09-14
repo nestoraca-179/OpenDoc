@@ -50,6 +50,10 @@ namespace SLO.Models
         public Nullable<bool> gobierno { get; set; }
         public Nullable<int> fletes { get; set; }
         public string mone_flet { get; set; }
+        public string co_us_in { get; set; }
+        public Nullable<System.DateTime> fe_us_in { get; set; }
+        public string co_us_mo { get; set; }
+        public Nullable<System.DateTime> fe_us_mo { get; set; }
     
         public virtual Viaje Viaje { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

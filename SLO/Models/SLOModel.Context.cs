@@ -37,7 +37,8 @@ namespace SLO.Models
         public virtual DbSet<TipoContenedor> TipoContenedor { get; set; }
         public virtual DbSet<TipoMercancia> TipoMercancia { get; set; }
         public virtual DbSet<TipoPaquete> TipoPaquete { get; set; }
-        public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Viaje> Viaje { get; set; }
+        public virtual DbSet<Log> Log { get; set; }
+        public virtual DbSet<Usuario> Usuario { get; set; }
     }
 }

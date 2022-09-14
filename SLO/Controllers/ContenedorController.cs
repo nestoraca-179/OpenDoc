@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using SLO.Models;
+using System.Reflection;
 
 namespace SLO.Controllers
 {
@@ -19,7 +20,7 @@ namespace SLO.Controllers
             return db.Contenedor.Where(c => c.id_bl == id_bl).ToList();
         }
 
-        public static void Add(DataRow row, int id_bl)
+        public static void Add(DataRow row, int id_bl, string user)
         {
             Contenedor cont = new Contenedor();
 
@@ -42,9 +43,15 @@ namespace SLO.Controllers
                 cont.num_un = row.Field<string>(26).Split('/')[0].Split('-')[0].Trim();
                 cont.ventilac = null;
                 cont.descrip_mer = null;
+                cont.co_us_in = user;
+                cont.fe_us_in = DateTime.Now;
+                cont.co_us_mo = user;
+                cont.fe_us_mo = DateTime.Now;
 
-                Contenedor new_cont = db.Contenedor.Add(cont);
+                Contenedor c = db.Contenedor.Add(cont);
                 db.SaveChanges();
+
+                LogController.CreateLog(user, "CONTENEDOR", c.ID, "I", null);
             }
             catch (Exception ex)
             {
@@ -59,9 +66,10 @@ namespace SLO.Controllers
 
             try
             {
-                db.Contenedor.Add(cont);
+                Contenedor c = db.Contenedor.Add(cont);
                 db.SaveChanges();
 
+                LogController.CreateLog(c.co_us_in, "CONTENEDOR", c.ID, "I", null);
                 result = 1;
             }
             catch (Exception ex)
@@ -81,10 +89,15 @@ namespace SLO.Controllers
                 Contenedor existing = GetByID(cont.ID);
                 cont.id_bl = existing.id_bl;
                 cont.num_cont = existing.num_cont;
+                cont.co_us_in = existing.co_us_in;
+                cont.fe_us_in = existing.fe_us_in;
+
+                string campos = GetChanges(existing, cont);
 
                 db.Entry(existing).CurrentValues.SetValues(cont);
                 db.SaveChanges();
 
+                LogController.CreateLog(cont.co_us_mo, "CONTENEDOR", cont.ID, "M", campos);
                 result = 1;
             }
             catch (Exception ex)
@@ -102,9 +115,10 @@ namespace SLO.Controllers
 
             try
             {
-                db.Contenedor.Remove(cont);
+                Contenedor c = db.Contenedor.Remove(cont);
                 db.SaveChanges();
 
+                LogController.CreateLog(c.co_us_in, "CONTENEDOR", c.ID, "E", null);
                 result = 1;
             }
             catch (Exception ex)
@@ -160,6 +174,28 @@ namespace SLO.Controllers
             }
 
             return new_type;
+        }
+
+        private static string GetChanges(Contenedor cont_v, Contenedor cont_n)
+        {
+            string campos = "";
+            Type type = new Contenedor().GetType();
+
+            foreach (PropertyInfo prop in type.GetProperties())
+            {
+                if (prop.Name != "fe_us_in" && prop.Name != "fe_us_mo")
+                {
+                    string valor1 = prop.GetValue(cont_v) == null ? "" : prop.GetValue(cont_v).ToString();
+                    string valor2 = prop.GetValue(cont_n) == null ? "" : prop.GetValue(cont_n).ToString();
+
+                    if (valor1 != valor2)
+                    {
+                        campos += string.Format("{0}: {1} -> {2}; ", prop.Name, valor1, valor2);
+                    }
+                }
+            }
+
+            return campos;
         }
     }
 }

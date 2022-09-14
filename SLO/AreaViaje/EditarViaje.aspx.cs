@@ -105,6 +105,8 @@ namespace SLO.AreaViaje
                 viaje.alm_dest = TB_AlmDest.Text;
                 viaje.cod_buq = TB_CodBuq.Text;
                 viaje.nom_buq = TB_NomBuq.Text;
+                viaje.co_us_mo = (Session["USER"] as Usuario).username;
+                viaje.fe_us_mo = DateTime.Now;
 
                 int result = ViajeController.Edit(viaje);
 

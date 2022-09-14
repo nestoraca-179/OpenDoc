@@ -82,7 +82,7 @@
                         <dx:GridViewDataTextColumn FieldName="id_trans" VisibleIndex="8" Caption="Transportador" Visible="false"></dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn FieldName="cod_pto_sal" VisibleIndex="9" Caption="Pto. Salida"></dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn FieldName="cod_pto_des" VisibleIndex="10" Caption="Pto. Descarga"></dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="date_uploaded" VisibleIndex="11" Caption="Fec. Subido" Visible="false"></dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn FieldName="fe_us_in" VisibleIndex="11" Caption="Fec. Subido" Visible="false"></dx:GridViewDataTextColumn>
                         <dx:GridViewDataColumn Width="60px" VisibleIndex="12" Caption="XML">
                             <DataItemTemplate>
                                 <asp:LinkButton ID="BTN_ConfirmarGenerarXML" runat="server" CssClass="btn btn-success" CommandName="Generar">
@@ -106,7 +106,7 @@
                         </dx:GridViewDataColumn>
                     </Columns>
                 </dx:ASPxGridView>
-                <asp:SqlDataSource runat="server" ID="DS_Viaje" ConnectionString='<%$ ConnectionStrings:SLOConnectionString %>' SelectCommand="SELECT [ID], [file_path], [num_viaj], [fec_sal], [fec_arr], [total_bls], [total_paq], [total_cont], [id_trans], [cod_pto_sal], [cod_pto_des], [date_uploaded] FROM [Viaje] ORDER BY [date_uploaded] DESC"></asp:SqlDataSource>
+                <asp:SqlDataSource runat="server" ID="DS_Viaje" ConnectionString='<%$ ConnectionStrings:SLOConnectionString %>' SelectCommand="SELECT [ID], [file_path], [num_viaj], [fec_sal], [fec_arr], [total_bls], [total_paq], [total_cont], [id_trans], [cod_pto_sal], [cod_pto_des], [fe_us_in] FROM [Viaje] ORDER BY [fe_us_in] DESC"></asp:SqlDataSource>
             </div>
         </div>
     </div>

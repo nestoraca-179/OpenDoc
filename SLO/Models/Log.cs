@@ -12,18 +12,14 @@ namespace SLO.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Usuario
+    public partial class Log
     {
         public int ID { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public string descrip { get; set; }
-        public string email { get; set; }
-        public bool activo { get; set; }
-        public int tip_usuario { get; set; }
-        public string co_us_in { get; set; }
-        public System.DateTime fe_us_in { get; set; }
-        public string co_us_mo { get; set; }
-        public System.DateTime fe_us_mo { get; set; }
+        public System.DateTime fecha { get; set; }
+        public string usuario { get; set; }
+        public string item { get; set; }
+        public string accion { get; set; }
+        public string campos { get; set; }
+        public int id_item { get; set; }
     }
 }

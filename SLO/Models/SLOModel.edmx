@@ -48,6 +48,10 @@
           <Property Name="gobierno" Type="bit" />
           <Property Name="fletes" Type="int" />
           <Property Name="mone_flet" Type="varchar" MaxLength="10" />
+          <Property Name="co_us_in" Type="varchar" MaxLength="10" />
+          <Property Name="fe_us_in" Type="smalldatetime" />
+          <Property Name="co_us_mo" Type="varchar" MaxLength="10" />
+          <Property Name="fe_us_mo" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="Contenedor">
           <Key>
@@ -71,6 +75,10 @@
           <Property Name="num_un" Type="varchar" MaxLength="30" />
           <Property Name="ventilac" Type="varchar" MaxLength="30" />
           <Property Name="descrip_mer" Type="varchar(max)" />
+          <Property Name="co_us_in" Type="varchar" MaxLength="10" />
+          <Property Name="fe_us_in" Type="smalldatetime" />
+          <Property Name="co_us_mo" Type="varchar" MaxLength="10" />
+          <Property Name="fe_us_mo" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="EstadoContenedor">
           <Key>
@@ -89,6 +97,18 @@
           <Property Name="Titulo" Type="varchar(max)" />
           <Property Name="Descripcion" Type="varchar(max)" />
           <Property Name="Fecha" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="smalldatetime" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="item" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="id_item" Type="int" Nullable="false" />
+          <Property Name="accion" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="campos" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="ModoTransporte">
           <Key>
@@ -161,9 +181,13 @@
           <Property Name="username" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="descrip" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="activo" Type="bit" Nullable="false" />
-          <Property Name="fec_crea" Type="smalldatetime" Nullable="false" />
           <Property Name="tip_usuario" Type="int" Nullable="false" />
+          <Property Name="co_us_in" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="fe_us_in" Type="smalldatetime" Nullable="false" />
+          <Property Name="co_us_mo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="fe_us_mo" Type="smalldatetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Viaje">
           <Key>
@@ -193,8 +217,10 @@
           <Property Name="cod_buq" Type="varchar" MaxLength="20" />
           <Property Name="nom_buq" Type="varchar" MaxLength="50" />
           <Property Name="file_path" Type="varchar(max)" />
-          <Property Name="date_uploaded" Type="smalldatetime" />
-          <Property Name="uploaded_by" Type="varchar" MaxLength="20" />
+          <Property Name="co_us_in" Type="varchar" MaxLength="10" />
+          <Property Name="fe_us_in" Type="smalldatetime" />
+          <Property Name="co_us_mo" Type="varchar" MaxLength="10" />
+          <Property Name="fe_us_mo" Type="smalldatetime" />
         </EntityType>
         <Association Name="FK_BL_Viaje">
           <End Role="Viaje" Type="Self.Viaje" Multiplicity="1">
@@ -230,6 +256,7 @@
           <EntitySet Name="Contenedor" EntityType="Self.Contenedor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EstadoContenedor" EntityType="Self.EstadoContenedor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Incidente" EntityType="Self.Incidente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ModoTransporte" EntityType="Self.ModoTransporte" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sealing" EntityType="Self.Sealing" Schema="dbo" store:Type="Tables" />
@@ -265,7 +292,6 @@
           <EntitySet Name="TipoContenedor" EntityType="SLOModel.TipoContenedor" />
           <EntitySet Name="TipoMercancia" EntityType="SLOModel.TipoMercancia" />
           <EntitySet Name="TipoPaquete" EntityType="SLOModel.TipoPaquete" />
-          <EntitySet Name="Usuario" EntityType="SLOModel.Usuario" />
           <EntitySet Name="Viaje" EntityType="SLOModel.Viaje" />
           <AssociationSet Name="FK_BL_Viaje" Association="SLOModel.FK_BL_Viaje">
             <End Role="Viaje" EntitySet="Viaje" />
@@ -275,6 +301,8 @@
             <End Role="BL" EntitySet="BL" />
             <End Role="Contenedor" EntitySet="Contenedor" />
           </AssociationSet>
+          <EntitySet Name="Log" EntityType="SLOModel.Log" />
+          <EntitySet Name="Usuario" EntityType="SLOModel.Usuario" />
         </EntityContainer>
         <EntityType Name="Aduana">
           <Key>
@@ -321,6 +349,10 @@
           <Property Name="mone_flet" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Viaje" Relationship="SLOModel.FK_BL_Viaje" FromRole="BL" ToRole="Viaje" />
           <NavigationProperty Name="Contenedor" Relationship="SLOModel.FK_Contenedor_BL" FromRole="BL" ToRole="Contenedor" />
+          <Property Name="co_us_in" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fe_us_in" Type="DateTime" Precision="0" />
+          <Property Name="co_us_mo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fe_us_mo" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Contenedor">
           <Key>
@@ -345,6 +377,10 @@
           <Property Name="ventilac" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="descrip_mer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="BL" Relationship="SLOModel.FK_Contenedor_BL" FromRole="Contenedor" ToRole="BL" />
+          <Property Name="co_us_in" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fe_us_in" Type="DateTime" Precision="0" />
+          <Property Name="co_us_mo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fe_us_mo" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="EstadoContenedor">
           <Key>
@@ -427,18 +463,6 @@
           <Property Name="fec_crea" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="usu_crea" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Usuario">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="username" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="descrip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="activo" Type="Boolean" Nullable="false" />
-          <Property Name="fec_crea" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="tip_usuario" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="Viaje">
           <Key>
             <PropertyRef Name="ID" />
@@ -467,9 +491,11 @@
           <Property Name="cod_buq" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="nom_buq" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="file_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="date_uploaded" Type="DateTime" Precision="0" />
-          <Property Name="uploaded_by" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="BL" Relationship="SLOModel.FK_BL_Viaje" FromRole="Viaje" ToRole="BL" />
+          <Property Name="co_us_in" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fe_us_in" Type="DateTime" Precision="0" />
+          <Property Name="co_us_mo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fe_us_mo" Type="DateTime" Precision="0" />
         </EntityType>
         <Association Name="FK_BL_Viaje">
           <End Type="SLOModel.Viaje" Role="Viaje" Multiplicity="1">
@@ -499,6 +525,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="usuario" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="item" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="accion" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="campos" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="id_item" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descrip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+          <Property Name="tip_usuario" Type="Int32" Nullable="false" />
+          <Property Name="co_us_in" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fe_us_in" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="co_us_mo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fe_us_mo" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -518,6 +572,10 @@
           <EntitySetMapping Name="BL">
             <EntityTypeMapping TypeName="SLOModel.BL">
               <MappingFragment StoreEntitySet="BL">
+                <ScalarProperty Name="fe_us_mo" ColumnName="fe_us_mo" />
+                <ScalarProperty Name="co_us_mo" ColumnName="co_us_mo" />
+                <ScalarProperty Name="fe_us_in" ColumnName="fe_us_in" />
+                <ScalarProperty Name="co_us_in" ColumnName="co_us_in" />
                 <ScalarProperty Name="mone_flet" ColumnName="mone_flet" />
                 <ScalarProperty Name="fletes" ColumnName="fletes" />
                 <ScalarProperty Name="gobierno" ColumnName="gobierno" />
@@ -554,6 +612,10 @@
           <EntitySetMapping Name="Contenedor">
             <EntityTypeMapping TypeName="SLOModel.Contenedor">
               <MappingFragment StoreEntitySet="Contenedor">
+                <ScalarProperty Name="fe_us_mo" ColumnName="fe_us_mo" />
+                <ScalarProperty Name="co_us_mo" ColumnName="co_us_mo" />
+                <ScalarProperty Name="fe_us_in" ColumnName="fe_us_in" />
+                <ScalarProperty Name="co_us_in" ColumnName="co_us_in" />
                 <ScalarProperty Name="descrip_mer" ColumnName="descrip_mer" />
                 <ScalarProperty Name="ventilac" ColumnName="ventilac" />
                 <ScalarProperty Name="num_un" ColumnName="num_un" />
@@ -665,24 +727,13 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Usuario">
-            <EntityTypeMapping TypeName="SLOModel.Usuario">
-              <MappingFragment StoreEntitySet="Usuario">
-                <ScalarProperty Name="tip_usuario" ColumnName="tip_usuario" />
-                <ScalarProperty Name="fec_crea" ColumnName="fec_crea" />
-                <ScalarProperty Name="activo" ColumnName="activo" />
-                <ScalarProperty Name="descrip" ColumnName="descrip" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Viaje">
             <EntityTypeMapping TypeName="SLOModel.Viaje">
               <MappingFragment StoreEntitySet="Viaje">
-                <ScalarProperty Name="uploaded_by" ColumnName="uploaded_by" />
-                <ScalarProperty Name="date_uploaded" ColumnName="date_uploaded" />
+                <ScalarProperty Name="fe_us_mo" ColumnName="fe_us_mo" />
+                <ScalarProperty Name="co_us_mo" ColumnName="co_us_mo" />
+                <ScalarProperty Name="fe_us_in" ColumnName="fe_us_in" />
+                <ScalarProperty Name="co_us_in" ColumnName="co_us_in" />
                 <ScalarProperty Name="file_path" ColumnName="file_path" />
                 <ScalarProperty Name="nom_buq" ColumnName="nom_buq" />
                 <ScalarProperty Name="cod_buq" ColumnName="cod_buq" />
@@ -706,6 +757,36 @@
                 <ScalarProperty Name="fec_sal" ColumnName="fec_sal" />
                 <ScalarProperty Name="num_viaj" ColumnName="num_viaj" />
                 <ScalarProperty Name="cod_adua" ColumnName="cod_adua" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Log">
+            <EntityTypeMapping TypeName="SLOModel.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="id_item" ColumnName="id_item" />
+                <ScalarProperty Name="campos" ColumnName="campos" />
+                <ScalarProperty Name="accion" ColumnName="accion" />
+                <ScalarProperty Name="item" ColumnName="item" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="SLOModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="fe_us_mo" ColumnName="fe_us_mo" />
+                <ScalarProperty Name="co_us_mo" ColumnName="co_us_mo" />
+                <ScalarProperty Name="fe_us_in" ColumnName="fe_us_in" />
+                <ScalarProperty Name="co_us_in" ColumnName="co_us_in" />
+                <ScalarProperty Name="tip_usuario" ColumnName="tip_usuario" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

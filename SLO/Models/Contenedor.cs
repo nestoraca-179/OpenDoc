@@ -32,6 +32,10 @@ namespace SLO.Models
         public string num_un { get; set; }
         public string ventilac { get; set; }
         public string descrip_mer { get; set; }
+        public string co_us_in { get; set; }
+        public Nullable<System.DateTime> fe_us_in { get; set; }
+        public string co_us_mo { get; set; }
+        public Nullable<System.DateTime> fe_us_mo { get; set; }
     
         public virtual BL BL { get; set; }
     }

@@ -46,6 +46,10 @@ namespace SLO.AreaContenedor
                 cont.num_un = TB_UNNum.Text;
                 cont.ventilac = TB_Ventila.Text;
                 cont.descrip_mer = TB_DescripMer.Text;
+                cont.co_us_in = (Session["USER"] as Usuario).username;
+                cont.fe_us_in = DateTime.Now;
+                cont.co_us_mo = (Session["USER"] as Usuario).username;
+                cont.fe_us_mo = DateTime.Now;
 
                 int result = ContenedorController.Add(cont);
 

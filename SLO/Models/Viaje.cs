@@ -44,8 +44,10 @@ namespace SLO.Models
         public string cod_buq { get; set; }
         public string nom_buq { get; set; }
         public string file_path { get; set; }
-        public Nullable<System.DateTime> date_uploaded { get; set; }
-        public string uploaded_by { get; set; }
+        public string co_us_in { get; set; }
+        public Nullable<System.DateTime> fe_us_in { get; set; }
+        public string co_us_mo { get; set; }
+        public Nullable<System.DateTime> fe_us_mo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BL> BL { get; set; }
