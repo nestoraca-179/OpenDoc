@@ -3,7 +3,7 @@ using SLO.Models;
 
 namespace SLO.Controllers
 {
-    public class IncidentController : Repository
+    public class IncidentController
     {
         public static void CreateIncident(string titulo, Exception ex)
         {
@@ -13,8 +13,11 @@ namespace SLO.Controllers
             error.Descripcion = string.Format("{0} -> {1} -> {2}", ex.Message, ex.StackTrace, ex.Source);
             error.Fecha = DateTime.Now;
 
-            db.Incidente.Add(error);
-            db.SaveChanges();
+            using (SLOEntities context = new SLOEntities())
+            {
+                context.Incidente.Add(error);
+                context.SaveChanges();
+            }
         }
     }
 }
