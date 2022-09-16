@@ -1,13 +1,12 @@
 ﻿using SLO.Models;
 using System;
 using System.Linq;
-using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 
 namespace SLO.Controllers
 {
-    public class UserController : Repository
+    public class AccountController : Repository
     {
         public static int LogIn(string username, string password)
         {

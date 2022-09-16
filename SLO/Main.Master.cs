@@ -8,7 +8,12 @@ namespace SLO
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["USER"] != null)
-                LBL_User.Text = (Session["USER"] as Usuario).descrip;
+            {
+                Usuario user = Session["USER"] as Usuario;
+
+                LBL_User.Text = user.descrip;
+                item_conf.Visible = user.tip_usuario == 0;
+            }
             else
                 Response.Redirect("Login.aspx");
         }

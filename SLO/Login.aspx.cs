@@ -8,7 +8,7 @@ namespace SLO
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.QueryString["logout"] != null)
-                UserController.LogOut();
+                AccountController.LogOut();
 
             Session.Clear();
         }
@@ -16,7 +16,7 @@ namespace SLO
         protected void Btn_Login_Click(object sender, EventArgs e)
         {
             string message = "";
-            int result = UserController.LogIn(TB_Username.Text.Trim(), TB_Password.Text.Trim());
+            int result = AccountController.LogIn(TB_Username.Text.Trim(), TB_Password.Text.Trim());
 
             switch (result)
             {

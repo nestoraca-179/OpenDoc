@@ -35,7 +35,7 @@
         <ul class="menu">
             <li><a href="/Documentacion.aspx"><i class="fas fa-file"></i><p class="m-0">Documentación</p></a></li>
             <li><a href="#"><i class="fas fa-folder"></i><p class="m-0">Registros</p></a></li>
-            <li><a href="/Configuracion.aspx"><i class="fas fa-cog fa-spin"></i><p class="m-0">Configuración</p></a></li>
+            <li id="item_conf" runat="server"><a href="/Configuracion.aspx"><i class="fas fa-cog fa-spin"></i><p class="m-0">Configuración</p></a></li>
         </ul>
     </div>
     <div class="col-9 container">

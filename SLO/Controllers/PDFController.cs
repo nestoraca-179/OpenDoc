@@ -5,7 +5,6 @@ using iText.Kernel.Pdf;
 using iText.Kernel.Pdf.Canvas.Parser;
 using iText.Kernel.Pdf.Canvas.Parser.Filter;
 using iText.Kernel.Pdf.Canvas.Parser.Listener;
-using SLO.Models;
 // using PDF = Spire.Pdf;
 
 namespace SLO.Controllers
