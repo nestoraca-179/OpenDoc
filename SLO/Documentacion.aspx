@@ -157,7 +157,7 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <i class="fas fa-warning"></i>
-                    <h4>¿Desea generar el archivo XML?</h4>
+                    <dx:ASPxLabel ID="LBL_XML" runat="server" Font-Size="25px" Width="100%"></dx:ASPxLabel>
                 </div>
                 <div class="modal-footer buttons">
                     <button class="btn btn-danger" data-dismiss="modal">No</button>

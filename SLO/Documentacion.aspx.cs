@@ -226,6 +226,9 @@ namespace SLO
             }
             else if (e.CommandArgs.CommandName == "Generar")
             {
+                string num_viaje = (GV_GridResultsV.GetRow(e.VisibleIndex) as DataRowView).Row.ItemArray[2].ToString();
+                LBL_XML.Text = string.Format("¿Desea generar el archivo XML del Viaje N° {0}?", num_viaje);
+
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", "openModalXML()", true);
             }
             else if (e.CommandArgs.CommandName == "Eliminar")

@@ -132,6 +132,15 @@ namespace SLO
         protected global::DevExpress.Web.ASPxButton BTN_CargarViaje;
 
         /// <summary>
+        /// Control LBL_XML.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel LBL_XML;
+
+        /// <summary>
         /// Control BTN_GenerarXML.
         /// </summary>
         /// <remarks>
