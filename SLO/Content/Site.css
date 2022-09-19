@@ -179,6 +179,9 @@ ul.menu li a i {
 ul.menu li a p {
     margin-left: 10px !important;
 }
+#item_conf.disabled {
+    color: #848484 !important;
+}
 
 /* BOTONES */
 .btn {

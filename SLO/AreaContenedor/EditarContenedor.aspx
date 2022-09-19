@@ -24,9 +24,7 @@
                     <asp:LinkButton ID="BTN_Volver" runat="server" CssClass="btn btn-primary" OnClick="BTN_Volver_Click">
                         <i class="fas fa-arrow-left"></i> Regresar
                     </asp:LinkButton>
-                    <asp:LinkButton ID="BTN_Guardar" runat="server" CssClass="btn btn-success mx-2" OnClick="BTN_Guardar_Click">
-                        <i class="fas fa-floppy-disk"></i> Guardar
-                    </asp:LinkButton>
+                    <dx:ASPxButton ID="BTN_Guardar" runat="server" CssClass="btn btn-success mx-2" Text="Guardar" ValidationGroup="Contenedor" OnClick="BTN_Guardar_Click" />
                 </div>
                 <div class="col">
                     <dx:ASPxLabel ID="LBL_IDContenedor" runat="server" Width="100%" CssClass="title-screen mt-3"></dx:ASPxLabel>
@@ -37,28 +35,38 @@
             <div class="row">
                 <div class="col">
                     <div class="controls">
-                        <label>Número de Paquetes</label>
+                        <label>Número de Paquetes *</label>
                         <dx:ASPxTextBox ID="TB_NumPaq" runat="server" Theme="Material" Width="100%">
                             <ClientSideEvents KeyPress="function (s,e) { onlyNumbers(s, e); }" />
+                            <ValidationSettings ValidationGroup="Contenedor" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
                         </dx:ASPxTextBox>
                     </div>
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Tipo de Contenedor</label>
+                        <label>Tipo de Contenedor *</label>
                         <dx:ASPxComboBox ID="DDL_TipoCont" runat="server" Theme="Material" Width="100%" ValueField="ID" TextField="nom_tipo" DataSourceID="DS_TipoContenedor">
                             <Columns>
                                 <dx:ListBoxColumn FieldName="ID" Width="40px" Caption="C&#243;digo"></dx:ListBoxColumn>
                                 <dx:ListBoxColumn FieldName="nom_tipo" Caption="Descripci&#243;n"></dx:ListBoxColumn>
                             </Columns>
+                            <ValidationSettings ValidationGroup="Contenedor" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
                         </dx:ASPxComboBox>
                         <asp:SqlDataSource runat="server" ID="DS_TipoContenedor" ConnectionString='<%$ ConnectionStrings:SLOConnectionString %>' SelectCommand="SELECT [ID], [nom_tipo] FROM [TipoContenedor]"></asp:SqlDataSource>
                     </div>
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Estado Vacío / Lleno</label>
-                        <dx:ASPxComboBox ID="DDL_Estado" runat="server" Theme="Material" Width="100%" DataSourceID="DS_Estado" ValueField="ID" TextField="nom_estado" ValueType="System.Int32"></dx:ASPxComboBox>
+                        <label>Estado Vacío / Lleno *</label>
+                        <dx:ASPxComboBox ID="DDL_Estado" runat="server" Theme="Material" Width="100%" DataSourceID="DS_Estado" ValueField="ID" TextField="nom_estado" ValueType="System.Int32">
+                            <ValidationSettings ValidationGroup="Contenedor" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
+                        </dx:ASPxComboBox>
                         <asp:SqlDataSource runat="server" ID="DS_Estado" ConnectionString='<%$ ConnectionStrings:SLOConnectionString %>' SelectCommand="SELECT [ID], [nom_estado] FROM [EstadoContenedor]"></asp:SqlDataSource>
                     </div>
                 </div>
@@ -66,8 +74,12 @@
             <div class="row">
                 <div class="col">
                     <div class="controls">
-                        <label>Precinto 1</label>
-                        <dx:ASPxTextBox ID="TB_Prec1" runat="server" Theme="Material" Width="100%"></dx:ASPxTextBox>
+                        <label>Precinto 1 *</label>
+                        <dx:ASPxTextBox ID="TB_Prec1" runat="server" Theme="Material" Width="100%">
+                            <ValidationSettings ValidationGroup="Contenedor" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
+                        </dx:ASPxTextBox>
                     </div>
                 </div>
                 <div class="col">
@@ -86,13 +98,16 @@
             <div class="row">
                 <div class="col">
                     <div class="controls">
-                        <label>Sealing Party</label>
+                        <label>Sealing Party *</label>
                         <dx:ASPxComboBox ID="DDL_SealPart" runat="server" Theme="Material" Width="100%">
                             <Items>
                                 <dx:ListEditItem Text="CR - CARGADOR" Value="CR"></dx:ListEditItem>
                                 <dx:ListEditItem Text="CU - ADUANA" Value="CU"></dx:ListEditItem>
                                 <dx:ListEditItem Text="TO - OPERADOR PORTUARIO" Value="TO"></dx:ListEditItem>
                             </Items>
+                            <ValidationSettings ValidationGroup="Contenedor" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
                         </dx:ASPxComboBox>
                     </div>
                 </div>
@@ -116,9 +131,12 @@
             <div class="row">
                 <div class="col">
                     <div class="controls">
-                        <label>Tamaño</label>
+                        <label>Tamaño *</label>
                         <dx:ASPxTextBox ID="TB_Tamano" runat="server" Theme="Material" Width="100%">
                             <ClientSideEvents KeyPress="function (s,e) { onlyNumbers(s, e); }" />
+                            <ValidationSettings ValidationGroup="Contenedor" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
                         </dx:ASPxTextBox>
                     </div>
                 </div>

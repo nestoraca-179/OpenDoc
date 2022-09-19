@@ -84,7 +84,7 @@ namespace SLO.AreaViaje
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton BTN_Guardar;
+        protected global::DevExpress.Web.ASPxButton BTN_Guardar;
 
         /// <summary>
         /// Control LBL_IDViaje.

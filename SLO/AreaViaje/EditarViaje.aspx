@@ -29,9 +29,7 @@
                     <asp:LinkButton ID="BTN_Volver" runat="server" CssClass="btn btn-primary" OnClick="BTN_Volver_Click">
                         <i class="fas fa-arrow-left"></i> Regresar
                     </asp:LinkButton>
-                    <asp:LinkButton ID="BTN_Guardar" runat="server" CssClass="btn btn-success mx-2" OnClick="BTN_Guardar_Click">
-                        <i class="fas fa-floppy-disk"></i> Guardar
-                    </asp:LinkButton>
+                    <dx:ASPxButton ID="BTN_Guardar" runat="server" CssClass="btn btn-success mx-2" Text="Guardar" ValidationGroup="Viaje" OnClick="BTN_Guardar_Click" />
                 </div>
                 <div class="col">
                     <dx:ASPxLabel ID="LBL_IDViaje" runat="server" Width="100%" CssClass="title-screen"></dx:ASPxLabel>
@@ -42,35 +40,48 @@
             <div class="row">
                 <div class="col">
                     <div class="controls">
-                        <label>Código Aduana</label>
+                        <label>Código Aduana *</label>
                         <dx:ASPxComboBox ID="DDL_CodAduana" runat="server" Theme="Material" Width="100%" ValueField="ID" TextField="nom_adua" ValueType="System.String" DataSourceID="DS_Aduana">
                             <Columns>
                                 <dx:ListBoxColumn FieldName="ID" Caption="C&#243;digo" Width="40px"></dx:ListBoxColumn>
                                 <dx:ListBoxColumn FieldName="nom_adua" Caption="Nombre"></dx:ListBoxColumn>
                             </Columns>
+                            <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
                         </dx:ASPxComboBox>
                         <asp:SqlDataSource runat="server" ID="DS_Aduana" ConnectionString='<%$ ConnectionStrings:SLOConnectionString %>' SelectCommand="SELECT [ID], [nom_adua] FROM [Aduana] ORDER BY [ID]"></asp:SqlDataSource>
                     </div>
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Número Viaje</label>
-                        <dx:ASPxTextBox ID="TB_NumViaje" runat="server" Theme="Material" Width="100%"></dx:ASPxTextBox>
+                        <label>Número Viaje *</label>
+                        <dx:ASPxTextBox ID="TB_NumViaje" runat="server" Theme="Material" Width="100%">
+                            <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
+                        </dx:ASPxTextBox>
                     </div>
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Fecha Salida</label>
+                        <label>Fecha Salida *</label>
                         <dx:ASPxDateEdit ID="DE_FecSalida" runat="server" Theme="Material" EditFormat="DateTime" Width="100%">
                             <TimeSectionProperties Visible="True"></TimeSectionProperties>
+                            <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
                         </dx:ASPxDateEdit>
                     </div>
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Fecha Arribo</label>
+                        <label>Fecha Arribo *</label>
                         <dx:ASPxDateEdit ID="DE_FecArribo" runat="server" Theme="Material" EditFormat="DateTime" Width="100%">
                             <TimeSectionProperties Visible="True"></TimeSectionProperties>
+                            <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
                         </dx:ASPxDateEdit>
                     </div>
                 </div>
@@ -78,18 +89,25 @@
             <div class="row">
                 <div class="col">
                     <div class="controls">
-                        <label>Location Code</label>
-                        <dx:ASPxTextBox ID="TB_LocCode" runat="server" Theme="Material" Width="100%"></dx:ASPxTextBox>
+                        <label>Location Code *</label>
+                        <dx:ASPxTextBox ID="TB_LocCode" runat="server" Theme="Material" Width="100%">
+                            <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
+                        </dx:ASPxTextBox>
                     </div>
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Uso</label>
+                        <label>Uso *</label>
                         <dx:ASPxComboBox ID="DDL_Uso" runat="server" Theme="Material" Width="100%" ValueType="System.Int32">
                             <Items>
                                 <dx:ListEditItem Text="IMPORTACI&#211;N" Value="1"></dx:ListEditItem>
                                 <dx:ListEditItem Text="EXPORTACI&#211;N" Value="2"></dx:ListEditItem>
                             </Items>
+                            <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
                         </dx:ASPxComboBox>
                     </div>
                 </div>
@@ -97,33 +115,45 @@
             <div class="row">
                 <div class="col">
                     <div class="controls">
-                        <label>Total BLS</label>
+                        <label>Total BLS *</label>
                         <dx:ASPxTextBox ID="TB_TotBls" runat="server" Theme="Material" Width="100%">
                             <ClientSideEvents KeyPress="function (s,e) { onlyNumbers(s, e); }" />
+                            <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
                         </dx:ASPxTextBox>
                     </div>
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Total Paquetes</label>
+                        <label>Total Paquetes *</label>
                         <dx:ASPxTextBox ID="TB_TotPaq" runat="server" Theme="Material" Width="100%">
                             <ClientSideEvents KeyPress="function (s,e) { onlyNumbers(s, e); }" />
+                            <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
                         </dx:ASPxTextBox>
                     </div>
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Total Contenedores</label>
+                        <label>Total Contenedores *</label>
                         <dx:ASPxTextBox ID="TB_TotConts" runat="server" Theme="Material" Width="100%">
                             <ClientSideEvents KeyPress="function (s,e) { onlyNumbers(s, e); }" />
+                            <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
                         </dx:ASPxTextBox>
                     </div>
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Total Gross Mass</label>
+                        <label>Total Gross Mass *</label>
                         <dx:ASPxTextBox ID="TB_TotGM" runat="server" Theme="Material" Width="100%">
                             <ClientSideEvents KeyPress="function (s,e) { onlyNumbers(s, e); }" />
+                            <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
                         </dx:ASPxTextBox>
                     </div>
                 </div>
@@ -131,30 +161,45 @@
             <div class="row">
                 <div class="col">
                     <div class="controls">
-                        <label>Código Carrier</label>
-                        <dx:ASPxTextBox ID="TB_CodCarr" runat="server" Theme="Material" Width="100%"></dx:ASPxTextBox>
+                        <label>Código Carrier *</label>
+                        <dx:ASPxTextBox ID="TB_CodCarr" runat="server" Theme="Material" Width="100%">
+                            <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
+                        </dx:ASPxTextBox>
                     </div>
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Nombre Carrier</label>
-                        <dx:ASPxTextBox ID="TB_NomCarr" runat="server" Theme="Material" Width="100%"></dx:ASPxTextBox>
+                        <label>Nombre Carrier *</label>
+                        <dx:ASPxTextBox ID="TB_NomCarr" runat="server" Theme="Material" Width="100%">
+                            <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
+                        </dx:ASPxTextBox>
                     </div>
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Dirección Carrier</label>
-                        <dx:ASPxTextBox ID="TB_DirCarr" runat="server" Theme="Material" Width="100%"></dx:ASPxTextBox>
+                        <label>Dirección Carrier *</label>
+                        <dx:ASPxTextBox ID="TB_DirCarr" runat="server" Theme="Material" Width="100%">
+                            <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
+                        </dx:ASPxTextBox>
                     </div>
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Código Modo Transporte</label>
+                        <label>Código Modo Transporte *</label>
                         <dx:ASPxComboBox ID="DDL_CodModTrans" runat="server" Theme="Material" Width="100%" ValueField="ID" TextField="nom_mod_trans" ValueType="System.Int32" DataSourceID="DS_ModoTrans">
                             <Columns>
                                 <dx:ListBoxColumn FieldName="ID" Caption="C&#243;digo" Width="40px"></dx:ListBoxColumn>
                                 <dx:ListBoxColumn FieldName="nom_mod_trans" Caption="Modo Transporte"></dx:ListBoxColumn>
                             </Columns>
+                            <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
                         </dx:ASPxComboBox>
                         <asp:SqlDataSource runat="server" ID="DS_ModoTrans" ConnectionString='<%$ ConnectionStrings:SLOConnectionString %>' SelectCommand="SELECT [ID], [nom_mod_trans] FROM [ModoTransporte]"></asp:SqlDataSource>
                     </div>
@@ -163,32 +208,47 @@
             <div class="row">
                 <div class="col">
                     <div class="controls">
-                        <label>ID Transportador</label>
-                        <dx:ASPxTextBox ID="TB_IDTrans" runat="server" Theme="Material" Width="100%"></dx:ASPxTextBox>
+                        <label>ID Transportador *</label>
+                        <dx:ASPxTextBox ID="TB_IDTrans" runat="server" Theme="Material" Width="100%">
+                            <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
+                        </dx:ASPxTextBox>
                     </div>
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Código Nacionalidad Transportador</label>
+                        <label>Código Nacionalidad Transportador *</label>
                         <dx:ASPxComboBox ID="DDL_CodNacTrans" runat="server" Theme="Material" Width="100%" ValueField="ID" TextField="nom_pais" ValueType="System.String" DataSourceID="DS_Pais">
                             <Columns>
                                 <dx:ListBoxColumn FieldName="ID" Caption="C&#243;digo" Width="40px"></dx:ListBoxColumn>
                                 <dx:ListBoxColumn FieldName="nom_pais" Caption="Pa&#237;s"></dx:ListBoxColumn>
                             </Columns>
+                            <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
                         </dx:ASPxComboBox>
                         <asp:SqlDataSource runat="server" ID="DS_Pais" ConnectionString='<%$ ConnectionStrings:SLOConnectionString %>' SelectCommand="SELECT [ID], [nom_pais] FROM [Pais] ORDER BY [ID]"></asp:SqlDataSource>
                     </div>
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Código Puerto Salida</label>
-                        <dx:ASPxTextBox ID="TB_PtoSalida" runat="server" Theme="Material" Width="100%"></dx:ASPxTextBox>
+                        <label>Código Puerto Salida *</label>
+                        <dx:ASPxTextBox ID="TB_PtoSalida" runat="server" Theme="Material" Width="100%">
+                            <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
+                        </dx:ASPxTextBox>
                     </div>
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Código Puerto Destino</label>
-                        <dx:ASPxTextBox ID="TB_PtoDestino" runat="server" Theme="Material" Width="100%"></dx:ASPxTextBox>
+                        <label>Código Puerto Destino *</label>
+                        <dx:ASPxTextBox ID="TB_PtoDestino" runat="server" Theme="Material" Width="100%">
+                            <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                                <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                            </ValidationSettings>
+                        </dx:ASPxTextBox>
                     </div>
                 </div>
             </div>

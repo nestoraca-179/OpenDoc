@@ -60,6 +60,15 @@ namespace SLO
         protected global::DevExpress.Web.ASPxLabel LBL_Error;
 
         /// <summary>
+        /// Control PN_ContainerForm.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PN_ContainerForm;
+
+        /// <summary>
         /// Control BTN_AgregarUsuario.
         /// </summary>
         /// <remarks>

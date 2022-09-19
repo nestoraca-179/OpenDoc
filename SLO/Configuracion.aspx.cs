@@ -1,7 +1,8 @@
-﻿using SLO.Controllers;
-using System;
+﻿using System;
 using System.Data;
 using System.Web.UI;
+using SLO.Controllers;
+using SLO.Models;
 
 namespace SLO
 {
@@ -11,6 +12,8 @@ namespace SLO
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Usuario user = (Session["USER"] as Usuario);
+
             if (Request.QueryString["new_user"] != null)
             {
                 PN_Success.Visible = true;
@@ -21,6 +24,13 @@ namespace SLO
             {
                 PN_Success.Visible = true;
                 LBL_Success.Text = "Usuario modificado con éxito";
+            }
+
+            if (user.tip_usuario != 0)
+            {
+                PN_ContainerForm.Visible = false;
+                PN_Error.Visible = true;
+                LBL_Error.Text = "No tienes acceso al área de configuración";
             }
         }
 

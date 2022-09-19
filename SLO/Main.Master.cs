@@ -10,9 +10,13 @@ namespace SLO
             if (Session["USER"] != null)
             {
                 Usuario user = Session["USER"] as Usuario;
-
                 LBL_User.Text = user.descrip;
-                item_conf.Visible = user.tip_usuario == 0;
+
+                if (user.tip_usuario != 0)
+                {
+                    item_conf.Attributes.Add("class", "disabled");
+                    item_conf.Attributes.Add("href", "#");
+                }
             }
             else
                 Response.Redirect("Login.aspx");

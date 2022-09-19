@@ -293,6 +293,7 @@
     <Compile Include="Configuracion.aspx.designer.cs">
       <DependentUpon>Configuracion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BLController.cs" />
     <Compile Include="Controllers\ContenedorController.cs" />
     <Compile Include="Controllers\ExcelController.cs" />
@@ -301,7 +302,6 @@
     <Compile Include="Controllers\PDFController.cs" />
     <Compile Include="Controllers\Repository.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\ViajeController.cs" />
     <Compile Include="Controllers\XMLController.cs" />

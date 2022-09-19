@@ -30,7 +30,7 @@ namespace SLO
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl item_conf;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor item_conf;
 
         /// <summary>
         /// Control MainContent.

@@ -20,7 +20,7 @@
             <dx:ASPxButton ID="BTN_Guardar" runat="server" CssClass="btn btn-success mx-2" Text="Guardar" ValidationGroup="Usuario" OnClick="BTN_Guardar_Click" />
         </div>
         <div class="col">
-            <dx:ASPxLabel ID="LBL_IDUsuario" runat="server" Text="Editar Usuario" Width="100%" Font-Size="24px" CssClass="title-screen text-center"></dx:ASPxLabel>
+            <dx:ASPxLabel ID="LBL_IDUsuario" runat="server" Text="Agregar Usuario" Width="100%" Font-Size="24px" CssClass="title-screen text-center"></dx:ASPxLabel>
         </div>
         <div class="col"></div>
     </div>
