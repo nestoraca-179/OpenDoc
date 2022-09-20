@@ -162,7 +162,7 @@
                 <div class="modal-footer buttons">
                     <button class="btn btn-danger" data-dismiss="modal">No</button>
                     <dx:ASPxButton ID="BTN_GenerarXML" runat="server" Text="Sí" CssClass="btn btn-success" OnClick="BTN_GenerarXML_Click">
-                        <ClientSideEvents Click="reloadPage" />
+                        <ClientSideEvents Click="function() { $('#modal-xml').modal('hide'); }" />
                     </dx:ASPxButton>
                 </div>
             </div>

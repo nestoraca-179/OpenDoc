@@ -40,7 +40,7 @@
             <div class="row">
                 <div class="col">
                     <div class="controls">
-                        <label>Código Aduana *</label>
+                        <label>Cód. Aduana *</label>
                         <dx:ASPxComboBox ID="DDL_CodAduana" runat="server" Theme="Material" Width="100%" ValueField="ID" TextField="nom_adua" ValueType="System.String" DataSourceID="DS_Aduana">
                             <Columns>
                                 <dx:ListBoxColumn FieldName="ID" Caption="C&#243;digo" Width="40px"></dx:ListBoxColumn>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Número Viaje *</label>
+                        <label>Núm. Viaje *</label>
                         <dx:ASPxTextBox ID="TB_NumViaje" runat="server" Theme="Material" Width="100%">
                             <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
                                 <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
@@ -65,7 +65,7 @@
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Fecha Salida *</label>
+                        <label>Fec. Salida *</label>
                         <dx:ASPxDateEdit ID="DE_FecSalida" runat="server" Theme="Material" EditFormat="DateTime" Width="100%">
                             <TimeSectionProperties Visible="True"></TimeSectionProperties>
                             <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
@@ -76,7 +76,7 @@
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Fecha Arribo *</label>
+                        <label>Fec. Arribo *</label>
                         <dx:ASPxDateEdit ID="DE_FecArribo" runat="server" Theme="Material" EditFormat="DateTime" Width="100%">
                             <TimeSectionProperties Visible="True"></TimeSectionProperties>
                             <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
@@ -161,7 +161,7 @@
             <div class="row">
                 <div class="col">
                     <div class="controls">
-                        <label>Código Carrier *</label>
+                        <label>Cód. Carrier *</label>
                         <dx:ASPxTextBox ID="TB_CodCarr" runat="server" Theme="Material" Width="100%">
                             <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
                                 <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
@@ -171,7 +171,7 @@
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Nombre Carrier *</label>
+                        <label>Nom. Carrier *</label>
                         <dx:ASPxTextBox ID="TB_NomCarr" runat="server" Theme="Material" Width="100%">
                             <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
                                 <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
@@ -181,7 +181,7 @@
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Dirección Carrier *</label>
+                        <label>Dir. Carrier *</label>
                         <dx:ASPxTextBox ID="TB_DirCarr" runat="server" Theme="Material" Width="100%">
                             <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
                                 <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
@@ -191,7 +191,7 @@
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Código Modo Transporte *</label>
+                        <label>Cód. Mod. Transporte *</label>
                         <dx:ASPxComboBox ID="DDL_CodModTrans" runat="server" Theme="Material" Width="100%" ValueField="ID" TextField="nom_mod_trans" ValueType="System.Int32" DataSourceID="DS_ModoTrans">
                             <Columns>
                                 <dx:ListBoxColumn FieldName="ID" Caption="C&#243;digo" Width="40px"></dx:ListBoxColumn>
@@ -218,7 +218,7 @@
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Código Nacionalidad Transportador *</label>
+                        <label>Cód. Nac. Transportador *</label>
                         <dx:ASPxComboBox ID="DDL_CodNacTrans" runat="server" Theme="Material" Width="100%" ValueField="ID" TextField="nom_pais" ValueType="System.String" DataSourceID="DS_Pais">
                             <Columns>
                                 <dx:ListBoxColumn FieldName="ID" Caption="C&#243;digo" Width="40px"></dx:ListBoxColumn>
@@ -233,7 +233,7 @@
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Código Puerto Salida *</label>
+                        <label>Cód. Pto. Salida *</label>
                         <dx:ASPxTextBox ID="TB_PtoSalida" runat="server" Theme="Material" Width="100%">
                             <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
                                 <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
@@ -243,7 +243,7 @@
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Código Puerto Destino *</label>
+                        <label>Cód. Pto. Destino *</label>
                         <dx:ASPxTextBox ID="TB_PtoDestino" runat="server" Theme="Material" Width="100%">
                             <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
                                 <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
@@ -255,25 +255,25 @@
             <div class="row">
                 <div class="col">
                     <div class="controls">
-                        <label>Código de Línea</label>
+                        <label>Cód. de Línea</label>
                         <dx:ASPxTextBox ID="TB_CodLinea" runat="server" Theme="Material" Width="100%"></dx:ASPxTextBox>
                     </div>
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Almacén Destino</label>
+                        <label>Alm. Destino</label>
                         <dx:ASPxTextBox ID="TB_AlmDest" runat="server" Theme="Material" Width="100%"></dx:ASPxTextBox>
                     </div>
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Código de Buque</label>
+                        <label>Cód. de Buque</label>
                         <dx:ASPxTextBox ID="TB_CodBuq" runat="server" Theme="Material" Width="100%"></dx:ASPxTextBox>
                     </div>
                 </div>
                 <div class="col">
                     <div class="controls">
-                        <label>Nombre de Buque</label>
+                        <label>Nom. de Buque</label>
                         <dx:ASPxTextBox ID="TB_NomBuq" runat="server" Theme="Material" Width="100%"></dx:ASPxTextBox>
                     </div>
                 </div>
