@@ -73,7 +73,12 @@
         <div class="row">
             <div class="col">
                 <div class="controls">
-                    <dx:ASPxCheckBox ID="CK_Activo" runat="server" Theme="Material" Width="100%" Text="Activo"></dx:ASPxCheckBox>
+                    <label>Región</label>
+                    <dx:ASPxTextBox ID="TB_Region" runat="server" Theme="Material" Width="100%">
+                        <ValidationSettings ValidationGroup="Usuario" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
+                            <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
+                        </ValidationSettings>
+                    </dx:ASPxTextBox>
                 </div>
             </div>
             <div class="col">
@@ -91,6 +96,14 @@
                     </dx:ASPxComboBox>
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="controls">
+                    <dx:ASPxCheckBox ID="CK_Activo" runat="server" Theme="Material" Width="100%" Text="Activo"></dx:ASPxCheckBox>
+                </div>
+            </div>
+            <div class="col"></div>
         </div>
     </asp:Panel>
 </form>

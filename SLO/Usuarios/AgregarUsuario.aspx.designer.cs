@@ -114,13 +114,13 @@ namespace SLO.Usuarios
         protected global::DevExpress.Web.ASPxTextBox TB_Email;
 
         /// <summary>
-        /// Control CK_Activo.
+        /// Control TB_Region.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxCheckBox CK_Activo;
+        protected global::DevExpress.Web.ASPxTextBox TB_Region;
 
         /// <summary>
         /// Control DDL_TipoUsuario.
@@ -130,5 +130,14 @@ namespace SLO.Usuarios
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxComboBox DDL_TipoUsuario;
+
+        /// <summary>
+        /// Control CK_Activo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCheckBox CK_Activo;
     }
 }

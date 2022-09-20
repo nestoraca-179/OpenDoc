@@ -47,15 +47,16 @@
                     <dx:GridViewDataTextColumn FieldName="username" Caption="Usuario" VisibleIndex="1"></dx:GridViewDataTextColumn>
                     <dx:GridViewDataTextColumn FieldName="descrip" Caption="Nombre" VisibleIndex="2"></dx:GridViewDataTextColumn>
                     <dx:GridViewDataTextColumn FieldName="email" Caption="Email" VisibleIndex="3"></dx:GridViewDataTextColumn>
-                    <dx:GridViewDataCheckColumn FieldName="activo" Caption="Activo" VisibleIndex="4"></dx:GridViewDataCheckColumn>
-                    <dx:GridViewDataColumn Width="60px" VisibleIndex="13" Caption="Editar">
+                    <dx:GridViewDataTextColumn FieldName="region" Caption="Región" VisibleIndex="4"></dx:GridViewDataTextColumn>
+                    <dx:GridViewDataCheckColumn FieldName="activo" Caption="Activo" VisibleIndex="5"></dx:GridViewDataCheckColumn>
+                    <dx:GridViewDataColumn Width="60px" VisibleIndex="6" Caption="Editar">
                         <DataItemTemplate>
                             <asp:LinkButton ID="BTN_EditarUsuario" runat="server" CssClass="btn btn-primary" CommandName="Editar">
                                 <i class="fas fa-edit"></i> Editar
                             </asp:LinkButton>
                         </DataItemTemplate>
                     </dx:GridViewDataColumn>
-                    <dx:GridViewDataColumn Width="60px" VisibleIndex="14" Caption="Eliminar" >
+                    <dx:GridViewDataColumn Width="60px" VisibleIndex="7" Caption="Eliminar" >
                         <DataItemTemplate>
                             <asp:LinkButton ID="BTN_ConfirmarEliminarUsuario" runat="server" CssClass="btn btn-danger" CommandName="Eliminar">
                                 <i class="fas fa-times"></i> Eliminar
@@ -66,7 +67,7 @@
             </dx:ASPxGridView>
         </div>
     </asp:Panel>
-    <asp:SqlDataSource runat="server" ID="DS_Usuario" ConnectionString='<%$ ConnectionStrings:SLOConnectionString %>' SelectCommand="SELECT [ID], [username], [descrip], [email], [activo] FROM [Usuario]"></asp:SqlDataSource>
+    <asp:SqlDataSource runat="server" ID="DS_Usuario" ConnectionString='<%$ ConnectionStrings:SLOConnectionString %>' SelectCommand="SELECT [ID], [username], [descrip], [email], [region], [activo] FROM [Usuario]"></asp:SqlDataSource>
     <%-- MODAL DELETE --%>
     <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog" role="document">

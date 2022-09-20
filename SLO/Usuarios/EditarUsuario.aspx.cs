@@ -48,6 +48,7 @@ namespace SLO.Usuarios
                 user.descrip = TB_Descrip.Text;
                 user.email = TB_Email.Text;
                 user.activo = CK_Activo.Checked;
+                user.region = TB_Region.Text;
                 user.tip_usuario = int.Parse(DDL_TipoUsuario.Value.ToString());
                 user.co_us_mo = (Session["USER"] as Usuario).username;
                 user.fe_us_mo = DateTime.Now;
@@ -78,6 +79,7 @@ namespace SLO.Usuarios
             TB_Password.Text = user.password;
             TB_Descrip.Text = user.descrip;
             TB_Email.Text = user.email;
+            TB_Region.Text = user.region;
             CK_Activo.Checked = user.activo;
             DDL_TipoUsuario.Value = user.tip_usuario;
 

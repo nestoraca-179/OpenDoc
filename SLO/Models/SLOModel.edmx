@@ -184,6 +184,7 @@
           <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="activo" Type="bit" Nullable="false" />
           <Property Name="tip_usuario" Type="int" Nullable="false" />
+          <Property Name="region" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="co_us_in" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="fe_us_in" Type="smalldatetime" Nullable="false" />
           <Property Name="co_us_mo" Type="varchar" MaxLength="10" Nullable="false" />
@@ -552,6 +553,7 @@
           <Property Name="fe_us_in" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="co_us_mo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="fe_us_mo" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="region" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -777,6 +779,7 @@
           <EntitySetMapping Name="Usuario">
             <EntityTypeMapping TypeName="SLOModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="region" ColumnName="region" />
                 <ScalarProperty Name="fe_us_mo" ColumnName="fe_us_mo" />
                 <ScalarProperty Name="co_us_mo" ColumnName="co_us_mo" />
                 <ScalarProperty Name="fe_us_in" ColumnName="fe_us_in" />

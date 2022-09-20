@@ -13,7 +13,7 @@ namespace SLO
             Session.Clear();
         }
 
-        protected void Btn_Login_Click(object sender, EventArgs e)
+        protected void BTN_Login_Click(object sender, EventArgs e)
         {
             string message = "";
             int result = AccountController.LogIn(TB_Username.Text.Trim(), TB_Password.Text.Trim());

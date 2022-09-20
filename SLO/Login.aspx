@@ -114,7 +114,7 @@
                         <a href="#">Contraseña olvidada</a>
                     </div>
                 </div>
-                <asp:Button ID="BTN_Login" runat="server" Text="Iniciar Sesión" CssClass="btn btn-primary mt-3" Width="80%" OnClick="Btn_Login_Click" OnClientClick="return checkForm()"></asp:Button>
+                <asp:Button ID="BTN_Login" runat="server" Text="Iniciar Sesión" CssClass="btn btn-primary mt-3" Width="80%" OnClick="BTN_Login_Click" OnClientClick="return checkForm()"></asp:Button>
                 <asp:Label ID="LBL_Error" runat="server" Visible="false" CssClass="form-label-error mt-2 text-center" Width="80%" ClientIDMode="Static"></asp:Label>
             </div>
         </form>
