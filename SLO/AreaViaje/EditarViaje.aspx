@@ -299,25 +299,26 @@
                     <SettingsDataSecurity AllowDelete="False" AllowInsert="False" AllowEdit="False"></SettingsDataSecurity>
                     <SettingsSearchPanel Visible="True"></SettingsSearchPanel>
                     <Columns>
-                        <dx:GridViewDataTextColumn FieldName="ID" ReadOnly="True" VisibleIndex="0">
+                        <dx:GridViewDataTextColumn FieldName="ID" ReadOnly="True" Visible="false" VisibleIndex="0">
                             <EditFormSettings Visible="False"></EditFormSettings>
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="num_bl" VisibleIndex="1" Caption="Num. BL"></dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="pto_carga" VisibleIndex="2" Caption="Pto. Carga"></dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="pto_descarga" VisibleIndex="3" Caption="Pto. Descarga "></dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="num_conts" VisibleIndex="4" Caption="Num. Cont."></dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="nom_export" VisibleIndex="5" Caption="Exportador"></dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="nom_notify" VisibleIndex="6" Caption="Notify"></dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="nom_consign" VisibleIndex="7" Caption="Consignee"></dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="descripcion" VisibleIndex="8" Caption="Descripción"></dx:GridViewDataTextColumn>
-                        <dx:GridViewDataColumn Width="60px" VisibleIndex="9" Caption="Editar">
+                        <dx:GridViewDataTextColumn FieldName="row" VisibleIndex="1" Caption="Pos."></dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn FieldName="num_bl" VisibleIndex="2" Caption="Num. BL"></dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn FieldName="pto_carga" VisibleIndex="3" Caption="Pto. Carga"></dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn FieldName="pto_descarga" VisibleIndex="4" Caption="Pto. Descarga "></dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn FieldName="num_conts" VisibleIndex="5" Caption="Num. Cont."></dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn FieldName="nom_export" VisibleIndex="6" Caption="Exportador"></dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn FieldName="nom_notify" VisibleIndex="7" Caption="Notify"></dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn FieldName="nom_consign" VisibleIndex="8" Caption="Consignee"></dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn FieldName="descripcion" VisibleIndex="9" Caption="Descripción"></dx:GridViewDataTextColumn>
+                        <dx:GridViewDataColumn Width="60px" VisibleIndex="10" Caption="Editar">
                             <DataItemTemplate>
                                 <asp:LinkButton ID="BTN_EditarBL" runat="server" CssClass="btn btn-primary" CommandName="Editar">
                                     <i class="fas fa-edit"></i> Editar
                                 </asp:LinkButton>
                             </DataItemTemplate>
                         </dx:GridViewDataColumn>
-                        <dx:GridViewDataColumn Width="60px" VisibleIndex="10" Caption="Eliminar" >
+                        <dx:GridViewDataColumn Width="60px" VisibleIndex="11" Caption="Eliminar" >
                             <DataItemTemplate>
                                 <asp:LinkButton ID="BTN_ConfirmarEliminarBL" runat="server" CssClass="btn btn-danger" CommandName="Eliminar">
                                     <i class="fas fa-times"></i> Eliminar
@@ -326,7 +327,7 @@
                         </dx:GridViewDataColumn>
                     </Columns>
                 </dx:ASPxGridView>
-                <asp:SqlDataSource runat="server" ID="DS_BL" ConnectionString='<%$ ConnectionStrings:SLOConnectionString %>' SelectCommand="SELECT [ID], [num_bl], [pto_carga], [pto_descarga], [num_conts], [nom_export], [nom_notify], [nom_consign], [descripcion] FROM [BL] WHERE ([id_viaje] = @id_viaje)">
+                <asp:SqlDataSource runat="server" ID="DS_BL" ConnectionString='<%$ ConnectionStrings:SLOConnectionString %>' SelectCommand="SELECT ROW_NUMBER() OVER(ORDER BY ID) AS row, [ID], [num_bl], [pto_carga], [pto_descarga], [num_conts], [nom_export], [nom_notify], [nom_consign], [descripcion] FROM [BL] WHERE ([id_viaje] = @id_viaje)">
                     <SelectParameters>
                         <asp:QueryStringParameter QueryStringField="ID" Name="id_viaje" Type="Int32"></asp:QueryStringParameter>
                     </SelectParameters>

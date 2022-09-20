@@ -332,7 +332,7 @@
                     <SettingsDataSecurity AllowDelete="False" AllowInsert="False" AllowEdit="False"></SettingsDataSecurity>
                     <SettingsSearchPanel Visible="True"></SettingsSearchPanel>
                     <Columns>
-                        <dx:GridViewDataTextColumn FieldName="ID" ReadOnly="True" VisibleIndex="0">
+                        <dx:GridViewDataTextColumn FieldName="ID" ReadOnly="True" Visible="false" VisibleIndex="0">
                             <EditFormSettings Visible="False"></EditFormSettings>
                         </dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn FieldName="num_cont" VisibleIndex="1" Caption="Num. Contenedor"></dx:GridViewDataTextColumn>
