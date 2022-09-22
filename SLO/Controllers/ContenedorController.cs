@@ -102,7 +102,7 @@ namespace SLO.Controllers
             }
             catch (Exception ex)
             {
-                IncidentController.CreateIncident(string.Format("ERROR MODIFICANDO VIAJE N° {0}", cont.num_cont), ex);
+                IncidentController.CreateIncident(string.Format("ERROR MODIFICANDO CONTENEDOR N° {0}", cont.num_cont), ex);
             }
 
             return result;

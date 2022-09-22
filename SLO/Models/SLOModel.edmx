@@ -128,6 +128,18 @@
           <Property Name="fec_crea" Type="smalldatetime" Nullable="false" />
           <Property Name="usu_crea" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'SLO.dbo.Puerto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Puerto">
+          <Key>
+            <PropertyRef Name="fec_crea" />
+            <PropertyRef Name="usu_crea" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="255" />
+          <Property Name="nom_pto" Type="nvarchar" MaxLength="255" />
+          <Property Name="fec_crea" Type="smalldatetime" Nullable="false" />
+          <Property Name="usu_crea" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
         <EntityType Name="Sealing">
           <Key>
             <PropertyRef Name="ID" />
@@ -267,6 +279,14 @@
           <EntitySet Name="TipoPaquete" EntityType="Self.TipoPaquete" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Viaje" EntityType="Self.Viaje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Puerto" EntityType="Self.Puerto" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Puerto].[ID] AS [ID], 
+    [Puerto].[nom_pto] AS [nom_pto], 
+    [Puerto].[fec_crea] AS [fec_crea], 
+    [Puerto].[usu_crea] AS [usu_crea]
+    FROM [dbo].[Puerto] AS [Puerto]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_BL_Viaje" Association="Self.FK_BL_Viaje">
             <End Role="Viaje" EntitySet="Viaje" />
             <End Role="BL" EntitySet="BL" />
@@ -304,6 +324,7 @@
           </AssociationSet>
           <EntitySet Name="Log" EntityType="SLOModel.Log" />
           <EntitySet Name="Usuario" EntityType="SLOModel.Usuario" />
+          <EntitySet Name="Puerto" EntityType="SLOModel.Puerto" />
         </EntityContainer>
         <EntityType Name="Aduana">
           <Key>
@@ -555,6 +576,16 @@
           <Property Name="fe_us_mo" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="region" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Puerto">
+          <Key>
+            <PropertyRef Name="fec_crea" />
+            <PropertyRef Name="usu_crea" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="nom_pto" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="fec_crea" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="usu_crea" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -790,6 +821,16 @@
                 <ScalarProperty Name="descrip" ColumnName="descrip" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Puerto">
+            <EntityTypeMapping TypeName="SLOModel.Puerto">
+              <MappingFragment StoreEntitySet="Puerto">
+                <ScalarProperty Name="usu_crea" ColumnName="usu_crea" />
+                <ScalarProperty Name="fec_crea" ColumnName="fec_crea" />
+                <ScalarProperty Name="nom_pto" ColumnName="nom_pto" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -40,5 +40,6 @@ namespace SLO.Models
         public virtual DbSet<Viaje> Viaje { get; set; }
         public virtual DbSet<Log> Log { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<Puerto> Puerto { get; set; }
     }
 }

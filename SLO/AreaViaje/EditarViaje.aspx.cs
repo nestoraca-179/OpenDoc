@@ -99,8 +99,8 @@ namespace SLO.AreaViaje
                 viaje.cod_mod_trans = int.Parse(DDL_CodModTrans.Value.ToString());
                 viaje.id_trans = TB_IDTrans.Text;
                 viaje.cod_nac_trans = DDL_CodNacTrans.Value.ToString();
-                viaje.cod_pto_sal = TB_PtoSalida.Text;
-                viaje.cod_pto_des = TB_PtoDestino.Text;
+                viaje.cod_pto_sal = DDL_PtoSalida.Value.ToString();
+                viaje.cod_pto_des = DDL_PtoDestino.Value.ToString();
                 viaje.cod_lin = TB_CodLinea.Text;
                 viaje.alm_dest = TB_AlmDest.Text;
                 viaje.cod_buq = TB_CodBuq.Text;
@@ -163,8 +163,8 @@ namespace SLO.AreaViaje
             DDL_CodModTrans.Value = viaje.cod_mod_trans;
             TB_IDTrans.Text = viaje.id_trans;
             DDL_CodNacTrans.Value = viaje.cod_nac_trans;
-            TB_PtoSalida.Text = viaje.cod_pto_sal;
-            TB_PtoDestino.Text = viaje.cod_pto_des;
+            DDL_PtoSalida.Value = viaje.cod_pto_sal;
+            DDL_PtoDestino.Value = viaje.cod_pto_des;
             TB_CodLinea.Text = viaje.cod_lin;
             TB_AlmDest.Text = viaje.alm_dest;
             TB_CodBuq.Text = viaje.cod_buq;

@@ -249,22 +249,31 @@ namespace SLO.AreaViaje
         protected global::System.Web.UI.WebControls.SqlDataSource DS_Pais;
 
         /// <summary>
-        /// Control TB_PtoSalida.
+        /// Control DDL_PtoSalida.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TB_PtoSalida;
+        protected global::DevExpress.Web.ASPxComboBox DDL_PtoSalida;
 
         /// <summary>
-        /// Control TB_PtoDestino.
+        /// Control DS_Puerto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TB_PtoDestino;
+        protected global::System.Web.UI.WebControls.SqlDataSource DS_Puerto;
+
+        /// <summary>
+        /// Control DDL_PtoDestino.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxComboBox DDL_PtoDestino;
 
         /// <summary>
         /// Control TB_CodLinea.

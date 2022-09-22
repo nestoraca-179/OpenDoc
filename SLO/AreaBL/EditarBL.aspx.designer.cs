@@ -123,22 +123,31 @@ namespace SLO.AreaBL
         protected global::System.Web.UI.WebControls.SqlDataSource DS_TipoBL;
 
         /// <summary>
-        /// Control TB_PtoCarga.
+        /// Control DDL_PtoCarga.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TB_PtoCarga;
+        protected global::DevExpress.Web.ASPxComboBox DDL_PtoCarga;
 
         /// <summary>
-        /// Control TB_PtoDescarga.
+        /// Control DS_Puerto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TB_PtoDescarga;
+        protected global::System.Web.UI.WebControls.SqlDataSource DS_Puerto;
+
+        /// <summary>
+        /// Control DDL_PtoDescarga.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxComboBox DDL_PtoDescarga;
 
         /// <summary>
         /// Control TB_Destino.

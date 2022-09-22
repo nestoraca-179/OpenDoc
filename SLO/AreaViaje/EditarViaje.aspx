@@ -234,21 +234,30 @@
                 <div class="col">
                     <div class="controls">
                         <label>Cód. Pto. Salida *</label>
-                        <dx:ASPxTextBox ID="TB_PtoSalida" runat="server" Theme="Material" Width="100%">
+                        <dx:ASPxComboBox ID="DDL_PtoSalida" runat="server" Theme="Material" Width="100%" ValueField="ID" TextField="nom_pto" ValueType="System.String" DataSourceID="DS_Puerto">
+                            <Columns>
+                                <dx:ListBoxColumn FieldName="ID" Width="40px" Caption="C&#243;digo"></dx:ListBoxColumn>
+                                <dx:ListBoxColumn FieldName="nom_pto" Caption="Puerto"></dx:ListBoxColumn>
+                            </Columns>
                             <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
                                 <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
                             </ValidationSettings>
-                        </dx:ASPxTextBox>
+                        </dx:ASPxComboBox>
+                        <asp:SqlDataSource runat="server" ID="DS_Puerto" ConnectionString='<%$ ConnectionStrings:SLOConnectionString %>' SelectCommand="SELECT [ID], [nom_pto] FROM [Puerto]"></asp:SqlDataSource>
                     </div>
                 </div>
                 <div class="col">
                     <div class="controls">
                         <label>Cód. Pto. Destino *</label>
-                        <dx:ASPxTextBox ID="TB_PtoDestino" runat="server" Theme="Material" Width="100%">
+                        <dx:ASPxComboBox ID="DDL_PtoDestino" runat="server" Theme="Material" Width="100%" ValueField="ID" TextField="nom_pto" ValueType="System.String" DataSourceID="DS_Puerto">
+                            <Columns>
+                                <dx:ListBoxColumn FieldName="ID" Width="40px" Caption="C&#243;digo"></dx:ListBoxColumn>
+                                <dx:ListBoxColumn FieldName="nom_pto" Caption="Puerto"></dx:ListBoxColumn>
+                            </Columns>
                             <ValidationSettings ValidationGroup="Viaje" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
                                 <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
                             </ValidationSettings>
-                        </dx:ASPxTextBox>
+                        </dx:ASPxComboBox>
                     </div>
                 </div>
             </div>

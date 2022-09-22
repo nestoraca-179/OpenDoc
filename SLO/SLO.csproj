@@ -368,6 +368,9 @@
       <DependentUpon>SLOModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProcessResult.cs" />
+    <Compile Include="Models\Puerto.cs">
+      <DependentUpon>SLOModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Sealing.cs">
       <DependentUpon>SLOModel.tt</DependentUpon>
     </Compile>

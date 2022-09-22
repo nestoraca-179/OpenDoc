@@ -316,7 +316,7 @@ namespace SLO
         protected void BTN_GenerarXML_Click(object sender, EventArgs e)
         {
             string folder = Server.MapPath("~") + "Documents\\";
-            string filename = XMLController.GenerarXML(folder, IDSelected);
+            string filename = XMLController.GenerarXMLVEPBL(folder, IDSelected);
 
             if (filename != "")
             {

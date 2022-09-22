@@ -26,6 +26,10 @@ namespace SLO.Controllers
 
             try
             {
+                string dir_consign = rows[0].Field<string>(10);
+                string dir_notify = rows[0].Field<string>(13);
+                string dir_export = rows[0].Field<string>(8);
+
                 bl.id_viaje = id_viaje;
                 bl.num_bl = rows[0].Field<string>(0);
                 bl.num_naturaleza = 23;
@@ -37,11 +41,11 @@ namespace SLO.Controllers
                 bl.condicion = "FCL";
                 bl.tipo_mercancia = 0;
                 bl.nom_consign = rows[0].Field<string>(9);
-                bl.dir_consign = rows[0].Field<string>(10);
+                bl.dir_consign = dir_consign.Length > 70 ? dir_consign.Substring(0, 69) : dir_consign;
                 bl.nom_notify = rows[0].Field<string>(12);
-                bl.dir_notify = rows[0].Field<string>(13);
+                bl.dir_notify = dir_notify.Length > 70 ? dir_notify.Substring(0, 69) : dir_notify;
                 bl.nom_export = rows[0].Field<string>(7);
-                bl.dir_export = rows[0].Field<string>(8);
+                bl.dir_export = dir_export.Length > 70 ? dir_export.Substring(0, 69) : dir_export;
                 bl.gross_mass = rows.Select(r => decimal.Parse(r.Field<string>(23))).Sum();
                 bl.shipping_marks = "S/M";
                 bl.num_conts = rows.Count;
@@ -119,9 +123,21 @@ namespace SLO.Controllers
                 LogController.CreateLog(bl.co_us_mo, "BL", bl.ID, "M", campos);
                 result = 1;
             }
+            /*catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Debug.Write(string.Format("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:", eve.Entry.Entity.GetType().Name, eve.Entry.State));
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Debug.Write(string.Format("- Property: \"{0}\", Error: \"{1}\"", ve.PropertyName, ve.ErrorMessage));
+                    }
+                }
+                throw;
+            }*/
             catch (Exception ex)
             {
-                IncidentController.CreateIncident(string.Format("ERROR MODIFICANDO VIAJE N° {0}", bl.num_bl), ex);
+                IncidentController.CreateIncident(string.Format("ERROR MODIFICANDO BL N° {0}", bl.num_bl), ex);
             }
 
             return result;
@@ -142,7 +158,7 @@ namespace SLO.Controllers
             }
             catch (Exception ex)
             {
-                IncidentController.CreateIncident(string.Format("ERROR ELIMINANDO VIAJE N° {0}", bl.num_bl), ex);
+                IncidentController.CreateIncident(string.Format("ERROR ELIMINANDO BL N° {0}", bl.num_bl), ex);
             }
 
             return result;

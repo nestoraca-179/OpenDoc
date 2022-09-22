@@ -33,8 +33,8 @@ namespace SLO.AreaViaje
                 viaje.cod_mod_trans = int.Parse(DDL_CodModTrans.Value.ToString());
                 viaje.id_trans = TB_IDTrans.Text;
                 viaje.cod_nac_trans = DDL_CodNacTrans.Value.ToString();
-                viaje.cod_pto_sal = TB_PtoSalida.Text;
-                viaje.cod_pto_des = TB_PtoDestino.Text;
+                viaje.cod_pto_sal = DDL_PtoSalida.Value.ToString();
+                viaje.cod_pto_des = DDL_PtoDestino.Value.ToString();
                 viaje.cod_lin = TB_CodLinea.Text;
                 viaje.alm_dest = TB_AlmDest.Text;
                 viaje.cod_buq = TB_CodBuq.Text;

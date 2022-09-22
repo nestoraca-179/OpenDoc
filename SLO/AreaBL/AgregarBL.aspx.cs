@@ -29,22 +29,26 @@ namespace SLO.AreaBL
 
             try
             {
+                string dir_consign = TB_DirConsignee.Text;
+                string dir_notify = TB_DirNotify.Text;
+                string dir_export = TB_DirExport.Text;
+
                 bl.id_viaje = int.Parse(IDViaje);
                 bl.num_bl = TB_NumBL.Text;
                 bl.num_naturaleza = int.Parse(TB_Naturaleza.Text);
                 bl.tipo = DDL_Tipo.Value.ToString();
-                bl.pto_carga = TB_PtoCarga.Text;
-                bl.pto_descarga = TB_PtoDescarga.Text;
+                bl.pto_carga = DDL_PtoCarga.Value.ToString();
+                bl.pto_descarga = DDL_PtoDescarga.Value.ToString();
                 bl.destino = TB_Destino.Text;
                 bl.booking = TB_Booking.Text;
                 bl.condicion = TB_Cond.Text;
                 bl.tipo_mercancia = int.Parse(DDL_TipMercancia.Value.ToString());
                 bl.nom_consign = TB_NomConsignee.Text;
-                bl.dir_consign = TB_DirConsignee.Text;
+                bl.dir_consign = dir_consign.Length > 70 ? dir_consign.Substring(0, 69) : dir_consign;
                 bl.nom_notify = TB_NomNotify.Text;
-                bl.dir_notify = TB_DirNotify.Text;
+                bl.dir_notify = dir_notify.Length > 70 ? dir_notify.Substring(0, 69) : dir_notify;
                 bl.nom_export = TB_NomExport.Text;
-                bl.dir_export = TB_DirExport.Text;
+                bl.dir_export = dir_export.Length > 70 ? dir_export.Substring(0, 69) : dir_export;
                 bl.gross_mass = decimal.Parse(TB_GrossMass.Text);
                 bl.shipping_marks = TB_ShipMarks.Text;
                 bl.num_conts = int.Parse(TB_CantCont.Text);
