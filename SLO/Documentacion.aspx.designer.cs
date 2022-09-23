@@ -87,6 +87,15 @@ namespace SLO
         protected global::System.Web.UI.WebControls.LinkButton BTN_AgregarViaje;
 
         /// <summary>
+        /// Control BTN_GenerarExcel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton BTN_GenerarExcel;
+
+        /// <summary>
         /// Control GV_GridResultsV.
         /// </summary>
         /// <remarks>

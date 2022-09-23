@@ -60,6 +60,7 @@
         <div class="form-body">
             <div class="row mb-3">
                 <div class="col">
+                    <dx:ASPxButton ID="BTN_GenerarExcel" runat="server" Text="Generar Excel" Visible="false" OnClick="BTN_GenerarExcel_Click"></dx:ASPxButton>
                     <h3 class="text-center">Lista de Viajes</h3>
                 </div>
             </div>

@@ -4,8 +4,10 @@ using System.IO;
 using System.Web;
 using System.Web.UI;
 using DevExpress.Web;
+using DocumentFormat.OpenXml.Spreadsheet;
 using SLO.Controllers;
 using SLO.Models;
+using SpreadsheetLight;
 
 namespace SLO
 {
@@ -330,6 +332,34 @@ namespace SLO
             {
                 PN_Error.Visible = true;
                 LBL_Error.Text = "Error generando el archivo XML";
+            }
+        }
+
+        protected void BTN_GenerarExcel_Click(object sender, EventArgs e)
+        {
+            string path = Server.MapPath("~") + "Documents\\test_excel.xlsx";
+            
+            using (SLDocument doc = new SLDocument())
+            {
+                DataTable dt = new DataTable();
+
+                // COLUMNAS
+                dt.Columns.Add("Nombre", typeof(string));
+                dt.Columns.Add("Apellido", typeof(string));
+                dt.Columns.Add("Edad", typeof(int));
+
+                // FILAS
+                dt.Rows.Add("Alejandro", "Carreno", 21);
+                dt.Rows.Add("Migdalis", "Alexander", 49);
+                dt.Rows.Add("Nestor", "Carreno", 43);
+
+                SLStyle style = doc.CreateStyle();
+                style.Border.BottomBorder.BorderStyle = BorderStyleValues.Thick;
+                style.Border.BottomBorder.Color = System.Drawing.Color.Black;
+                doc.SetCellStyle(1, 1, style);
+
+                doc.ImportDataTable(1, 1, dt, true);
+                doc.SaveAs(path);
             }
         }
     }

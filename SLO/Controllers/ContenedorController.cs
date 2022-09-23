@@ -26,14 +26,18 @@ namespace SLO.Controllers
 
             try
             {
+                string prec1 = row.Field<string>(20);
+                string prec2 = row.Field<string>(24);
+                string prec3 = row.Field<string>(25);
+
                 cont.id_bl = id_bl;
                 cont.num_cont = row.Field<string>(16);
                 cont.num_paq = int.Parse(Regex.Match(row.Field<string>(19), @"\d+").Value);
                 cont.tip_cont = GetContType(row.Field<string>(17));
                 cont.estado = 5;
-                cont.eq_inter_rec1 = row.Field<string>(20);
-                cont.eq_inter_rec2 = row.Field<string>(24);
-                cont.eq_inter_rec3 = row.Field<string>(25);
+                cont.eq_inter_rec1 = prec1.Length > 10 ? prec1.Substring(0, 9) : prec1;
+                cont.eq_inter_rec2 = prec2.Length > 10 ? prec2.Substring(0, 9) : prec2;
+                cont.eq_inter_rec3 = prec3.Length > 10 ? prec3.Substring(0, 9) : prec3;
                 cont.seal_party = "CR";
                 cont.peso_neto = decimal.Parse(row.Field<string>(21));
                 cont.peso_bruto = decimal.Parse(row.Field<string>(23));
@@ -161,6 +165,7 @@ namespace SLO.Controllers
                     new_type = "4050";
                     break;
                 case "40FR":
+                case "40FF":
                     new_type = "4060";
                     break;
                 case "40HC":
@@ -169,6 +174,7 @@ namespace SLO.Controllers
                     break;
                 case "40RH":
                 case "40RF":
+                case "40RA":
                     new_type = "4432";
                     break;
             }

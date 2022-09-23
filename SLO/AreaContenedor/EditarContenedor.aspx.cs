@@ -38,13 +38,17 @@ namespace SLO.AreaContenedor
 
             try
             {
+                string prec1 = TB_Prec1.Text;
+                string prec2 = TB_Prec2.Text;
+                string prec3 = TB_Prec3.Text;
+
                 cont.ID = int.Parse(IDContenedor);
                 cont.num_paq = int.Parse(TB_NumPaq.Text);
                 cont.tip_cont = DDL_TipoCont.Value.ToString();
                 cont.estado = int.Parse(DDL_Estado.Value.ToString());
-                cont.eq_inter_rec1 = TB_Prec1.Text;
-                cont.eq_inter_rec2 = TB_Prec2.Text;
-                cont.eq_inter_rec3 = TB_Prec3.Text;
+                cont.eq_inter_rec1 = prec1.Length > 10 ? prec1.Substring(0, 9) : prec1;
+                cont.eq_inter_rec2 = prec2.Length > 10 ? prec2.Substring(0, 9) : prec2;
+                cont.eq_inter_rec3 = prec3.Length > 10 ? prec3.Substring(0, 9) : prec3;
                 cont.seal_party = DDL_SealPart.Value.ToString();
                 cont.peso_neto = decimal.Parse(TB_PesoNeto.Text);
                 cont.peso_bruto = decimal.Parse(TB_PesoBruto.Text);
