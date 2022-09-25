@@ -55,7 +55,7 @@ namespace SLO.Controllers
                 totalsSegment.AppendChild(CreateNode(doc, "Total_number_of_bols", viaje.total_bls.ToString()));
                 totalsSegment.AppendChild(CreateNode(doc, "Total_number_of_packages", viaje.total_paq.ToString()));
                 totalsSegment.AppendChild(CreateNode(doc, "Total_number_of_containers", viaje.total_cont.ToString()));
-                totalsSegment.AppendChild(CreateNode(doc, "Total_gross_mass", viaje.total_gm.ToString()));
+                totalsSegment.AppendChild(CreateNode(doc, "Total_gross_mass", viaje.total_gm.ToString().Replace(",", ".")));
 
                 // NODO TRANSPORT INFORMATION
                 XmlNode transportInfo = doc.CreateElement("Transport_information");
@@ -146,7 +146,7 @@ namespace SLO.Controllers
 
                     goodsSegment.AppendChild(CreateNode(doc, "Number_of_packages", bl.cant_paq.ToString()));
                     goodsSegment.AppendChild(CreateNode(doc, "Package_type_code", bl.tipo_paq));
-                    goodsSegment.AppendChild(CreateNode(doc, "Gross_mass", bl.gross_mass.ToString()));
+                    goodsSegment.AppendChild(CreateNode(doc, "Gross_mass", bl.gross_mass.ToString().Replace(",", ".")));
                     goodsSegment.AppendChild(CreateNode(doc, "Shipping_marks", bl.shipping_marks));
                     goodsSegment.AppendChild(CreateNode(doc, "Goods_description", bl.descripcion));
 
@@ -156,7 +156,7 @@ namespace SLO.Controllers
                     sealsSegment.AppendChild(CreateNode(doc, "Number_of_seals", "0"));
                     sealsSegment.AppendChild(CreateNode(doc, "Marks_of_seals", ""));
 
-                    goodsSegment.AppendChild(CreateNode(doc, "Volume_in_cubic_meters", bl.volumen.ToString()));
+                    goodsSegment.AppendChild(CreateNode(doc, "Volume_in_cubic_meters", bl.volumen.ToString().Replace(",", ".")));
                     goodsSegment.AppendChild(CreateNode(doc, "Num_of_ctn_for_this_bol", bl.num_conts.ToString()));
 
                     // NODO VALUE SEGMENT
@@ -235,7 +235,7 @@ namespace SLO.Controllers
                 totalsSegment.AppendChild(CreateNode(doc, "Total_number_of_bols", viaje.total_bls.ToString()));
                 totalsSegment.AppendChild(CreateNode(doc, "Total_number_of_packages", viaje.total_paq.ToString()));
                 totalsSegment.AppendChild(CreateNode(doc, "Total_number_of_containers", viaje.total_cont.ToString()));
-                totalsSegment.AppendChild(CreateNode(doc, "Total_gross_mass", viaje.total_gm.ToString()));
+                totalsSegment.AppendChild(CreateNode(doc, "Total_gross_mass", viaje.total_gm.ToString().Replace(",", ".")));
 
                 // NODO TRANSPORT INFORMATION
                 XmlNode transportInfo = doc.CreateElement("Transport_information");
@@ -326,10 +326,10 @@ namespace SLO.Controllers
 
                     goodsSegment.AppendChild(CreateNode(doc, "Number_of_packages", bl.cant_paq.ToString()));
                     goodsSegment.AppendChild(CreateNode(doc, "Package_type_code", bl.tipo_paq));
-                    goodsSegment.AppendChild(CreateNode(doc, "Gross_mass", bl.gross_mass.ToString()));
+                    goodsSegment.AppendChild(CreateNode(doc, "Gross_mass", bl.gross_mass.ToString().Replace(",", ".")));
                     goodsSegment.AppendChild(CreateNode(doc, "Shipping_marks", bl.shipping_marks));
                     goodsSegment.AppendChild(CreateNode(doc, "Goods_description", bl.descripcion));
-                    goodsSegment.AppendChild(CreateNode(doc, "Volume_in_cubic_meters", bl.volumen.ToString()));
+                    goodsSegment.AppendChild(CreateNode(doc, "Volume_in_cubic_meters", bl.volumen.ToString().Replace(",", ".")));
                     goodsSegment.AppendChild(CreateNode(doc, "Num_of_ctn_for_this_bol", bl.num_conts.ToString()));
 
                     // NODO LOCATION

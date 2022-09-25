@@ -319,6 +319,7 @@ namespace SLO
         {
             string folder = Server.MapPath("~") + "Documents\\";
             string filename = XMLController.GenerarXMLVEPBL(folder, IDSelected);
+            // string filename = XMLController.GenerarXMLVELAG(folder, IDSelected); LA GUAIRA
 
             if (filename != "")
             {

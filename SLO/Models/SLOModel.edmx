@@ -29,12 +29,12 @@
           <Property Name="booking" Type="varchar" MaxLength="10" />
           <Property Name="condicion" Type="varchar" MaxLength="10" />
           <Property Name="tipo_mercancia" Type="int" />
-          <Property Name="nom_consign" Type="varchar(max)" />
+          <Property Name="nom_consign" Type="varchar" MaxLength="35" />
           <Property Name="dir_consign" Type="varchar(max)" />
-          <Property Name="nom_notify" Type="varchar(max)" />
+          <Property Name="nom_notify" Type="varchar" MaxLength="35" />
           <Property Name="dir_notify" Type="varchar(max)" />
-          <Property Name="nom_export" Type="varchar(max)" />
-          <Property Name="dir_export" Type="varchar(max)" />
+          <Property Name="nom_export" Type="varchar" MaxLength="35" />
+          <Property Name="dir_export" Type="varchar" MaxLength="70" />
           <Property Name="gross_mass" Type="decimal" Precision="18" Scale="2" />
           <Property Name="shipping_marks" Type="varchar" MaxLength="15" />
           <Property Name="num_conts" Type="int" />
@@ -61,11 +61,11 @@
           <Property Name="id_bl" Type="int" Nullable="false" />
           <Property Name="num_cont" Type="varchar" MaxLength="20" />
           <Property Name="num_paq" Type="int" />
-          <Property Name="tip_cont" Type="varchar" MaxLength="10" />
+          <Property Name="tip_cont" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="estado" Type="int" />
-          <Property Name="eq_inter_rec1" Type="varchar(max)" />
-          <Property Name="eq_inter_rec2" Type="varchar(max)" />
-          <Property Name="eq_inter_rec3" Type="varchar(max)" />
+          <Property Name="eq_inter_rec1" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="eq_inter_rec2" Type="varchar" MaxLength="10" />
+          <Property Name="eq_inter_rec3" Type="varchar" MaxLength="10" />
           <Property Name="seal_party" Type="varchar" MaxLength="10" />
           <Property Name="peso_neto" Type="decimal" Precision="18" Scale="2" />
           <Property Name="peso_bruto" Type="decimal" Precision="18" Scale="2" />
@@ -350,12 +350,12 @@ advertencia 6002: La tabla o vista 'SLO.dbo.Puerto' no tiene definida ninguna cl
           <Property Name="booking" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="condicion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="tipo_mercancia" Type="Int32" />
-          <Property Name="nom_consign" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nom_consign" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
           <Property Name="dir_consign" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="nom_notify" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nom_notify" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
           <Property Name="dir_notify" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="nom_export" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="dir_export" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nom_export" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="dir_export" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
           <Property Name="gross_mass" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="shipping_marks" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="num_conts" Type="Int32" />
@@ -384,11 +384,11 @@ advertencia 6002: La tabla o vista 'SLO.dbo.Puerto' no tiene definida ninguna cl
           <Property Name="id_bl" Type="Int32" Nullable="false" />
           <Property Name="num_cont" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="num_paq" Type="Int32" />
-          <Property Name="tip_cont" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="tip_cont" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="estado" Type="Int32" />
-          <Property Name="eq_inter_rec1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="eq_inter_rec2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="eq_inter_rec3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="eq_inter_rec1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="eq_inter_rec2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="eq_inter_rec3" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="seal_party" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="peso_neto" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="peso_bruto" Type="Decimal" Precision="18" Scale="2" />

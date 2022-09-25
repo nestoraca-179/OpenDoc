@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Awmds>
+  <General_segment>
+    <General_segment_id>
+      <Customs_office_code>5004</Customs_office_code>
+      <Voyage_number>0ER6IN1MA</Voyage_number>
+      <Date_of_departure>2022-09-25</Date_of_departure>
+      <Date_of_arrival>2022-09-25</Date_of_arrival>
+    </General_segment_id>
+    <Totals_segment>
+      <Total_number_of_bols>4</Total_number_of_bols>
+      <Total_number_of_packages>3581</Total_number_of_packages>
+      <Total_number_of_containers>5</Total_number_of_containers>
+      <Total_gross_mass>100785.61</Total_gross_mass>
+    </Totals_segment>
+    <Transport_information>
+      <Carrier>
+        <Carrier_code>ATI089</Carrier_code>
+        <Carrier_name>INTERSHIPPING, C.A</Carrier_name>
+        <Carrier_address>AVE. SOUBLETTE, CENTRO COMERCIAL LITORAL PISO 4 OFICINA 3 LA GUAIRA.</Carrier_address>
+      </Carrier>
+      <Mode_of_transport_code>1</Mode_of_transport_code>
+      <Identity_of_transporter>MARFRET GUYANE</Identity_of_transporter>
+      <Nationality_of_transporter_code>
+      </Nationality_of_transporter_code>
+    </Transport_information>
+    <Load_unload_place>
+      <Place_of_departure_code>
+      </Place_of_departure_code>
+      <Place_of_destination_code>
+      </Place_of_destination_code>
+    </Load_unload_place>
+  </General_segment>
+  <Bol_segment>
+    <Bol_id>
+      <Bol_reference>AID0250857</Bol_reference>
+      <Line_number>1</Line_number>
+      <Bol_nature>23</Bol_nature>
+      <Bol_type_code>B/L</Bol_type_code>
+    </Bol_id>
+    <Load_unload_place>
+      <Place_of_loading_code>INTUT</Place_of_loading_code>
+      <Place_of_unloading_code>VELAG</Place_of_unloading_code>
+    </Load_unload_place>
+    <Traders_segment>
+      <Exporter>
+        <Exporter_name>ALIANCA LOGISTICS PVT.LTD.</Exporter_name>
+        <Exporter_address>ALIANCA LOGISTICS PVT.LTD. 1016-1018 VISHAL TOWER  DISTRICT CENTRE JA</Exporter_address>
+      </Exporter>
+      <Notify>
+        <Notify_name>VENEZUELAN CARGO BROKERS  VCB C.A</Notify_name>
+        <Notify_address>VENEZUELAN CARGO BROKERS  VCB C.A RIF:J-297419284 CALLE 3 MANZANA E P</Notify_address>
+      </Notify>
+      <Consignee>
+        <Consignee_name>VENEZUELAN CARGO BROKERS  VCB C.A</Consignee_name>
+        <Consignee_address>VENEZUELAN CARGO BROKERS  VCB C.A RIF:J-297419284 CALLE 3 MANZANA E P</Consignee_address>
+      </Consignee>
+    </Traders_segment>
+    <ctn_segment>
+      <Ctn_reference>CMAU5177842</Ctn_reference>
+      <Number_of_packages>1382</Number_of_packages>
+      <Type_of_container>4400</Type_of_container>
+      <Empty_Full>005</Empty_Full>
+      <Marks1>C4074368</Marks1>
+      <Marks2>
+      </Marks2>
+      <Marks3>
+      </Marks3>
+      <Sealing_Party>CR</Sealing_Party>
+    </ctn_segment>
+    <Goods_segment>
+      <Number_of_packages>1382</Number_of_packages>
+      <Package_type_code>PT</Package_type_code>
+      <Gross_mass>13555.6</Gross_mass>
+      <Shipping_marks>S/M</Shipping_marks>
+      <Goods_description>MENS- BOYS T-SHIRTS</Goods_description>
+      <Seals_segment>
+        <Number_of_seals>0</Number_of_seals>
+        <Marks_of_seals>
+        </Marks_of_seals>
+      </Seals_segment>
+      <Volume_in_cubic_meters>0</Volume_in_cubic_meters>
+      <Num_of_ctn_for_this_bol>1</Num_of_ctn_for_this_bol>
+    </Goods_segment>
+    <Value_segment />
+    <Location>
+      <Location_code>5004016DT</Location_code>
+    </Location>
+  </Bol_segment>
+  <Bol_segment>
+    <Bol_id>
+      <Bol_reference>AIS0393749</Bol_reference>
+      <Line_number>2</Line_number>
+      <Bol_nature>23</Bol_nature>
+      <Bol_type_code>B/L</Bol_type_code>
+    </Bol_id>
+    <Load_unload_place>
+      <Place_of_loading_code>INMAA</Place_of_loading_code>
+      <Place_of_unloading_code>VELAG</Place_of_unloading_code>
+    </Load_unload_place>
+    <Traders_segment>
+      <Exporter>
+        <Exporter_name>UNILEVER INDIA EXPORTS LTD</Exporter_name>
+        <Exporter_address>UNILEVER INDIA EXPORTS LTD UNILEVER HOUSE BD SAWANT MARG CHAKALA ANDH</Exporter_address>
+      </Exporter>
+      <Notify>
+        <Notify_name>DIMASSI CA</Notify_name>
+        <Notify_address>DIMASSI CA AV PRINCIPAL DE LA CASTELLANA CALLE BLANDIN  TORRE DIGITEL</Notify_address>
+      </Notify>
+      <Consignee>
+        <Consignee_name>DIMASSI CA</Consignee_name>
+        <Consignee_address>DIMASSI CA AV PRINCIPAL DE LA CASTELLANA CALLE BLANDIN  TORRE DIGITEL</Consignee_address>
+      </Consignee>
+    </Traders_segment>
+    <ctn_segment>
+      <Ctn_reference>TRHU8703884</Ctn_reference>
+      <Number_of_packages>2126</Number_of_packages>
+      <Type_of_container>4400</Type_of_container>
+      <Empty_Full>005</Empty_Full>
+      <Marks1>H6534013</Marks1>
+      <Marks2>
+      </Marks2>
+      <Marks3>
+      </Marks3>
+      <Sealing_Party>CR</Sealing_Party>
+    </ctn_segment>
+    <Goods_segment>
+      <Number_of_packages>2126</Number_of_packages>
+      <Package_type_code>PT</Package_type_code>
+      <Gross_mass>11430.01</Gross_mass>
+      <Shipping_marks>S/M</Shipping_marks>
+      <Goods_description>VASELINE COCOA BUTTER MOISTURISING JELLY 100MLX48 VASELINE BABY PROTECTING JELLY 100MLX48 NEW VASELINE ORIGINAL PURE SKIN JELLY 50MLX72 NEW VASELINE ORIGINAL PURE SKIN JELY 100MLX48</Goods_description>
+      <Seals_segment>
+        <Number_of_seals>0</Number_of_seals>
+        <Marks_of_seals>
+        </Marks_of_seals>
+      </Seals_segment>
+      <Volume_in_cubic_meters>0</Volume_in_cubic_meters>
+      <Num_of_ctn_for_this_bol>1</Num_of_ctn_for_this_bol>
+    </Goods_segment>
+    <Value_segment />
+    <Location>
+      <Location_code>5004016DT</Location_code>
+    </Location>
+  </Bol_segment>
+  <Bol_segment>
+    <Bol_id>
+      <Bol_reference>ALC0132944</Bol_reference>
+      <Line_number>3</Line_number>
+      <Bol_nature>23</Bol_nature>
+      <Bol_type_code>B/L</Bol_type_code>
+    </Bol_id>
+    <Load_unload_place>
+      <Place_of_loading_code>ESVLC</Place_of_loading_code>
+      <Place_of_unloading_code>VELAG</Place_of_unloading_code>
+    </Load_unload_place>
+    <Traders_segment>
+      <Exporter>
+        <Exporter_name>LEVANTINA MARMOL SLU</Exporter_name>
+        <Exporter_address>LEVANTINA MARMOL SLU AUTOVIA MADRID- ALICANTE S/N APDO DE CORREOS 8 0</Exporter_address>
+      </Exporter>
+      <Notify>
+        <Notify_name>GUAYANA DE GRANITOS CA</Notify_name>
+        <Notify_address>GUAYANA DE GRANITOS CA AV MARA CC MACARACUAY PLAZA TORRE B PISO 6 OF </Notify_address>
+      </Notify>
+      <Consignee>
+        <Consignee_name>GUAYANA DE GRANITOS CA</Consignee_name>
+        <Consignee_address>GUAYANA DE GRANITOS CA AV MARA CC MACARACUAY PLAZA TORRE B PISO 6 OF </Consignee_address>
+      </Consignee>
+    </Traders_segment>
+    <ctn_segment>
+      <Ctn_reference>CMAU3130342</Ctn_reference>
+      <Number_of_packages>27</Number_of_packages>
+      <Type_of_container>2000</Type_of_container>
+      <Empty_Full>005</Empty_Full>
+      <Marks1>ISL01489</Marks1>
+      <Marks2>
+      </Marks2>
+      <Marks3>
+      </Marks3>
+      <Sealing_Party>CR</Sealing_Party>
+    </ctn_segment>
+    <Goods_segment>
+      <Number_of_packages>27</Number_of_packages>
+      <Package_type_code>PT</Package_type_code>
+      <Gross_mass>25300</Gross_mass>
+      <Shipping_marks>S/M</Shipping_marks>
+      <Goods_description>MARBLE TILES</Goods_description>
+      <Seals_segment>
+        <Number_of_seals>0</Number_of_seals>
+        <Marks_of_seals>
+        </Marks_of_seals>
+      </Seals_segment>
+      <Volume_in_cubic_meters>0</Volume_in_cubic_meters>
+      <Num_of_ctn_for_this_bol>1</Num_of_ctn_for_this_bol>
+    </Goods_segment>
+    <Value_segment />
+    <Location>
+      <Location_code>5004016DT</Location_code>
+    </Location>
+  </Bol_segment>
+  <Bol_segment>
+    <Bol_id>
+      <Bol_reference>ALC0132976</Bol_reference>
+      <Line_number>4</Line_number>
+      <Bol_nature>23</Bol_nature>
+      <Bol_type_code>B/L</Bol_type_code>
+    </Bol_id>
+    <Load_unload_place>
+      <Place_of_loading_code>ESVLC</Place_of_loading_code>
+      <Place_of_unloading_code>VELAG</Place_of_unloading_code>
+    </Load_unload_place>
+    <Traders_segment>
+      <Exporter>
+        <Exporter_name>LEVANTINA MARMOL S.L.U</Exporter_name>
+        <Exporter_address>LEVANTINA MARMOL S.L.U AUTOVIA MADRID- ALICANTE S/N APDO DE CORREOS 8</Exporter_address>
+      </Exporter>
+      <Notify>
+        <Notify_name>GUAYANA DE GRANITOS CA</Notify_name>
+        <Notify_address>GUAYANA DE GRANITOS CA AV.MARA CC MACARAGUAY PLAZA TORRE B PISO 6 OFI</Notify_address>
+      </Notify>
+      <Consignee>
+        <Consignee_name>GUAYANA DE GRANITOS CA</Consignee_name>
+        <Consignee_address>GUAYANA DE GRANITOS CA AV.MARA CC MACARAGUAY PLAZA TORRE B PISO 6 OFI</Consignee_address>
+      </Consignee>
+    </Traders_segment>
+    <ctn_segment>
+      <Ctn_reference>CMAU0316605</Ctn_reference>
+      <Number_of_packages>20</Number_of_packages>
+      <Type_of_container>2000</Type_of_container>
+      <Empty_Full>005</Empty_Full>
+      <Marks1>H8666985</Marks1>
+      <Marks2>
+      </Marks2>
+      <Marks3>
+      </Marks3>
+      <Sealing_Party>CR</Sealing_Party>
+    </ctn_segment>
+    <ctn_segment>
+      <Ctn_reference>CMAU1013753</Ctn_reference>
+      <Number_of_packages>26</Number_of_packages>
+      <Type_of_container>2000</Type_of_container>
+      <Empty_Full>005</Empty_Full>
+      <Marks1>H8666912</Marks1>
+      <Marks2>
+      </Marks2>
+      <Marks3>
+      </Marks3>
+      <Sealing_Party>CR</Sealing_Party>
+    </ctn_segment>
+    <Goods_segment>
+      <Number_of_packages>46</Number_of_packages>
+      <Package_type_code>PT</Package_type_code>
+      <Gross_mass>50500</Gross_mass>
+      <Shipping_marks>S/M</Shipping_marks>
+      <Goods_description>MARBLE TILES</Goods_description>
+      <Seals_segment>
+        <Number_of_seals>0</Number_of_seals>
+        <Marks_of_seals>
+        </Marks_of_seals>
+      </Seals_segment>
+      <Volume_in_cubic_meters>0</Volume_in_cubic_meters>
+      <Num_of_ctn_for_this_bol>2</Num_of_ctn_for_this_bol>
+    </Goods_segment>
+    <Value_segment />
+    <Location>
+      <Location_code>5004016DT</Location_code>
+    </Location>
+  </Bol_segment>
+</Awmds>

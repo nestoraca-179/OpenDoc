@@ -26,9 +26,13 @@ namespace SLO.Controllers
 
             try
             {
+                string nom_consign = rows[0].Field<string>(9);
                 string dir_consign = rows[0].Field<string>(10);
+                string nom_notify = rows[0].Field<string>(12);
                 string dir_notify = rows[0].Field<string>(13);
+                string nom_export = rows[0].Field<string>(7);
                 string dir_export = rows[0].Field<string>(8);
+                string descrip = rows[0].Field<string>(15);
 
                 bl.id_viaje = id_viaje;
                 bl.num_bl = rows[0].Field<string>(0);
@@ -40,17 +44,18 @@ namespace SLO.Controllers
                 bl.booking = null;
                 bl.condicion = "FCL";
                 bl.tipo_mercancia = 0;
-                bl.nom_consign = rows[0].Field<string>(9);
-                bl.dir_consign = dir_consign.Length > 70 ? dir_consign.Substring(0, 69) : dir_consign;
-                bl.nom_notify = rows[0].Field<string>(12);
-                bl.dir_notify = dir_notify.Length > 70 ? dir_notify.Substring(0, 69) : dir_notify;
-                bl.nom_export = rows[0].Field<string>(7);
+                bl.nom_consign = nom_consign.Length > 35 ? nom_consign.Substring(0, 34) : nom_consign;
+                bl.dir_consign = dir_consign;
+                bl.nom_notify = nom_notify.Length > 35 ? nom_notify.Substring(0, 34) : nom_notify;
+                bl.dir_notify = dir_notify;
+                bl.nom_export = nom_export.Length > 35 ? nom_export.Substring(0, 34) : nom_export;
                 bl.dir_export = dir_export.Length > 70 ? dir_export.Substring(0, 69) : dir_export;
-                bl.gross_mass = rows.Select(r => decimal.Parse(r.Field<string>(23))).Sum();
+                bl.gross_mass = rows.Select(r => decimal.Parse(r.Field<string>(21).Replace(".", ","))).Sum();
                 bl.shipping_marks = "S/M";
                 bl.num_conts = rows.Count;
                 bl.volumen = 0;
-                bl.descripcion = rows[0].Field<string>(15).Split('/')[1];
+                bl.descripcion = descrip.Contains('/') ? rows[0].Field<string>(15).Split('/')[1] : descrip;
+                // bl.descripcion = rows[0].Field<string>(15).Split('/')[1];
                 bl.tipo_paq = "PT";
                 bl.cant_paq = rows.Select(r => int.Parse(Regex.Match(r.Field<string>(19), @"\d+").Value)).Sum();
                 bl.precinto_bl = null;

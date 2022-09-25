@@ -81,8 +81,11 @@ namespace SLO.AreaBL
 
             try
             {
+                string nom_consign = TB_NomConsignee.Text;
                 string dir_consign = TB_DirConsignee.Text;
+                string nom_notify = TB_NomNotify.Text;
                 string dir_notify = TB_DirNotify.Text;
+                string nom_export = TB_NomExport.Text;
                 string dir_export = TB_DirExport.Text;
 
                 bl.ID = int.Parse(IDBL);
@@ -94,11 +97,11 @@ namespace SLO.AreaBL
                 bl.booking = TB_Booking.Text;
                 bl.condicion = TB_Cond.Text;
                 bl.tipo_mercancia = int.Parse(DDL_TipMercancia.Value.ToString());
-                bl.nom_consign = TB_NomConsignee.Text;
-                bl.dir_consign = dir_consign.Length > 70 ? dir_consign.Substring(0, 69) : dir_consign;
-                bl.nom_notify = TB_NomNotify.Text;
-                bl.dir_notify = dir_notify.Length > 70 ? dir_notify.Substring(0, 69) : dir_notify;
-                bl.nom_export = TB_NomExport.Text;
+                bl.nom_consign = nom_consign.Length > 35 ? nom_consign.Substring(0, 34) : nom_consign;
+                bl.dir_consign = dir_consign;
+                bl.nom_notify = nom_notify.Length > 35 ? nom_notify.Substring(0, 34) : nom_notify;
+                bl.dir_notify = dir_notify;
+                bl.nom_export = nom_export.Length > 35 ? nom_export.Substring(0, 34) : nom_export;
                 bl.dir_export = dir_export.Length > 70 ? dir_export.Substring(0, 69) : dir_export;
                 bl.gross_mass = decimal.Parse(TB_GrossMass.Text);
                 bl.shipping_marks = TB_ShipMarks.Text;

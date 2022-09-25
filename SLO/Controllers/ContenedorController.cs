@@ -39,10 +39,10 @@ namespace SLO.Controllers
                 cont.eq_inter_rec2 = prec2.Length > 10 ? prec2.Substring(0, 9) : prec2;
                 cont.eq_inter_rec3 = prec3.Length > 10 ? prec3.Substring(0, 9) : prec3;
                 cont.seal_party = "CR";
-                cont.peso_neto = decimal.Parse(row.Field<string>(21));
-                cont.peso_bruto = decimal.Parse(row.Field<string>(23));
+                cont.peso_neto = decimal.Parse(row.Field<string>(21).Replace(".", ","));
+                cont.peso_bruto = decimal.Parse(row.Field<string>(23).Replace(".", ","));
                 cont.tamanio = int.Parse(Regex.Match(row.Field<string>(17), @"\d+").Value);
-                cont.temper = string.IsNullOrEmpty(row.Field<string>(27).Trim()) ? 0 : decimal.Parse(row.Field<string>(27).Trim());
+                cont.temper = string.IsNullOrEmpty(row.Field<string>(27).Trim()) ? 0 : decimal.Parse(row.Field<string>(27).Trim().Replace(".", ","));
                 cont.imo = string.IsNullOrEmpty(row.Field<string>(26).Replace(" ", "")) ? "" : row.Field<string>(26).Split('/')[0].Split('-')[1].Trim();
                 cont.num_un = row.Field<string>(26).Split('/')[0].Split('-')[0].Trim();
                 cont.ventilac = null;
