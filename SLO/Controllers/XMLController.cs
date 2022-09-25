@@ -199,7 +199,7 @@ namespace SLO.Controllers
             {
                 // DECLARACION
                 XmlDocument doc = new XmlDocument();
-                XmlNode docNode = doc.CreateXmlDeclaration("1.0", "ISO-8859-1", null);
+                XmlNode docNode = doc.CreateXmlDeclaration("1.0", "utf-8", null);
                 doc.AppendChild(docNode);
 
                 // NODO AWMDS

@@ -32,12 +32,12 @@ namespace SLO.Controllers
                 try
                 {
                     viaje.cod_adua = "5004";
-                    // viaje.cod_adua = "5001"; LA GUAIRA
+                    // viaje.cod_adua = "5001"; // LA GUAIRA
                     viaje.num_viaj = table.Select(r => r.Field<string>(1)).First();
                     viaje.fec_sal = DateTime.Now;
                     viaje.fec_arr = DateTime.Now;
                     viaje.loc_cod = "5004016DT";
-                    // viaje.loc_cod = "5001079AGD"; LA GUAIRA
+                    // viaje.loc_cod = "5001079AGD"; // LA GUAIRA
                     viaje.uso = 1;
                     viaje.total_bls = table.GroupBy(r => r.Field<string>(0)).Select(g => g.First()).ToList().Count;
                     viaje.total_paq = table.Select(r => int.Parse(Regex.Match(r.Field<string>(19), @"\d+").Value)).Sum();
