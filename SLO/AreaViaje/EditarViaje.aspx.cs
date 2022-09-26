@@ -48,7 +48,8 @@ namespace SLO.AreaViaje
 
             if (e.CommandArgs.CommandName == "Editar")
             {
-                Response.Redirect("~/AreaBL/EditarBL.aspx?ID=" + IDSelected, false);
+                // Response.Redirect("~/AreaBL/EditarBL.aspx?ID=" + IDSelected, false);
+                Response.Write("<script>window.open('/AreaBL/EditarBL.aspx?ID=" + IDSelected + "','_blank');</script>");
             }
             else if (e.CommandArgs.CommandName == "Eliminar")
             {

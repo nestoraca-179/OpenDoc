@@ -36,6 +36,7 @@ namespace SLO.Models
         public Nullable<System.DateTime> fe_us_in { get; set; }
         public string co_us_mo { get; set; }
         public Nullable<System.DateTime> fe_us_mo { get; set; }
+        public string tip_cont_orig { get; set; }
     
         public virtual BL BL { get; set; }
     }

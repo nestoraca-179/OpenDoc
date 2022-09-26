@@ -240,6 +240,30 @@ namespace SLO
 
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", "openModalDelete()", true);
             }
+            else if (e.CommandArgs.CommandName == "Listar")
+            {
+                Viaje viaje = ViajeController.GetByID(IDSelected);
+
+                string filename = viaje.num_viaj + ".xlsx";
+                string path = Server.MapPath("~") + "Documents\\LISTADO_DESCARGA_" + filename;
+
+                try
+                {
+                    new ExcelController().CreateExcel(viaje, path);
+
+                    Response.ContentType = "application/vnd.ms-excel";
+                    Response.AppendHeader("Content-Disposition", "attachment; filename=" + filename);
+                    Response.TransmitFile(path);
+                    Response.End();
+                }
+                catch (Exception ex)
+                {
+                    IncidentController.CreateIncident(string.Format("ERROR CREANDO LISTADO DE VIAJE N° {0}", viaje.num_viaj), ex);
+
+                    PN_Error.Visible = true;
+                    LBL_Error.Text = "Error generando el listado de descarga en Excel";
+                }
+            }
         }
 
         protected void BTN_EliminarViaje_Click(object sender, EventArgs e)
@@ -333,34 +357,6 @@ namespace SLO
             {
                 PN_Error.Visible = true;
                 LBL_Error.Text = "Error generando el archivo XML";
-            }
-        }
-
-        protected void BTN_GenerarExcel_Click(object sender, EventArgs e)
-        {
-            string path = Server.MapPath("~") + "Documents\\test_excel.xlsx";
-            
-            using (SLDocument doc = new SLDocument())
-            {
-                DataTable dt = new DataTable();
-
-                // COLUMNAS
-                dt.Columns.Add("Nombre", typeof(string));
-                dt.Columns.Add("Apellido", typeof(string));
-                dt.Columns.Add("Edad", typeof(int));
-
-                // FILAS
-                dt.Rows.Add("Alejandro", "Carreno", 21);
-                dt.Rows.Add("Migdalis", "Alexander", 49);
-                dt.Rows.Add("Nestor", "Carreno", 43);
-
-                SLStyle style = doc.CreateStyle();
-                style.Border.BottomBorder.BorderStyle = BorderStyleValues.Thick;
-                style.Border.BottomBorder.Color = System.Drawing.Color.Black;
-                doc.SetCellStyle(1, 1, style);
-
-                doc.ImportDataTable(1, 1, dt, true);
-                doc.SaveAs(path);
             }
         }
     }

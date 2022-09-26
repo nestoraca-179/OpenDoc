@@ -60,7 +60,6 @@
         <div class="form-body">
             <div class="row mb-3">
                 <div class="col">
-                    <dx:ASPxButton ID="BTN_GenerarExcel" runat="server" Text="Generar Excel" Visible="false" OnClick="BTN_GenerarExcel_Click"></dx:ASPxButton>
                     <h3 class="text-center">Lista de Viajes</h3>
                 </div>
             </div>
@@ -91,14 +90,21 @@
                                 </asp:LinkButton>
                             </DataItemTemplate>
                         </dx:GridViewDataColumn>
-                        <dx:GridViewDataColumn Width="60px" VisibleIndex="13" Caption="Editar">
+                        <dx:GridViewDataColumn Width="150px" VisibleIndex="13" Caption="Listado">
+                            <DataItemTemplate>
+                                <asp:LinkButton ID="BTN_GenerarExcel" runat="server" CssClass="btn btn-success" CommandName="Listar" style="background: #6fc66f !important; border: solid 1px #6fc66f;">
+                                    <i class="fas fa-file-excel"></i> Listado Excel
+                                </asp:LinkButton>
+                            </DataItemTemplate>
+                        </dx:GridViewDataColumn>
+                        <dx:GridViewDataColumn Width="60px" VisibleIndex="14" Caption="Editar">
                             <DataItemTemplate>
                                 <asp:LinkButton ID="BTN_EditarViaje" runat="server" CssClass="btn btn-primary" CommandName="Editar">
                                     <i class="fas fa-edit"></i> Editar
                                 </asp:LinkButton>
                             </DataItemTemplate>
                         </dx:GridViewDataColumn>
-                        <dx:GridViewDataColumn Width="60px" VisibleIndex="14" Caption="Eliminar" >
+                        <dx:GridViewDataColumn Width="60px" VisibleIndex="15" Caption="Eliminar" >
                             <DataItemTemplate>
                                 <asp:LinkButton ID="BTN_ConfirmarEliminarViaje" runat="server" CssClass="btn btn-danger" CommandName="Eliminar">
                                     <i class="fas fa-times"></i> Eliminar
