@@ -4,10 +4,8 @@ using System.IO;
 using System.Web;
 using System.Web.UI;
 using DevExpress.Web;
-using DocumentFormat.OpenXml.Spreadsheet;
 using SLO.Controllers;
 using SLO.Models;
-using SpreadsheetLight;
 
 namespace SLO
 {
@@ -252,7 +250,7 @@ namespace SLO
                     new ExcelController().CreateExcel(viaje, path);
 
                     Response.ContentType = "application/vnd.ms-excel";
-                    Response.AppendHeader("Content-Disposition", "attachment; filename=" + filename);
+                    Response.AppendHeader("Content-Disposition", "attachment; filename=LISTADO_DESCARGA_" + filename);
                     Response.TransmitFile(path);
                     Response.End();
                 }

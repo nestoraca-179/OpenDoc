@@ -304,7 +304,9 @@
             <div class="form-grid">
                 <dx:ASPxGridView ID="GV_GridResultsB" runat="server" Width="100%" Theme="Material" AutoGenerateColumns="False" KeyFieldName="ID" DataSourceID="DS_BL" 
                     OnRowCommand="GV_GridResultsB_RowCommand">
-                    <SettingsPager PageSize="5"></SettingsPager>
+                    <SettingsPager PageSize="20" Position="TopAndBottom">
+                        <PageSizeItemSettings Visible="True"></PageSizeItemSettings>
+                    </SettingsPager>
                     <SettingsDataSecurity AllowDelete="False" AllowInsert="False" AllowEdit="False"></SettingsDataSecurity>
                     <SettingsSearchPanel Visible="True"></SettingsSearchPanel>
                     <Columns>
@@ -315,7 +317,7 @@
                         <dx:GridViewDataTextColumn FieldName="num_bl" VisibleIndex="2" Caption="Num. BL"></dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn FieldName="pto_carga" VisibleIndex="3" Caption="Pto. Carga"></dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn FieldName="pto_descarga" VisibleIndex="4" Caption="Pto. Descarga "></dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="num_conts" VisibleIndex="5" Caption="Num. Cont."></dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn FieldName="num_conts" VisibleIndex="5" Caption="N° Cont."></dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn FieldName="nom_export" VisibleIndex="6" Caption="Exportador"></dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn FieldName="nom_notify" VisibleIndex="7" Caption="Notify"></dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn FieldName="nom_consign" VisibleIndex="8" Caption="Consignee"></dx:GridViewDataTextColumn>
