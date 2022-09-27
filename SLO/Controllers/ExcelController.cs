@@ -2,6 +2,7 @@
 using System.IO;
 using System.Data;
 using System.Text;
+using System.Linq;
 using ExcelDataReader;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -74,6 +75,7 @@ namespace SLO.Controllers
             {
                 DataTable dt = CreateDatatable(viaje.ID);
 
+                SLStyle font_bold = new SLStyle() { Font = new SLFont() { Bold = true } };
                 SLPageSettings ps = new SLPageSettings();
                 ps.PrintGridLines = false;
                 doc.SetPageSettings(ps);
@@ -82,13 +84,19 @@ namespace SLO.Controllers
                 doc.MergeWorksheetCells("B3", "C3");
 
                 doc.SetCellValue("B2", "INTERSHIPPING C.A.");
-                doc.SetCellValue("B3", "J-00116905-9");
+                doc.SetCellValue("B3", "RIF J-00116905-9");
+
+                doc.SetCellStyle("B2", font_bold);
+                doc.SetCellStyle("B3", font_bold);
 
                 doc.MergeWorksheetCells("K2", "L2");
                 doc.MergeWorksheetCells("K3", "L3");
 
                 doc.SetCellValue("K2", "BUQUE: " + viaje.nom_buq);
                 doc.SetCellValue("K3", "VIAJE: " + viaje.num_viaj);
+
+                doc.SetCellStyle("K2", font_bold);
+                doc.SetCellStyle("K3", font_bold);
 
                 SLStyle s_title = doc.CreateStyle();
                 s_title.Alignment.Horizontal = HorizontalAlignmentValues.Center;
@@ -129,13 +137,17 @@ namespace SLO.Controllers
                 s_grid.Border.RightBorder.Color = System.Drawing.Color.Black;
                 s_grid.Border.BottomBorder.BorderStyle = BorderStyleValues.Thin;
                 s_grid.Border.BottomBorder.Color = System.Drawing.Color.Black;
+                s_grid.Alignment.Vertical = VerticalAlignmentValues.Center;
+                s_grid.Alignment.Horizontal = HorizontalAlignmentValues.Center;
 
                 for (int i = 6; i <= dt.Rows.Count + 5; i++)
                 {
+                    s_grid.Font.FontSize = 10;
                     for (int j = 2; j <= dt.Columns.Count + 1; j++)
                     {
                         if (j == dt.Columns.Count)
                         {
+                            s_grid.Font.FontSize = 8;
                             s_grid.SetWrapText(true);
                         }
 
@@ -143,7 +155,28 @@ namespace SLO.Controllers
                     }
                 }
 
+                int count20 = dt.AsEnumerable().Where(r => r.Field<int>("Tamano") == 20).ToList().Count;
+                int count40 = dt.AsEnumerable().Where(r => r.Field<int>("Tamano") == 40).ToList().Count;
+                int count_t = count20 + count40;
+                decimal weight20 = dt.AsEnumerable().Where(r => r.Field<int>("Tamano") == 20).Select(r => r.Field<decimal>("Peso")).Sum();
+                decimal weight40 = dt.AsEnumerable().Where(r => r.Field<int>("Tamano") == 40).Select(r => r.Field<decimal>("Peso")).Sum();
+                decimal weigth_t = weight20 + weight40;
+
+                doc.MergeWorksheetCells(dt.Rows.Count + 8, 2, dt.Rows.Count + 8, 5);
+                doc.MergeWorksheetCells(dt.Rows.Count + 9, 2, dt.Rows.Count + 9, 5);
+                doc.MergeWorksheetCells(dt.Rows.Count + 10, 2, dt.Rows.Count + 10, 5);
+                doc.MergeWorksheetCells(dt.Rows.Count + 11, 2, dt.Rows.Count + 11, 5);
+
+                doc.SetCellStyle(dt.Rows.Count + 8, 2, font_bold);
+                doc.SetCellValue(dt.Rows.Count + 8, 2, "RECAPITULACION DE LA CARGA");
+                doc.SetCellValue(dt.Rows.Count + 9, 2, string.Format("SON {0} X 20 FULL CON UN PESO TOTAL DE = {1:n} KGS", count20, weight20));
+                doc.SetCellValue(dt.Rows.Count + 10, 2, string.Format("SON {0} X 40 FULL CON UN PESO TOTAL DE = {1:n} KGS", count40, weight40));
+                doc.SetCellValue(dt.Rows.Count + 11, 2, string.Format("TOTAL {0} CONTENEDORES FULL CON UN PESO TOTAL DE = {1:n} KGS", count_t, weigth_t));
+
                 doc.ImportDataTable(5, 2, dt, true);
+                doc.AutoFitColumn(dt.Columns.Count - 1);
+                doc.AutoFitColumn(dt.Columns.Count - 2);
+
                 doc.SaveAs(path);
             }
         }
@@ -171,13 +204,17 @@ namespace SLO.Controllers
 	            end as Categoria,
 	            B.pto_carga as POL,
 	            B.pto_descarga as POD,
-	            CAST(C.temper as varchar(10)) + '°C' as Temperatura,
+	            case C.temper
+			        when 0 then ''
+			        else CAST(C.temper as varchar(10)) + '°C'
+		        end as Temperatura,
 	            C.imo as IMO,
 	            C.num_un as UN,
 	            B.num_bl as BL,
 	            B.nom_consign as Consignatario,
 	            TM.nom_mercancia as 'Tipo Mercancia',
-	            B.descripcion as Contenido
+	            B.descripcion as Contenido,
+                '' as Observaciones
             from Contenedor C
             inner join BL B on B.ID = C.id_bl
             inner join TipoMercancia TM on TM.ID = B.tipo_mercancia
