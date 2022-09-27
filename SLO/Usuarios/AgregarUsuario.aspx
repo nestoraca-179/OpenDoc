@@ -74,11 +74,19 @@
             <div class="col">
                 <div class="controls">
                     <label>Región</label>
-                    <dx:ASPxTextBox ID="TB_Region" runat="server" Theme="Material" Width="100%">
+                    <dx:ASPxComboBox ID="DDL_Region" runat="server" Theme="Material" Width="100%">
+                        <Items>
+                            <dx:ListEditItem Text="VEPBL" Value="VEPBL"></dx:ListEditItem>
+                            <dx:ListEditItem Text="VELAG" Value="VELAG"></dx:ListEditItem>
+                            <dx:ListEditItem Text="VEMAR" Value="VEMAR"></dx:ListEditItem>
+                            <dx:ListEditItem Text="VEGUT" Value="VEGUT"></dx:ListEditItem>
+                            <dx:ListEditItem Text="VEEGU" Value="VEEGU"></dx:ListEditItem>
+                            <dx:ListEditItem Text="VEGUB" Value="VEGUB"></dx:ListEditItem>
+                        </Items>
                         <ValidationSettings ValidationGroup="Usuario" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
                             <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
                         </ValidationSettings>
-                    </dx:ASPxTextBox>
+                    </dx:ASPxComboBox>
                 </div>
             </div>
             <div class="col">

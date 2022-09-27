@@ -27,7 +27,7 @@ namespace SLO.Usuarios
                 user.descrip = TB_Descrip.Text;
                 user.email = TB_Email.Text;
                 user.activo = CK_Activo.Checked;
-                user.region = TB_Region.Text;
+                user.region = DDL_Region.Value.ToString();
                 user.tip_usuario = int.Parse(DDL_TipoUsuario.Value.ToString());
                 user.co_us_in = (Session["USER"] as Usuario).username;
                 user.fe_us_in = DateTime.Now;

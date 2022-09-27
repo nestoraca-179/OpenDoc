@@ -114,13 +114,13 @@ namespace SLO.Usuarios
         protected global::DevExpress.Web.ASPxTextBox TB_Email;
 
         /// <summary>
-        /// Control TB_Region.
+        /// Control DDL_Region.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TB_Region;
+        protected global::DevExpress.Web.ASPxComboBox DDL_Region;
 
         /// <summary>
         /// Control DDL_TipoUsuario.
