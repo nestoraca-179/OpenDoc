@@ -238,7 +238,7 @@ namespace SLO
 
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", "openModalDelete()", true);
             }
-            else if (e.CommandArgs.CommandName == "Listar")
+            else if (e.CommandArgs.CommandName == "Lista")
             {
                 Viaje viaje = ViajeController.GetByID(IDSelected);
 
@@ -247,7 +247,7 @@ namespace SLO
 
                 try
                 {
-                    new ExcelController().CreateExcel(viaje, path);
+                    new ExcelController().CreateExcel(viaje, path, 1, "LISTADO DE DESCARGA");
 
                     Response.ContentType = "application/vnd.ms-excel";
                     Response.AppendHeader("Content-Disposition", "attachment; filename=LISTADO_DESCARGA_" + filename);
@@ -256,10 +256,34 @@ namespace SLO
                 }
                 catch (Exception ex)
                 {
-                    IncidentController.CreateIncident(string.Format("ERROR CREANDO LISTADO DE VIAJE N° {0}", viaje.num_viaj), ex);
+                    IncidentController.CreateIncident(string.Format("ERROR CREANDO LISTADO DE DESCARGA DE VIAJE N° {0}", viaje.num_viaj), ex);
 
                     PN_Error.Visible = true;
                     LBL_Error.Text = "Error generando el listado de descarga en Excel";
+                }
+            }
+            else if (e.CommandArgs.CommandName == "Neptuno")
+            {
+                Viaje viaje = ViajeController.GetByID(IDSelected);
+
+                string filename = viaje.num_viaj + ".xlsx";
+                string path = Server.MapPath("~") + "Documents\\LISTADO_NEPTUNO_" + filename;
+
+                try
+                {
+                    new ExcelController().CreateExcel(viaje, path, 2, "LISTADO NEPTUNO");
+
+                    Response.ContentType = "application/vnd.ms-excel";
+                    Response.AppendHeader("Content-Disposition", "attachment; filename=LISTADO_NEPTUNO_" + filename);
+                    Response.TransmitFile(path);
+                    Response.End();
+                }
+                catch (Exception ex)
+                {
+                    IncidentController.CreateIncident(string.Format("ERROR CREANDO LISTADO NEPTUNO DE VIAJE N° {0}", viaje.num_viaj), ex);
+
+                    PN_Error.Visible = true;
+                    LBL_Error.Text = "Error generando el listado Neptuno en Excel";
                 }
             }
         }

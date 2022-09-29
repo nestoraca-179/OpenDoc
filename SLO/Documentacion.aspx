@@ -90,21 +90,28 @@
                                 </asp:LinkButton>
                             </DataItemTemplate>
                         </dx:GridViewDataColumn>
-                        <dx:GridViewDataColumn Width="150px" VisibleIndex="13" Caption="Listado">
+                        <dx:GridViewDataColumn VisibleIndex="13" Caption="Listado Descarga">
                             <DataItemTemplate>
-                                <asp:LinkButton ID="BTN_GenerarExcel" runat="server" CssClass="btn btn-success" CommandName="Listar" style="background: #6fc66f !important; border: solid 1px #6fc66f;">
-                                    <i class="fas fa-file-excel"></i> Listado Excel
+                                <asp:LinkButton ID="BTN_GenerarExcel" runat="server" CssClass="btn btn-success" CommandName="Lista" style="background: #6fc66f !important; border: solid 1px #6fc66f;">
+                                    <i class="fas fa-file-excel"></i> Descarga
                                 </asp:LinkButton>
                             </DataItemTemplate>
                         </dx:GridViewDataColumn>
-                        <dx:GridViewDataColumn Width="60px" VisibleIndex="14" Caption="Editar">
+                        <dx:GridViewDataColumn VisibleIndex="14" Caption="Listado Neptuno">
+                            <DataItemTemplate>
+                                <asp:LinkButton ID="BTN_GenerarNeptuno" runat="server" CssClass="btn btn-info" CommandName="Neptuno">
+                                    <i class="fas fa-file"></i> Neptuno
+                                </asp:LinkButton>
+                            </DataItemTemplate>
+                        </dx:GridViewDataColumn>
+                        <dx:GridViewDataColumn Width="60px" VisibleIndex="15" Caption="Editar">
                             <DataItemTemplate>
                                 <asp:LinkButton ID="BTN_EditarViaje" runat="server" CssClass="btn btn-primary" CommandName="Editar">
                                     <i class="fas fa-edit"></i> Editar
                                 </asp:LinkButton>
                             </DataItemTemplate>
                         </dx:GridViewDataColumn>
-                        <dx:GridViewDataColumn Width="60px" VisibleIndex="15" Caption="Eliminar" >
+                        <dx:GridViewDataColumn Width="60px" VisibleIndex="16" Caption="Eliminar" >
                             <DataItemTemplate>
                                 <asp:LinkButton ID="BTN_ConfirmarEliminarViaje" runat="server" CssClass="btn btn-danger" CommandName="Eliminar">
                                     <i class="fas fa-times"></i> Eliminar

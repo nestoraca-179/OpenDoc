@@ -69,11 +69,16 @@ namespace SLO.Controllers
             return dt;
         }
     
-        public void CreateExcel(Viaje viaje, string path)
+        public void CreateExcel(Viaje viaje, string path, int type, string title)
         {
             using (SLDocument doc = new SLDocument())
             {
-                DataTable dt = CreateDatatable(viaje.ID);
+                DataTable dt = new DataTable();
+
+                if (type == 1) // DESCARGA
+                    dt = CreateDatatableList(viaje.ID);
+                else if (type == 2) // NEPTUNO
+                    dt = CreateDatatableNeptuno(viaje.ID);
 
                 SLStyle font_bold = new SLStyle() { Font = new SLFont() { Bold = true } };
                 SLPageSettings ps = new SLPageSettings();
@@ -106,7 +111,7 @@ namespace SLO.Controllers
 
                 doc.MergeWorksheetCells("E2", "I3");
                 doc.SetCellStyle("E2", s_title);
-                doc.SetCellValue("E2", "LISTADO DE DESCARGA");
+                doc.SetCellValue("E2", title);
 
                 // ESTILOS ENCABEZADO
                 SLStyle s_header = doc.CreateStyle();
@@ -155,11 +160,13 @@ namespace SLO.Controllers
                     }
                 }
 
+                string name_field = type == 1 ? "Peso" : "Peso Bruto (KGS)";
+
                 int count20 = dt.AsEnumerable().Where(r => r.Field<int>("Tamano") == 20).ToList().Count;
                 int count40 = dt.AsEnumerable().Where(r => r.Field<int>("Tamano") == 40).ToList().Count;
                 int count_t = count20 + count40;
-                decimal weight20 = dt.AsEnumerable().Where(r => r.Field<int>("Tamano") == 20).Select(r => r.Field<decimal>("Peso")).Sum();
-                decimal weight40 = dt.AsEnumerable().Where(r => r.Field<int>("Tamano") == 40).Select(r => r.Field<decimal>("Peso")).Sum();
+                decimal weight20 = dt.AsEnumerable().Where(r => r.Field<int>("Tamano") == 20).Select(r => r.Field<decimal>(name_field)).Sum();
+                decimal weight40 = dt.AsEnumerable().Where(r => r.Field<int>("Tamano") == 40).Select(r => r.Field<decimal>(name_field)).Sum();
                 decimal weigth_t = weight20 + weight40;
 
                 doc.MergeWorksheetCells(dt.Rows.Count + 8, 2, dt.Rows.Count + 8, 5);
@@ -174,14 +181,25 @@ namespace SLO.Controllers
                 doc.SetCellValue(dt.Rows.Count + 11, 2, string.Format("TOTAL {0} CONTENEDORES FULL CON UN PESO TOTAL DE = {1:n} KGS", count_t, weigth_t));
 
                 doc.ImportDataTable(5, 2, dt, true);
-                doc.AutoFitColumn(dt.Columns.Count - 1);
-                doc.AutoFitColumn(dt.Columns.Count - 2);
+
+                if (type == 1)
+                {
+                    doc.AutoFitColumn(dt.Columns.Count - 1);
+                    doc.AutoFitColumn(dt.Columns.Count - 2);
+                }
+                else if (type == 2)
+                {
+                    doc.AutoFitColumn(4);
+                    doc.AutoFitColumn(5);
+                    doc.AutoFitColumn(11);
+                    doc.AutoFitColumn(12);
+                }
 
                 doc.SaveAs(path);
             }
         }
         
-        private DataTable CreateDatatable(int ID)
+        private DataTable CreateDatatableList(int ID)
         {
             DataTable dt = new DataTable();
 
@@ -196,7 +214,7 @@ namespace SLO.Controllers
 	            C.tamanio as Tamano, 
 	            SUBSTRING(C.tip_cont_orig, 3, 2) as Tipo, 
 	            B.condicion as Condicion, 
-	            C.peso_neto as Peso, 
+	            C.peso_bruto as Peso, 
 	            C.num_paq as Bultos,
 	            case B.num_naturaleza
 		            when 22 then 'EXPORTACION'
@@ -216,6 +234,63 @@ namespace SLO.Controllers
 	            B.descripcion as Contenido,
                 '' as Observaciones
             from Contenedor C
+            inner join BL B on B.ID = C.id_bl
+            inner join TipoMercancia TM on TM.ID = B.tipo_mercancia
+            inner join Viaje V on V.ID = B.id_viaje
+            where V.ID = " + ID;
+
+            using (SqlConnection conn = new SqlConnection(connect))
+            {
+                conn.Open();
+                using (SqlCommand comm = new SqlCommand(query, conn))
+                {
+                    using (SqlDataAdapter da = new SqlDataAdapter(comm))
+                    {
+                        da.Fill(dt);
+                    }
+                }
+            }
+
+            return dt;
+        }
+
+        private DataTable CreateDatatableNeptuno(int ID)
+        {
+            DataTable dt = new DataTable();
+
+            string connect = ConfigurationManager.ConnectionStrings["SLOConnectionString"].ConnectionString;
+            string query = @"select
+	            ROW_NUMBER() OVER(ORDER BY C.ID) AS Item, 
+	            B.num_bl as BL,
+	            B.nom_export as Embarcador,
+	            B.nom_consign as Consignatario,
+	            V.cod_pto_sal as Origen,
+	            B.pto_carga as POL,
+	            B.pto_descarga as POD,
+	            C.tamanio as Tamano, 
+	            SUBSTRING(C.tip_cont_orig, 3, 2) as Tipo, 
+	            C.num_cont as 'Siglas de Contenedor', 
+	            C.eq_inter_rec1 + ' - ' + C.eq_inter_rec2 + ' - ' + C.eq_inter_rec3 as 'Precinto de Confrontacion',
+	            B.descripcion as Mercancia,
+	            B.tipo_paq as Empaque,
+	            C.num_paq as Cantidad,
+	            EC.nom_estado as 'Lleno / Vacio',
+	            B.condicion as 'Condicion Venta', 
+	            C.peso_bruto as 'Peso Bruto (KGS)',
+	            C.peso_neto as 'Peso Neto (KGS)',
+	            0 as M3,
+	            0 as TMIN,
+	            0 as TMAX,
+	            'N' as HAZ,
+	            C.imo as IMO,
+	            C.num_un as UN,
+	            case B.num_naturaleza
+		            when 22 then 'EXPORTACION (22)'
+		            when 23 then 'IMPORTACION (23)'
+	            end as 'Uso SIDUNEA',
+                '' as Observaciones
+            from Contenedor C
+            inner join EstadoContenedor EC on EC.ID = C.estado
             inner join BL B on B.ID = C.id_bl
             inner join TipoMercancia TM on TM.ID = B.tipo_mercancia
             inner join Viaje V on V.ID = B.id_viaje
