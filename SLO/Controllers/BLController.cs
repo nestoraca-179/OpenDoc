@@ -34,6 +34,10 @@ namespace SLO.Controllers
                 string dir_export = rows[0].Field<string>(8);
                 string descrip = rows[0].Field<string>(15);
 
+                dir_consign = dir_consign.Replace("<", "").Replace(">", "");
+                dir_notify = dir_notify.Replace("<", "").Replace(">", "");
+                dir_export = dir_export.Replace("<", "").Replace(">", "");
+
                 bl.id_viaje = id_viaje;
                 bl.num_bl = rows[0].Field<string>(0);
                 bl.num_naturaleza = 23;

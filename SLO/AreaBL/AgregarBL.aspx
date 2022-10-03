@@ -135,7 +135,7 @@
                 <div class="col">
                     <div class="controls">
                         <label>Nombre Consignee *</label>
-                        <dx:ASPxTextBox ID="TB_NomConsignee" runat="server" Theme="Material" Width="100%">
+                        <dx:ASPxTextBox ID="TB_NomConsignee" runat="server" Theme="Material" Width="100%" MaxLength="35">
                             <ValidationSettings ValidationGroup="BL" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
                                 <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
                             </ValidationSettings>
@@ -157,7 +157,7 @@
                 <div class="col">
                     <div class="controls">
                         <label>Nombre Notify *</label>
-                        <dx:ASPxTextBox ID="TB_NomNotify" runat="server" Theme="Material" Width="100%">
+                        <dx:ASPxTextBox ID="TB_NomNotify" runat="server" Theme="Material" Width="100%" MaxLength="35">
                             <ValidationSettings ValidationGroup="BL" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
                                 <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
                             </ValidationSettings>
@@ -179,7 +179,7 @@
                 <div class="col">
                     <div class="controls">
                         <label>Nombre Exportador *</label>
-                        <dx:ASPxTextBox ID="TB_NomExport" runat="server" Theme="Material" Width="100%">
+                        <dx:ASPxTextBox ID="TB_NomExport" runat="server" Theme="Material" Width="100%" MaxLength="35">
                             <ValidationSettings ValidationGroup="BL" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
                                 <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
                             </ValidationSettings>
@@ -189,7 +189,7 @@
                 <div class="col col-9">
                     <div class="controls">
                         <label>Dirección Exportador *</label>
-                        <dx:ASPxTextBox ID="TB_DirExport" runat="server" Theme="Material" Width="100%">
+                        <dx:ASPxTextBox ID="TB_DirExport" runat="server" Theme="Material" Width="100%" MaxLength="70">
                             <ValidationSettings ValidationGroup="BL" ErrorText="" ValidateOnLeave="false" ErrorTextPosition="Bottom">
                                 <RequiredField IsRequired="True" ErrorText="Campo Obligatorio" />
                             </ValidationSettings>
