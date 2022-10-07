@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SLOModelStoreContainer" CdmEntityContainer="SLOEntities">
+    <EntitySetMapping Name="Aduana">
+      <EntityTypeMapping TypeName="SLOModel.Aduana">
+        <MappingFragment StoreEntitySet="Aduana">
+          <ScalarProperty Name="usu_crea" ColumnName="usu_crea" />
+          <ScalarProperty Name="fec_crea" ColumnName="fec_crea" />
+          <ScalarProperty Name="nom_adua" ColumnName="nom_adua" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BL">
+      <EntityTypeMapping TypeName="SLOModel.BL">
+        <MappingFragment StoreEntitySet="BL">
+          <ScalarProperty Name="fe_us_mo" ColumnName="fe_us_mo" />
+          <ScalarProperty Name="co_us_mo" ColumnName="co_us_mo" />
+          <ScalarProperty Name="fe_us_in" ColumnName="fe_us_in" />
+          <ScalarProperty Name="co_us_in" ColumnName="co_us_in" />
+          <ScalarProperty Name="mone_flet" ColumnName="mone_flet" />
+          <ScalarProperty Name="fletes" ColumnName="fletes" />
+          <ScalarProperty Name="gobierno" ColumnName="gobierno" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="sobre_dimens" ColumnName="sobre_dimens" />
+          <ScalarProperty Name="precinto_bl" ColumnName="precinto_bl" />
+          <ScalarProperty Name="cant_paq" ColumnName="cant_paq" />
+          <ScalarProperty Name="tipo_paq" ColumnName="tipo_paq" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="volumen" ColumnName="volumen" />
+          <ScalarProperty Name="num_conts" ColumnName="num_conts" />
+          <ScalarProperty Name="shipping_marks" ColumnName="shipping_marks" />
+          <ScalarProperty Name="gross_mass" ColumnName="gross_mass" />
+          <ScalarProperty Name="dir_export" ColumnName="dir_export" />
+          <ScalarProperty Name="nom_export" ColumnName="nom_export" />
+          <ScalarProperty Name="dir_notify" ColumnName="dir_notify" />
+          <ScalarProperty Name="nom_notify" ColumnName="nom_notify" />
+          <ScalarProperty Name="dir_consign" ColumnName="dir_consign" />
+          <ScalarProperty Name="nom_consign" ColumnName="nom_consign" />
+          <ScalarProperty Name="tipo_mercancia" ColumnName="tipo_mercancia" />
+          <ScalarProperty Name="condicion" ColumnName="condicion" />
+          <ScalarProperty Name="booking" ColumnName="booking" />
+          <ScalarProperty Name="destino" ColumnName="destino" />
+          <ScalarProperty Name="pto_descarga" ColumnName="pto_descarga" />
+          <ScalarProperty Name="pto_carga" ColumnName="pto_carga" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="num_naturaleza" ColumnName="num_naturaleza" />
+          <ScalarProperty Name="num_bl" ColumnName="num_bl" />
+          <ScalarProperty Name="id_viaje" ColumnName="id_viaje" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contenedor">
+      <EntityTypeMapping TypeName="SLOModel.Contenedor">
+        <MappingFragment StoreEntitySet="Contenedor">
+          <ScalarProperty Name="tip_cont_orig" ColumnName="tip_cont_orig" />
+          <ScalarProperty Name="fe_us_mo" ColumnName="fe_us_mo" />
+          <ScalarProperty Name="co_us_mo" ColumnName="co_us_mo" />
+          <ScalarProperty Name="fe_us_in" ColumnName="fe_us_in" />
+          <ScalarProperty Name="co_us_in" ColumnName="co_us_in" />
+          <ScalarProperty Name="descrip_mer" ColumnName="descrip_mer" />
+          <ScalarProperty Name="ventilac" ColumnName="ventilac" />
+          <ScalarProperty Name="num_un" ColumnName="num_un" />
+          <ScalarProperty Name="imo" ColumnName="imo" />
+          <ScalarProperty Name="temper" ColumnName="temper" />
+          <ScalarProperty Name="tamanio" ColumnName="tamanio" />
+          <ScalarProperty Name="peso_bruto" ColumnName="peso_bruto" />
+          <ScalarProperty Name="peso_neto" ColumnName="peso_neto" />
+          <ScalarProperty Name="seal_party" ColumnName="seal_party" />
+          <ScalarProperty Name="eq_inter_rec3" ColumnName="eq_inter_rec3" />
+          <ScalarProperty Name="eq_inter_rec2" ColumnName="eq_inter_rec2" />
+          <ScalarProperty Name="eq_inter_rec1" ColumnName="eq_inter_rec1" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="tip_cont" ColumnName="tip_cont" />
+          <ScalarProperty Name="num_paq" ColumnName="num_paq" />
+          <ScalarProperty Name="num_cont" ColumnName="num_cont" />
+          <ScalarProperty Name="id_bl" ColumnName="id_bl" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoContenedor">
+      <EntityTypeMapping TypeName="SLOModel.EstadoContenedor">
+        <MappingFragment StoreEntitySet="EstadoContenedor">
+          <ScalarProperty Name="usu_crea" ColumnName="usu_crea" />
+          <ScalarProperty Name="fec_crea" ColumnName="fec_crea" />
+          <ScalarProperty Name="nom_estado" ColumnName="nom_estado" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Incidente">
+      <EntityTypeMapping TypeName="SLOModel.Incidente">
+        <MappingFragment StoreEntitySet="Incidente">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ModoTransporte">
+      <EntityTypeMapping TypeName="SLOModel.ModoTransporte">
+        <MappingFragment StoreEntitySet="ModoTransporte">
+          <ScalarProperty Name="usu_crea" ColumnName="usu_crea" />
+          <ScalarProperty Name="fec_crea" ColumnName="fec_crea" />
+          <ScalarProperty Name="nom_mod_trans" ColumnName="nom_mod_trans" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pais">
+      <EntityTypeMapping TypeName="SLOModel.Pais">
+        <MappingFragment StoreEntitySet="Pais">
+          <ScalarProperty Name="usu_crea" ColumnName="usu_crea" />
+          <ScalarProperty Name="fec_crea" ColumnName="fec_crea" />
+          <ScalarProperty Name="nom_pais" ColumnName="nom_pais" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sealing">
+      <EntityTypeMapping TypeName="SLOModel.Sealing">
+        <MappingFragment StoreEntitySet="Sealing">
+          <ScalarProperty Name="usu_crea" ColumnName="usu_crea" />
+          <ScalarProperty Name="fec_crea" ColumnName="fec_crea" />
+          <ScalarProperty Name="nom_sealing" ColumnName="nom_sealing" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoBL">
+      <EntityTypeMapping TypeName="SLOModel.TipoBL">
+        <MappingFragment StoreEntitySet="TipoBL">
+          <ScalarProperty Name="usu_crea" ColumnName="usu_crea" />
+          <ScalarProperty Name="fec_crea" ColumnName="fec_crea" />
+          <ScalarProperty Name="nom_tip_bl" ColumnName="nom_tip_bl" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoContenedor">
+      <EntityTypeMapping TypeName="SLOModel.TipoContenedor">
+        <MappingFragment StoreEntitySet="TipoContenedor">
+          <ScalarProperty Name="usu_crea" ColumnName="usu_crea" />
+          <ScalarProperty Name="fec_crea" ColumnName="fec_crea" />
+          <ScalarProperty Name="nom_tipo" ColumnName="nom_tipo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoMercancia">
+      <EntityTypeMapping TypeName="SLOModel.TipoMercancia">
+        <MappingFragment StoreEntitySet="TipoMercancia">
+          <ScalarProperty Name="usu_crea" ColumnName="usu_crea" />
+          <ScalarProperty Name="fec_crea" ColumnName="fec_crea" />
+          <ScalarProperty Name="nom_mercancia" ColumnName="nom_mercancia" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoPaquete">
+      <EntityTypeMapping TypeName="SLOModel.TipoPaquete">
+        <MappingFragment StoreEntitySet="TipoPaquete">
+          <ScalarProperty Name="usu_crea" ColumnName="usu_crea" />
+          <ScalarProperty Name="fec_crea" ColumnName="fec_crea" />
+          <ScalarProperty Name="nom_tip_paq" ColumnName="nom_tip_paq" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Viaje">
+      <EntityTypeMapping TypeName="SLOModel.Viaje">
+        <MappingFragment StoreEntitySet="Viaje">
+          <ScalarProperty Name="fe_us_mo" ColumnName="fe_us_mo" />
+          <ScalarProperty Name="co_us_mo" ColumnName="co_us_mo" />
+          <ScalarProperty Name="fe_us_in" ColumnName="fe_us_in" />
+          <ScalarProperty Name="co_us_in" ColumnName="co_us_in" />
+          <ScalarProperty Name="file_path" ColumnName="file_path" />
+          <ScalarProperty Name="nom_buq" ColumnName="nom_buq" />
+          <ScalarProperty Name="cod_buq" ColumnName="cod_buq" />
+          <ScalarProperty Name="alm_dest" ColumnName="alm_dest" />
+          <ScalarProperty Name="cod_lin" ColumnName="cod_lin" />
+          <ScalarProperty Name="cod_pto_des" ColumnName="cod_pto_des" />
+          <ScalarProperty Name="cod_pto_sal" ColumnName="cod_pto_sal" />
+          <ScalarProperty Name="cod_nac_trans" ColumnName="cod_nac_trans" />
+          <ScalarProperty Name="id_trans" ColumnName="id_trans" />
+          <ScalarProperty Name="cod_mod_trans" ColumnName="cod_mod_trans" />
+          <ScalarProperty Name="dir_carr" ColumnName="dir_carr" />
+          <ScalarProperty Name="nom_carr" ColumnName="nom_carr" />
+          <ScalarProperty Name="cod_carr" ColumnName="cod_carr" />
+          <ScalarProperty Name="total_gm" ColumnName="total_gm" />
+          <ScalarProperty Name="total_cont" ColumnName="total_cont" />
+          <ScalarProperty Name="total_paq" ColumnName="total_paq" />
+          <ScalarProperty Name="total_bls" ColumnName="total_bls" />
+          <ScalarProperty Name="uso" ColumnName="uso" />
+          <ScalarProperty Name="loc_cod" ColumnName="loc_cod" />
+          <ScalarProperty Name="fec_arr" ColumnName="fec_arr" />
+          <ScalarProperty Name="fec_sal" ColumnName="fec_sal" />
+          <ScalarProperty Name="num_viaj" ColumnName="num_viaj" />
+          <ScalarProperty Name="cod_adua" ColumnName="cod_adua" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Log">
+      <EntityTypeMapping TypeName="SLOModel.Log">
+        <MappingFragment StoreEntitySet="Log">
+          <ScalarProperty Name="id_item" ColumnName="id_item" />
+          <ScalarProperty Name="campos" ColumnName="campos" />
+          <ScalarProperty Name="accion" ColumnName="accion" />
+          <ScalarProperty Name="item" ColumnName="item" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="SLOModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="region" ColumnName="region" />
+          <ScalarProperty Name="fe_us_mo" ColumnName="fe_us_mo" />
+          <ScalarProperty Name="co_us_mo" ColumnName="co_us_mo" />
+          <ScalarProperty Name="fe_us_in" ColumnName="fe_us_in" />
+          <ScalarProperty Name="co_us_in" ColumnName="co_us_in" />
+          <ScalarProperty Name="tip_usuario" ColumnName="tip_usuario" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="descrip" ColumnName="descrip" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Puerto">
+      <EntityTypeMapping TypeName="SLOModel.Puerto">
+        <MappingFragment StoreEntitySet="Puerto">
+          <ScalarProperty Name="usu_crea" ColumnName="usu_crea" />
+          <ScalarProperty Name="fec_crea" ColumnName="fec_crea" />
+          <ScalarProperty Name="nom_pto" ColumnName="nom_pto" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

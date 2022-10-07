@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SLOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Aduana">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="nom_adua" Type="varchar(max)" />
+    <Property Name="fec_crea" Type="smalldatetime" Nullable="false" />
+    <Property Name="usu_crea" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_viaje" Type="int" Nullable="false" />
+    <Property Name="num_bl" Type="varchar" MaxLength="30" />
+    <Property Name="num_naturaleza" Type="int" />
+    <Property Name="tipo" Type="varchar" MaxLength="10" />
+    <Property Name="pto_carga" Type="varchar" MaxLength="10" />
+    <Property Name="pto_descarga" Type="varchar" MaxLength="10" />
+    <Property Name="destino" Type="varchar" MaxLength="10" />
+    <Property Name="booking" Type="varchar" MaxLength="10" />
+    <Property Name="condicion" Type="varchar" MaxLength="10" />
+    <Property Name="tipo_mercancia" Type="int" />
+    <Property Name="nom_consign" Type="varchar" MaxLength="35" />
+    <Property Name="dir_consign" Type="varchar(max)" />
+    <Property Name="nom_notify" Type="varchar" MaxLength="35" />
+    <Property Name="dir_notify" Type="varchar(max)" />
+    <Property Name="nom_export" Type="varchar" MaxLength="35" />
+    <Property Name="dir_export" Type="varchar" MaxLength="70" />
+    <Property Name="gross_mass" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="shipping_marks" Type="varchar" MaxLength="15" />
+    <Property Name="num_conts" Type="int" />
+    <Property Name="volumen" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="descripcion" Type="varchar(max)" />
+    <Property Name="tipo_paq" Type="varchar" MaxLength="30" />
+    <Property Name="cant_paq" Type="int" />
+    <Property Name="precinto_bl" Type="varchar" MaxLength="20" />
+    <Property Name="sobre_dimens" Type="varchar" MaxLength="20" />
+    <Property Name="observaciones" Type="varchar(max)" />
+    <Property Name="gobierno" Type="bit" />
+    <Property Name="fletes" Type="int" />
+    <Property Name="mone_flet" Type="varchar" MaxLength="10" />
+    <Property Name="co_us_in" Type="varchar" MaxLength="10" />
+    <Property Name="fe_us_in" Type="smalldatetime" />
+    <Property Name="co_us_mo" Type="varchar" MaxLength="10" />
+    <Property Name="fe_us_mo" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="Contenedor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_bl" Type="int" Nullable="false" />
+    <Property Name="num_cont" Type="varchar" MaxLength="20" />
+    <Property Name="num_paq" Type="int" />
+    <Property Name="tip_cont" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="tip_cont_orig" Type="varchar" MaxLength="10" />
+    <Property Name="estado" Type="int" />
+    <Property Name="eq_inter_rec1" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="eq_inter_rec2" Type="varchar" MaxLength="10" />
+    <Property Name="eq_inter_rec3" Type="varchar" MaxLength="10" />
+    <Property Name="seal_party" Type="varchar" MaxLength="10" />
+    <Property Name="peso_neto" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="peso_bruto" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="tamanio" Type="int" />
+    <Property Name="temper" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="imo" Type="varchar" MaxLength="30" />
+    <Property Name="num_un" Type="varchar" MaxLength="30" />
+    <Property Name="ventilac" Type="varchar" MaxLength="30" />
+    <Property Name="descrip_mer" Type="varchar(max)" />
+    <Property Name="co_us_in" Type="varchar" MaxLength="10" />
+    <Property Name="fe_us_in" Type="smalldatetime" />
+    <Property Name="co_us_mo" Type="varchar" MaxLength="10" />
+    <Property Name="fe_us_mo" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="EstadoContenedor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_estado" Type="varchar" MaxLength="50" />
+    <Property Name="fec_crea" Type="smalldatetime" Nullable="false" />
+    <Property Name="usu_crea" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Incidente">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titulo" Type="varchar(max)" />
+    <Property Name="Descripcion" Type="varchar(max)" />
+    <Property Name="Fecha" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha" Type="smalldatetime" Nullable="false" />
+    <Property Name="usuario" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="item" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="id_item" Type="int" Nullable="false" />
+    <Property Name="accion" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="campos" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="ModoTransporte">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="nom_mod_trans" Type="nvarchar" MaxLength="255" />
+    <Property Name="fec_crea" Type="smalldatetime" Nullable="false" />
+    <Property Name="usu_crea" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pais">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="nom_pais" Type="nvarchar" MaxLength="255" />
+    <Property Name="fec_crea" Type="smalldatetime" Nullable="false" />
+    <Property Name="usu_crea" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'SLO.dbo.Puerto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Puerto">
+    <Key>
+      <PropertyRef Name="fec_crea" />
+      <PropertyRef Name="usu_crea" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" />
+    <Property Name="nom_pto" Type="nvarchar" MaxLength="255" />
+    <Property Name="fec_crea" Type="smalldatetime" Nullable="false" />
+    <Property Name="usu_crea" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sealing">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="nom_sealing" Type="nvarchar" MaxLength="255" />
+    <Property Name="fec_crea" Type="smalldatetime" Nullable="false" />
+    <Property Name="usu_crea" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoBL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="nom_tip_bl" Type="nvarchar" MaxLength="255" />
+    <Property Name="fec_crea" Type="smalldatetime" Nullable="false" />
+    <Property Name="usu_crea" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoContenedor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="nom_tipo" Type="nvarchar" MaxLength="255" />
+    <Property Name="fec_crea" Type="smalldatetime" Nullable="false" />
+    <Property Name="usu_crea" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoMercancia">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="nom_mercancia" Type="nvarchar" MaxLength="255" />
+    <Property Name="fec_crea" Type="smalldatetime" Nullable="false" />
+    <Property Name="usu_crea" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoPaquete">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="nom_tip_paq" Type="nvarchar" MaxLength="255" />
+    <Property Name="fec_crea" Type="smalldatetime" Nullable="false" />
+    <Property Name="usu_crea" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="descrip" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="activo" Type="bit" Nullable="false" />
+    <Property Name="tip_usuario" Type="int" Nullable="false" />
+    <Property Name="region" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="co_us_in" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="fe_us_in" Type="smalldatetime" Nullable="false" />
+    <Property Name="co_us_mo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="fe_us_mo" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Viaje">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cod_adua" Type="varchar" MaxLength="10" />
+    <Property Name="num_viaj" Type="varchar" MaxLength="50" />
+    <Property Name="fec_sal" Type="smalldatetime" />
+    <Property Name="fec_arr" Type="smalldatetime" />
+    <Property Name="loc_cod" Type="varchar" MaxLength="50" />
+    <Property Name="uso" Type="int" />
+    <Property Name="total_bls" Type="int" />
+    <Property Name="total_paq" Type="int" />
+    <Property Name="total_cont" Type="int" />
+    <Property Name="total_gm" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="cod_carr" Type="varchar" MaxLength="25" />
+    <Property Name="nom_carr" Type="varchar(max)" />
+    <Property Name="dir_carr" Type="varchar(max)" />
+    <Property Name="cod_mod_trans" Type="int" />
+    <Property Name="id_trans" Type="varchar" MaxLength="50" />
+    <Property Name="cod_nac_trans" Type="varchar" MaxLength="5" />
+    <Property Name="cod_pto_sal" Type="varchar" MaxLength="10" />
+    <Property Name="cod_pto_des" Type="varchar" MaxLength="10" />
+    <Property Name="cod_lin" Type="varchar" MaxLength="15" />
+    <Property Name="alm_dest" Type="varchar" MaxLength="20" />
+    <Property Name="cod_buq" Type="varchar" MaxLength="20" />
+    <Property Name="nom_buq" Type="varchar" MaxLength="50" />
+    <Property Name="file_path" Type="varchar(max)" />
+    <Property Name="co_us_in" Type="varchar" MaxLength="10" />
+    <Property Name="fe_us_in" Type="smalldatetime" />
+    <Property Name="co_us_mo" Type="varchar" MaxLength="10" />
+    <Property Name="fe_us_mo" Type="smalldatetime" />
+  </EntityType>
+  <Association Name="FK_BL_Viaje">
+    <End Role="Viaje" Type="Self.Viaje" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="BL" Type="Self.BL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Viaje">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BL">
+        <PropertyRef Name="id_viaje" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contenedor_BL">
+    <End Role="BL" Type="Self.BL" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Contenedor" Type="Self.Contenedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BL">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Contenedor">
+        <PropertyRef Name="id_bl" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SLOModelStoreContainer">
+    <EntitySet Name="Aduana" EntityType="Self.Aduana" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BL" EntityType="Self.BL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contenedor" EntityType="Self.Contenedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstadoContenedor" EntityType="Self.EstadoContenedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Incidente" EntityType="Self.Incidente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ModoTransporte" EntityType="Self.ModoTransporte" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sealing" EntityType="Self.Sealing" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoBL" EntityType="Self.TipoBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoContenedor" EntityType="Self.TipoContenedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoMercancia" EntityType="Self.TipoMercancia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoPaquete" EntityType="Self.TipoPaquete" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Viaje" EntityType="Self.Viaje" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Puerto" EntityType="Self.Puerto" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Puerto].[ID] AS [ID], 
+    [Puerto].[nom_pto] AS [nom_pto], 
+    [Puerto].[fec_crea] AS [fec_crea], 
+    [Puerto].[usu_crea] AS [usu_crea]
+    FROM [dbo].[Puerto] AS [Puerto]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_BL_Viaje" Association="Self.FK_BL_Viaje">
+      <End Role="Viaje" EntitySet="Viaje" />
+      <End Role="BL" EntitySet="BL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contenedor_BL" Association="Self.FK_Contenedor_BL">
+      <End Role="BL" EntitySet="BL" />
+      <End Role="Contenedor" EntitySet="Contenedor" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

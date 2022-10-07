@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SLOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SLOEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Aduana" EntityType="SLOModel.Aduana" />
+    <EntitySet Name="BL" EntityType="SLOModel.BL" />
+    <EntitySet Name="Contenedor" EntityType="SLOModel.Contenedor" />
+    <EntitySet Name="EstadoContenedor" EntityType="SLOModel.EstadoContenedor" />
+    <EntitySet Name="Incidente" EntityType="SLOModel.Incidente" />
+    <EntitySet Name="ModoTransporte" EntityType="SLOModel.ModoTransporte" />
+    <EntitySet Name="Pais" EntityType="SLOModel.Pais" />
+    <EntitySet Name="Sealing" EntityType="SLOModel.Sealing" />
+    <EntitySet Name="TipoBL" EntityType="SLOModel.TipoBL" />
+    <EntitySet Name="TipoContenedor" EntityType="SLOModel.TipoContenedor" />
+    <EntitySet Name="TipoMercancia" EntityType="SLOModel.TipoMercancia" />
+    <EntitySet Name="TipoPaquete" EntityType="SLOModel.TipoPaquete" />
+    <EntitySet Name="Viaje" EntityType="SLOModel.Viaje" />
+    <AssociationSet Name="FK_BL_Viaje" Association="SLOModel.FK_BL_Viaje">
+      <End Role="Viaje" EntitySet="Viaje" />
+      <End Role="BL" EntitySet="BL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contenedor_BL" Association="SLOModel.FK_Contenedor_BL">
+      <End Role="BL" EntitySet="BL" />
+      <End Role="Contenedor" EntitySet="Contenedor" />
+    </AssociationSet>
+    <EntitySet Name="Log" EntityType="SLOModel.Log" />
+    <EntitySet Name="Usuario" EntityType="SLOModel.Usuario" />
+    <EntitySet Name="Puerto" EntityType="SLOModel.Puerto" />
+  </EntityContainer>
+  <EntityType Name="Aduana">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="nom_adua" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="fec_crea" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="usu_crea" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="BL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_viaje" Type="Int32" Nullable="false" />
+    <Property Name="num_bl" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="num_naturaleza" Type="Int32" />
+    <Property Name="tipo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="pto_carga" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="pto_descarga" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="destino" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="booking" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="condicion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="tipo_mercancia" Type="Int32" />
+    <Property Name="nom_consign" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="dir_consign" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="nom_notify" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="dir_notify" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="nom_export" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="dir_export" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="gross_mass" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="shipping_marks" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="num_conts" Type="Int32" />
+    <Property Name="volumen" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="tipo_paq" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="cant_paq" Type="Int32" />
+    <Property Name="precinto_bl" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="sobre_dimens" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="gobierno" Type="Boolean" />
+    <Property Name="fletes" Type="Int32" />
+    <Property Name="mone_flet" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Viaje" Relationship="SLOModel.FK_BL_Viaje" FromRole="BL" ToRole="Viaje" />
+    <NavigationProperty Name="Contenedor" Relationship="SLOModel.FK_Contenedor_BL" FromRole="BL" ToRole="Contenedor" />
+    <Property Name="co_us_in" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="fe_us_in" Type="DateTime" Precision="0" />
+    <Property Name="co_us_mo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="fe_us_mo" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Contenedor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_bl" Type="Int32" Nullable="false" />
+    <Property Name="num_cont" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="num_paq" Type="Int32" />
+    <Property Name="tip_cont" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estado" Type="Int32" />
+    <Property Name="eq_inter_rec1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="eq_inter_rec2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="eq_inter_rec3" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="seal_party" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="peso_neto" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="peso_bruto" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tamanio" Type="Int32" />
+    <Property Name="temper" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="imo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="num_un" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ventilac" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="descrip_mer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BL" Relationship="SLOModel.FK_Contenedor_BL" FromRole="Contenedor" ToRole="BL" />
+    <Property Name="co_us_in" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="fe_us_in" Type="DateTime" Precision="0" />
+    <Property Name="co_us_mo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="fe_us_mo" Type="DateTime" Precision="0" />
+    <Property Name="tip_cont_orig" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="EstadoContenedor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom_estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fec_crea" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="usu_crea" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Incidente">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="ModoTransporte">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="nom_mod_trans" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="fec_crea" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="usu_crea" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Pais">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="nom_pais" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="fec_crea" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="usu_crea" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Sealing">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="nom_sealing" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="fec_crea" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="usu_crea" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TipoBL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="nom_tip_bl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="fec_crea" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="usu_crea" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TipoContenedor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="nom_tipo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="fec_crea" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="usu_crea" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TipoMercancia">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="nom_mercancia" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="fec_crea" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="usu_crea" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TipoPaquete">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="nom_tip_paq" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="fec_crea" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="usu_crea" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Viaje">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cod_adua" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="num_viaj" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fec_sal" Type="DateTime" Precision="0" />
+    <Property Name="fec_arr" Type="DateTime" Precision="0" />
+    <Property Name="loc_cod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="uso" Type="Int32" />
+    <Property Name="total_bls" Type="Int32" />
+    <Property Name="total_paq" Type="Int32" />
+    <Property Name="total_cont" Type="Int32" />
+    <Property Name="total_gm" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="cod_carr" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="nom_carr" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="dir_carr" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="cod_mod_trans" Type="Int32" />
+    <Property Name="id_trans" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cod_nac_trans" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="cod_pto_sal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="cod_pto_des" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="cod_lin" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="alm_dest" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="cod_buq" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="nom_buq" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="file_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BL" Relationship="SLOModel.FK_BL_Viaje" FromRole="Viaje" ToRole="BL" />
+    <Property Name="co_us_in" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="fe_us_in" Type="DateTime" Precision="0" />
+    <Property Name="co_us_mo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="fe_us_mo" Type="DateTime" Precision="0" />
+  </EntityType>
+  <Association Name="FK_BL_Viaje">
+    <End Type="SLOModel.Viaje" Role="Viaje" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SLOModel.BL" Role="BL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Viaje">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BL">
+        <PropertyRef Name="id_viaje" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contenedor_BL">
+    <End Type="SLOModel.BL" Role="BL" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SLOModel.Contenedor" Role="Contenedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BL">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Contenedor">
+        <PropertyRef Name="id_bl" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="usuario" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="item" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="accion" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="campos" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="id_item" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="descrip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="activo" Type="Boolean" Nullable="false" />
+    <Property Name="tip_usuario" Type="Int32" Nullable="false" />
+    <Property Name="co_us_in" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="fe_us_in" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="co_us_mo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="fe_us_mo" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="region" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Puerto">
+    <Key>
+      <PropertyRef Name="fec_crea" />
+      <PropertyRef Name="usu_crea" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="nom_pto" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="fec_crea" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="usu_crea" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>
