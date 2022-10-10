@@ -23,6 +23,7 @@ namespace OpenDoc.Controllers
                     {
                         FormsAuthentication.SetAuthCookie(username, true);
                         HttpContext.Current.Session["USER"] = user;
+                        LogController.CreateLog(user.username, "LOGIN", user.ID, "L", null);
 
                         result = 1;
                     }
@@ -43,6 +44,9 @@ namespace OpenDoc.Controllers
 
         public static void LogOut()
         {
+            Usuario user = HttpContext.Current.Session["USER"] as Usuario;
+
+            LogController.CreateLog(user.username, "LOGOUT", user.ID, "D", null);
             FormsAuthentication.SignOut();
             HttpContext.Current.Session.Clear();
         }
