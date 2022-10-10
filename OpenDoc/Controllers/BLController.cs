@@ -61,7 +61,7 @@ namespace OpenDoc.Controllers
                 bl.descripcion = descrip.Contains('/') ? rows[0].Field<string>(15).Split('/')[1] : descrip;
                 // bl.descripcion = rows[0].Field<string>(15).Split('/')[1];
                 bl.tipo_paq = "PT";
-                bl.cant_paq = rows.Select(r => int.Parse(Regex.Match(r.Field<string>(19), @"\d+").Value)).Sum();
+                bl.cant_paq = rows.Select(r => int.Parse(Regex.Match(r.Field<string>(19), @"\d+").Value == "" ? "0" : Regex.Match(r.Field<string>(19), @"\d+").Value)).Sum();
                 bl.precinto_bl = null;
                 bl.sobre_dimens = null;
                 bl.observaciones = null;

@@ -47,7 +47,7 @@ namespace OpenDoc.Controllers
                     viaje.fec_arr = DateTime.Now;
                     viaje.uso = user.tip_usuario;
                     viaje.total_bls = table.GroupBy(r => r.Field<string>(0)).Select(g => g.First()).ToList().Count;
-                    viaje.total_paq = table.Select(r => int.Parse(Regex.Match(r.Field<string>(19), @"\d+").Value)).Sum();
+                    viaje.total_paq = table.Select(r => int.Parse(Regex.Match(r.Field<string>(19), @"\d+").Value == "" ? "0" : Regex.Match(r.Field<string>(19), @"\d+").Value)).Sum();
                     viaje.total_cont = table.ToList().Count;
                     viaje.total_gm = table.Select(r => decimal.Parse(r.Field<string>(21).Replace(".", ","))).Sum();
                     viaje.cod_carr = "ATI089";
