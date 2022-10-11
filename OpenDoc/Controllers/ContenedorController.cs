@@ -136,7 +136,7 @@ namespace OpenDoc.Controllers
 
         private static string GetContType(string type)
         {
-            string new_type = "";
+            string new_type;
 
             switch (type)
             {
@@ -177,8 +177,11 @@ namespace OpenDoc.Controllers
                 case "40RF":
                 case "40RA":
 		        case "40RC":
+                case "40RK":
                     new_type = "4432";
                     break;
+                default:
+                    throw new Exception("CONTENEDOR " + type + " NO RECONOCIDO EN EL SISTEMA");
             }
 
             return new_type;
