@@ -186,7 +186,6 @@ namespace OpenDoc
                     }
                     catch (Exception ex)
                     {
-                        // DeleteAllFiles(folder);
                         IncidentController.CreateIncident("ERROR LEYENDO DOCUMENTOS EXCEL", ex);
 
                         is_error = true;
@@ -336,6 +335,7 @@ namespace OpenDoc
                     }
                     else
                     {
+                        File.Delete(FullPath);
                         PN_Error.Visible = true;
                         LBL_Error.Text = "Error procesando el Excel. Ver tabla de Incidentes";
                     }

@@ -106,7 +106,7 @@ namespace OpenDoc.AreaBL
                 bl.gross_mass = decimal.Parse(TB_GrossMass.Text);
                 bl.shipping_marks = TB_ShipMarks.Text;
                 bl.num_conts = int.Parse(TB_CantCont.Text);
-                bl.volumen = decimal.Parse(TB_CantCont.Text);
+                bl.volumen = 0;
                 bl.descripcion = TB_Descrip.Text;
                 bl.tipo_paq = DDL_TipPaq.Value.ToString();
                 bl.cant_paq = int.Parse(TB_CantPaq.Text);
