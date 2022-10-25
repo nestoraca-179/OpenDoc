@@ -146,11 +146,11 @@ namespace OpenDoc
                 // VALIDA SI EL ARCHIVO ES EXCEL
                 if (ec.IsExcel(file))
                 {
+                    string filename = file.FileName;
+                    string path = folder + filename;
+
                     try
                     {
-                        string filename = file.FileName;
-                        string path = folder + filename;
-
                         if (!File.Exists(path))
                         {
                             file.SaveAs(path);
@@ -190,6 +190,7 @@ namespace OpenDoc
 
                         is_error = true;
                         error = "Ha ocurrido un error. Ver tabla de Incidentes";
+                        File.Delete(path);
                     }
                 }
                 else
