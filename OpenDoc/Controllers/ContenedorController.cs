@@ -33,8 +33,8 @@ namespace OpenDoc.Controllers
                 cont.id_bl = id_bl;
                 cont.num_cont = row.Field<string>(16);
                 cont.num_paq = int.Parse(Regex.Match(row.Field<string>(19), @"\d+").Value == "" ? "0" : Regex.Match(row.Field<string>(19), @"\d+").Value);
+                cont.tip_cont_orig = row.Field<object>(17).ToString();
                 cont.tip_cont = GetContType(row.Field<string>(17));
-                cont.tip_cont_orig = row.Field<string>(17);
                 cont.estado = 5;
                 cont.eq_inter_rec1 = prec1.Length > 10 ? prec1.Substring(0, 9) : prec1;
                 cont.eq_inter_rec2 = prec2.Length > 10 ? prec2.Substring(0, 9) : prec2;

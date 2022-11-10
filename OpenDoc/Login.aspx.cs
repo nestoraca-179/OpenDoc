@@ -7,7 +7,7 @@ namespace OpenDoc
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["logout"] != null)
+            if (Request.QueryString["logout"] != null && Session["USER"] != null)
                 AccountController.LogOut();
 
             Session.Clear();
@@ -24,7 +24,7 @@ namespace OpenDoc
                     message = "Usuario o Clave incorrectos";
                     break;
                 case 1:
-                    Response.Redirect("Dashboard.aspx");
+                    Response.Redirect("/Dashboard.aspx");
                     break;
                 case 2:
                     message = "Usuario Inactivo";
