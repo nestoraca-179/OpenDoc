@@ -71,6 +71,7 @@ namespace OpenDoc.Controllers
 
             try
             {
+                cont.tip_cont_orig = GetContTypeOrig(cont.tip_cont);
                 Contenedor c = db.Contenedor.Add(cont);
                 db.SaveChanges();
 
@@ -96,6 +97,9 @@ namespace OpenDoc.Controllers
                 cont.num_cont = existing.num_cont;
                 cont.co_us_in = existing.co_us_in;
                 cont.fe_us_in = existing.fe_us_in;
+
+                if (cont.tip_cont != existing.tip_cont)
+                    cont.tip_cont_orig = GetContTypeOrig(cont.tip_cont);
 
                 string campos = GetChanges(existing, cont);
 
@@ -160,6 +164,7 @@ namespace OpenDoc.Controllers
                     break;
                 case "40DC":
                 case "40ST":
+                case "40SH":
                     new_type = "4000";
                     break;
                 case "40OT":
@@ -186,6 +191,49 @@ namespace OpenDoc.Controllers
             }
 
             return new_type;
+        }
+
+        private static string GetContTypeOrig(string type)
+        {
+            string tip_orig;
+
+            switch (type)
+            {
+                case "2000":
+                    tip_orig = "20ST";
+                    break;
+                case "2032":
+                    tip_orig = "20RF";
+                    break;
+                case "2050":
+                    tip_orig = "20OT";
+                    break;
+                case "2260":
+                    tip_orig = "20FR";
+                    break;
+                case "2270":
+                    tip_orig = "20TK";
+                    break;
+                case "4000":
+                    tip_orig = "40ST";
+                    break;
+                case "4050":
+                    tip_orig = "40OT";
+                    break;
+                case "4060":
+                    tip_orig = "40FR";
+                    break;
+                case "4400":
+                    tip_orig = "40HC";
+                    break;
+                case "4432":
+                    tip_orig = "40RH";
+                    break;
+                default:
+                    throw new Exception("CONTENEDOR ORIG " + type + " NO RECONOCIDO EN EL SISTEMA");
+            }
+
+            return tip_orig;
         }
 
         private static string GetChanges(Contenedor cont_v, Contenedor cont_n)
