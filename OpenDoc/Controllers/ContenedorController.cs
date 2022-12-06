@@ -97,9 +97,7 @@ namespace OpenDoc.Controllers
                 cont.num_cont = existing.num_cont;
                 cont.co_us_in = existing.co_us_in;
                 cont.fe_us_in = existing.fe_us_in;
-
-                if (cont.tip_cont != existing.tip_cont)
-                    cont.tip_cont_orig = GetContTypeOrig(cont.tip_cont);
+                cont.tip_cont_orig = GetContTypeOrig(cont.tip_cont);
 
                 string campos = GetChanges(existing, cont);
 
