@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="OpenDocModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="OpenDocModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Aduana">
           <Key>
             <PropertyRef Name="ID" />
@@ -198,6 +198,7 @@ advertencia 6002: La tabla o vista 'OpenDoc.dbo.Puerto' no tiene definida ningun
           <Property Name="activo" Type="bit" Nullable="false" />
           <Property Name="tip_usuario" Type="int" Nullable="false" />
           <Property Name="region" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="fec_camb" Type="smalldatetime" Nullable="false" />
           <Property Name="co_us_in" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="fe_us_in" Type="smalldatetime" Nullable="false" />
           <Property Name="co_us_mo" Type="varchar" MaxLength="10" Nullable="false" />
@@ -297,8 +298,7 @@ advertencia 6002: La tabla o vista 'OpenDoc.dbo.Puerto' no tiene definida ningun
             <End Role="Contenedor" EntitySet="Contenedor" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OpenDocModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -490,6 +490,7 @@ advertencia 6002: La tabla o vista 'OpenDoc.dbo.Puerto' no tiene definida ningun
           <Property Name="fe_us_in" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="co_us_mo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fe_us_mo" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fec_camb" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="Viaje">
           <Key>
@@ -780,6 +781,7 @@ advertencia 6002: La tabla o vista 'OpenDoc.dbo.Puerto' no tiene definida ningun
           <EntitySetMapping Name="Usuario">
             <EntityTypeMapping TypeName="OpenDocModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="fec_camb" ColumnName="fec_camb" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />

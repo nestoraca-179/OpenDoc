@@ -8,7 +8,10 @@ namespace OpenDoc
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.QueryString["logout"] != null && Session["USER"] != null)
+            {
                 AccountController.LogOut();
+                Response.Redirect("/Login.aspx");
+            }
 
             Session.Clear();
         }
@@ -32,9 +35,12 @@ namespace OpenDoc
                 case 3:
                     message = "Se ha producido una excepción. Ver table de Incidentes";
                     break;
+                case 4:
+                    Response.Redirect("/CambioClave.aspx");
+                    break;
             }
 
-            if (result != 1)
+            if (result != 1 && result != 4)
             {
                 LBL_Error.Visible = true;
                 LBL_Error.Text = message;

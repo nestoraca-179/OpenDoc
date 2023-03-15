@@ -193,6 +193,7 @@ advertencia 6002: La tabla o vista 'OpenDoc.dbo.Puerto' no tiene definida ningun
     <Property Name="activo" Type="bit" Nullable="false" />
     <Property Name="tip_usuario" Type="int" Nullable="false" />
     <Property Name="region" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="fec_camb" Type="smalldatetime" Nullable="false" />
     <Property Name="co_us_in" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="fe_us_in" Type="smalldatetime" Nullable="false" />
     <Property Name="co_us_mo" Type="varchar" MaxLength="10" Nullable="false" />

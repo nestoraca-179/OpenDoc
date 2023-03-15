@@ -199,6 +199,7 @@
     <Content Include="AreaContenedor\EditarContenedor.aspx" />
     <Content Include="AreaViaje\AgregarViaje.aspx" />
     <Content Include="AreaViaje\EditarViaje.aspx" />
+    <Content Include="CambioClave.aspx" />
     <Content Include="Configuracion.aspx" />
     <Content Include="Content\bootstrap-5.2.css" />
     <Content Include="Content\Site.css" />
@@ -291,6 +292,13 @@
     </Compile>
     <Compile Include="AreaViaje\EditarViaje.aspx.designer.cs">
       <DependentUpon>EditarViaje.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CambioClave.aspx.cs">
+      <DependentUpon>CambioClave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CambioClave.aspx.designer.cs">
+      <DependentUpon>CambioClave.aspx</DependentUpon>
     </Compile>
     <Compile Include="Configuracion.aspx.cs">
       <DependentUpon>Configuracion.aspx</DependentUpon>

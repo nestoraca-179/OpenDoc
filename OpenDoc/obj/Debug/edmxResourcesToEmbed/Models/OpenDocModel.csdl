@@ -188,6 +188,7 @@
     <Property Name="fe_us_in" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="co_us_mo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="fe_us_mo" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="fec_camb" Type="DateTime" Nullable="false" Precision="0" />
   </EntityType>
   <EntityType Name="Viaje">
     <Key>

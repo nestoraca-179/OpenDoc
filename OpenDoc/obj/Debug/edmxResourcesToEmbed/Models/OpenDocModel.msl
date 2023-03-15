@@ -186,6 +186,7 @@
     <EntitySetMapping Name="Usuario">
       <EntityTypeMapping TypeName="OpenDocModel.Usuario">
         <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="fec_camb" ColumnName="fec_camb" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="password" ColumnName="password" />

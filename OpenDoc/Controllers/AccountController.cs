@@ -15,21 +15,28 @@ namespace OpenDoc.Controllers
             try
             {
                 string encrypted_pass = SecurityController.Encrypt(password);
-                Usuario user = db.Usuario.SingleOrDefault(u => u.username == username && u.password == encrypted_pass);
 
-                if (user != null)
+                using (OpenDocEntities context = new OpenDocEntities())
                 {
-                    if (user.activo)
-                    {
-                        FormsAuthentication.SetAuthCookie(username, true);
-                        HttpContext.Current.Session["USER"] = user;
-                        LogController.CreateLog(user.username, "LOGIN", user.ID, "L", null);
+                    Usuario user = context.Usuario.SingleOrDefault(u => u.username == username && u.password == encrypted_pass);
 
-                        result = 1;
-                    }
-                    else
+                    if (user != null)
                     {
-                        result = 2;
+                        if (user.activo)
+                        {
+                            FormsAuthentication.SetAuthCookie(username, true);
+                            HttpContext.Current.Session["USER"] = user;
+                            LogController.CreateLog(user.username, "LOGIN", user.ID, "L", null);
+
+                            if (DateTime.Compare(user.fec_camb, DateTime.Now) < 0)
+                                result = 4;
+                            else
+                                result = 1;
+                        }
+                        else
+                        {
+                            result = 2;
+                        }
                     }
                 }
             }
