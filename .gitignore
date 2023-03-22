@@ -1,5 +1,5 @@
 .vs/
 packages/
-SLO/bin/
-SLO/obj/
-SLO/DynamicData/
+OpenDoc/bin/
+OpenDoc/obj/
+OpenDoc/DynamicData/

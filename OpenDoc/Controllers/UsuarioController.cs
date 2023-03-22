@@ -18,6 +18,7 @@ namespace OpenDoc.Controllers
 
             try
             {
+                user.fec_camb = DateTime.Now.AddMinutes(-1);
                 Usuario u = db.Usuario.Add(user);
                 db.SaveChanges();
 
