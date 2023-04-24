@@ -34,7 +34,7 @@
     <div class="col-3" id="menu">
         <ul class="menu">
             <li><a href="/Documentacion.aspx"><i class="fas fa-file"></i><p class="m-0">Documentación</p></a></li>
-            <li><a href="#"><i class="fas fa-folder"></i><p class="m-0">Registros</p></a></li>
+            <li><a href="/Registros.aspx"><i class="fas fa-folder"></i><p class="m-0">Registros</p></a></li>
             <li>
                 <a href="/Configuracion.aspx" id="item_conf" runat="server">
                     <i class="fas fa-cog fa-spin"></i>
