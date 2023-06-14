@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Reflection;
 using OpenDoc.Models;
@@ -16,18 +17,26 @@ namespace OpenDoc.Controllers
         {
             int result = 0;
 
-            try
+            using (OpenDocEntities context = new OpenDocEntities())
             {
-                user.fec_camb = DateTime.Now.AddMinutes(-1);
-                Usuario u = db.Usuario.Add(user);
-                db.SaveChanges();
+                using (DbContextTransaction tran = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        user.fec_camb = DateTime.Now.AddMinutes(-1);
+                        Usuario u = context.Usuario.Add(user);
+                        context.SaveChanges();
+                        tran.Commit();
 
-                LogController.CreateLog(u.co_us_in, "USUARIO", u.ID, "I", null);
-                result = 1;
-            }
-            catch (Exception ex)
-            {
-                IncidentController.CreateIncident(string.Format("ERROR AGREGANDO USUARIO N° {0}", user.username), ex);
+                        LogController.CreateLog(u.co_us_in, "USUARIO", u.ID, "I", null);
+                        result = 1;
+                    }
+                    catch (Exception ex)
+                    {
+                        tran.Rollback();
+                        IncidentController.CreateIncident(string.Format("ERROR AGREGANDO USUARIO N° {0}", user.username), ex);
+                    }
+                }
             }
 
             return result;
@@ -42,6 +51,7 @@ namespace OpenDoc.Controllers
                 Usuario existing = GetByID(user.ID);
                 user.co_us_in = existing.co_us_in;
                 user.fe_us_in = existing.fe_us_in;
+                user.fec_camb = existing.fec_camb;
 
                 string campos = GetChanges(existing, user);
 
