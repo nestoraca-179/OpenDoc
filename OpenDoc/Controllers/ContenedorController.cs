@@ -173,6 +173,7 @@ namespace OpenDoc.Controllers
                     new_type = "4060";
                     break;
                 case "40HC":
+                case "45HC":
                 case "45G1":
                 case "40HH":
                     new_type = "4400";
