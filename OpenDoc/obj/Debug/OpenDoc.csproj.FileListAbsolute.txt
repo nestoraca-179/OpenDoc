@@ -135,7 +135,7 @@ C:\Temp\ac\developer\c#\OpenDoc\OpenDoc\bin\ja\DevExpress.Pdf.v18.2.Core.resourc
 C:\Temp\ac\developer\c#\OpenDoc\OpenDoc\bin\ru\DevExpress.Pdf.v18.2.Core.resources.dll
 C:\Temp\ac\developer\c#\OpenDoc\OpenDoc\obj\Debug\OpenDoc.dll.licenses
 C:\Temp\ac\developer\c#\OpenDoc\OpenDoc\obj\Debug\OpenDoc.csproj.CoreCompileInputs.cache
-C:\Temp\ac\developer\c#\OpenDoc\OpenDoc\obj\Debug\OpenDoc.csproj.CopyComplete
 C:\Temp\ac\developer\c#\OpenDoc\OpenDoc\obj\Debug\OpenDoc.dll
 C:\Temp\ac\developer\c#\OpenDoc\OpenDoc\obj\Debug\OpenDoc.pdb
 C:\Temp\ac\developer\c#\OpenDoc\OpenDoc\obj\Debug\OpenDoc.csproj.AssemblyReference.cache
+C:\Temp\ac\developer\c#\OpenDoc\OpenDoc\obj\Debug\OpenDoc.csproj.Up2Date

@@ -332,8 +332,12 @@ namespace OpenDoc.Controllers
                     goodsSegment.AppendChild(CreateNode(doc, "Volume_in_cubic_meters", bl.volumen.ToString().Replace(",", ".")));
                     goodsSegment.AppendChild(CreateNode(doc, "Num_of_ctn_for_this_bol", bl.num_conts.ToString()));
 
-                    // NODO LOCATION
-                    XmlNode location = doc.CreateElement("Location");
+					// NODO VALUE SEGMENT
+					XmlNode valueSegment = doc.CreateElement("Value_segment");
+					bolSegment.AppendChild(valueSegment);
+
+					// NODO LOCATION
+					XmlNode location = doc.CreateElement("Location");
                     bolSegment.AppendChild(location);
 
                     location.AppendChild(CreateNode(doc, "Location_code", viaje.loc_cod));

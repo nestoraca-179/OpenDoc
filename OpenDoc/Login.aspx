@@ -121,7 +121,7 @@
     </section>
     <footer>
         <div class="container">
-            <p style="margin: 0;">OpenDoc Ver. 1.0 &copy; 2022 - <a href="http://gtsconsultingca.com/" target="_blank" style="margin: 0 0 0 5px; text-decoration: none;">Global Technology and Systems Consulting C.A.</a></p>
+            <p style="margin: 0;">OpenDoc Ver. 1.0 &copy; 2024 - <a href="http://gtsconsultingca.com/" target="_blank" style="margin: 0 0 0 5px; text-decoration: none;">Global Technology and Systems Consulting C.A.</a></p>
             <p style="margin: 0;">Esta licencia pertenece a: <b>INTERSHIPPING C.A.</b></p>
         </div>
     </footer>
